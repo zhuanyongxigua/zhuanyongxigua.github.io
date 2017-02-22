@@ -3,15 +3,24 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Hello World | Hexo</title>
+  <title>Hexo</title>
   <meta name="author" content="John Doe">
   
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in ">
+  <meta name="description" content="git基础学习笔记之创建库接下来的几章学习的都是命令，要先理解每一个命令的作用，再去进行实践。
+基础内容（命令）包括：
+安装和初始化库
+开始和停止跟踪文件、
+暂存和提交修改。
+设置git忽略某些文件、
+快速并简单地撤销错误、
+浏览项目历史、
+对比每次提交之间的区别
+对远处的库进行push、pull。">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="Hello World"/>
+  
   <meta property="og:site_name" content="Hexo"/>
 
   
@@ -51,25 +60,34 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2017-02-21T06:16:14.140Z"><a href="/2017/02/21/hello-world/">2017-02-21</a></time>
+        <time datetime="2017-02-22T06:47:36.596Z"><a href="/2017/02/22/git基础学习笔记之创建库/">2017-02-22</a></time>
       
       
   
-    <h1 class="title">Hello World</h1>
+    <h1 class="title"></h1>
   
 
     </header>
     <div class="entry">
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+        <h3 id="git基础学习笔记之创建库"><a href="#git基础学习笔记之创建库" class="headerlink" title="git基础学习笔记之创建库"></a>git基础学习笔记之创建库</h3><p>接下来的几章学习的都是命令，要先理解每一个命令的作用，再去进行实践。</p>
+<p>基础内容（命令）包括：</p>
+<p>安装和初始化库</p>
+<p>开始和停止跟踪文件、</p>
+<p>暂存和提交修改。</p>
+<p>设置git忽略某些文件、</p>
+<p>快速并简单地撤销错误、</p>
+<p>浏览项目历史、</p>
+<p>对比每次提交之间的区别</p>
+<p>对远处的库进行push、pull。</p>
+<h4 id="安装和初始化库"><a href="#安装和初始化库" class="headerlink" title="安装和初始化库"></a>安装和初始化库</h4><p>获得一个库有两种途径，一个是已有的项目，你想把它推到git里面；另一种是中其他的服务器上面克隆下来的库。</p>
+<p><strong>已有的项目</strong>：先把命令框指向需要推到git的文件夹，这里用<code>cd</code>命令，文件夹名最好是英文。</p>
+<p>for Linux:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ cd /home/user/（自己填，你的库）</div></pre></td></tr></table></figure>
+<p>for Mac:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ cd /Users/user/（自己填，你的库）</div></pre></td></tr></table></figure>
+<p>for Windows:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ cd /c/user/（自己填，你的库）</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -196,7 +214,7 @@ s.setAttribute('data-timestamp', +new Date());
 <script>
   var disqus_shortname = 'zhuanyongxigua-github-io';
   
-  var disqus_url = 'http://yoursite.com/2017/02/21/hello-world/';
+  var disqus_url = 'http://yoursite.com/2017/02/22/git基础学习笔记之创建库/';
   
   (function(){
     var dsq = document.createElement('script');

@@ -50,6 +50,147 @@
     <header>
       
         <div class="icon"></div>
+        <time datetime="2017-02-22T06:47:36.596Z"><a href="/2017/02/22/git基础学习笔记之创建库/">2017-02-22</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2017/02/22/git基础学习笔记之创建库/"></a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h3 id="git基础学习笔记之创建库"><a href="#git基础学习笔记之创建库" class="headerlink" title="git基础学习笔记之创建库"></a>git基础学习笔记之创建库</h3><p>接下来的几章学习的都是命令，要先理解每一个命令的作用，再去进行实践。</p>
+<p>基础内容（命令）包括：</p>
+<p>安装和初始化库</p>
+<p>开始和停止跟踪文件、</p>
+<p>暂存和提交修改。</p>
+<p>设置git忽略某些文件、</p>
+<p>快速并简单地撤销错误、</p>
+<p>浏览项目历史、</p>
+<p>对比每次提交之间的区别</p>
+<p>对远处的库进行push、pull。</p>
+<h4 id="安装和初始化库"><a href="#安装和初始化库" class="headerlink" title="安装和初始化库"></a>安装和初始化库</h4><p>获得一个库有两种途径，一个是已有的项目，你想把它推到git里面；另一种是中其他的服务器上面克隆下来的库。</p>
+<p><strong>已有的项目</strong>：先把命令框指向需要推到git的文件夹，这里用<code>cd</code>命令，文件夹名最好是英文。</p>
+<p>for Linux:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ cd /home/user/（自己填，你的库）</div></pre></td></tr></table></figure>
+<p>for Mac:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ cd /Users/user/（自己填，你的库）</div></pre></td></tr></table></figure>
+<p>for Windows:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ cd /c/user/（自己填，你的库）</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+<script id="dsq-count-scr" src="//zhuanyongxigua-github-io.disqus.com/count.js" async></script>
+
+
+<div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = '//zhuanyongxigua-github-io.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2017-02-22T06:47:29.756Z"><a href="/2017/02/22/初学git的一些基础知识/">2017-02-22</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2017/02/22/初学git的一些基础知识/"></a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h3 id="版本控制"><a href="#版本控制" class="headerlink" title="版本控制"></a>版本控制</h3><p>​    提到git就不得不说版本控制，与git相关的系统都是版本控制系统，他们用于记录文件的更改以便随时可以返回需要的特定版本。它的发展历史，概括的说就是从可操作文件一个到多个，从单人工作到多人协同，从集中式到分布式。</p>
+<h3 id="git工作原理"><a href="#git工作原理" class="headerlink" title="git工作原理"></a>git工作原理</h3><p>​    git是一个DRCS（distributed revision control system），它来自偶然，产于赌气。git 的工作原理也是它与其他版本控制软件的本质区别，每一次提交都相当于一个<strong>快照</strong>，改动的文件做记录，未改动的文件做链接。如下图，每一个纵向的<strong>version</strong>就是一个快照。</p>
+<p><img src="https://git-scm.com/book/en/v2/images/snapshots.png" alt="Git stores data as snapshots of the project over time."></p>
+<h3 id="git工作流程"><a href="#git工作流程" class="headerlink" title="git工作流程"></a>git工作流程</h3><p>​    git有三种状态，<strong>Committed</strong>（已提交），<strong>Modified</strong>（已修改）和<strong>Staged</strong>（已暂存）。已提交指的是文件已经老老实实地躺在你的数据库里面了；已修改是指已经变动但是并没有提交；已暂存的标示你已经<strong>标记</strong>这一次修改，但是标记的快照并没有合并到你的数据库里面。三种状态分别对应git的三个工作区域：<strong>the Git directory</strong>（本地仓库）, <strong>the working tree</strong>（工作目录）, <strong>and the staging area</strong>（暂存区域）。</p>
+<p><img src="http://images0.cnblogs.com/blog2015/512650/201508/181930031754207.png" alt="点击查看源网页"></p>
+<p>所以，当我们使用git 的时候，我们的工作流程是这样的：</p>
+<ol>
+<li>修改工作目录中的文件；</li>
+<li>标记快照暂存；</li>
+<li>提交到库。</li>
+</ol>
+<h3 id="参考文件"><a href="#参考文件" class="headerlink" title="参考文件"></a>参考文件</h3><p><a href="http://ericsink.com/vcbe/html/history_of_version_control.html" target="_blank" rel="external">http://ericsink.com/vcbe/html/history_of_version_control.html</a></p>
+<p><a href="https://git-scm.com/book/en/v2/Getting-Started-Git-Basics" target="_blank" rel="external">https://git-scm.com/book/en/v2/Getting-Started-Git-Basics</a></p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+<script id="dsq-count-scr" src="//zhuanyongxigua-github-io.disqus.com/count.js" async></script>
+
+
+<div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = '//zhuanyongxigua-github-io.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
         <time datetime="2017-02-21T07:12:17.608Z"><a href="/2017/02/21/适用/">2017-02-21</a></time>
       
       
@@ -194,6 +335,14 @@ s.setAttribute('data-timestamp', +new Date());
 <div class="widget tag">
   <h3 class="title">Neueste Artikel</h3>
   <ul class="entry">
+    
+      <li>
+        <a href="/2017/02/22/git基础学习笔记之创建库/"></a>
+      </li>
+    
+      <li>
+        <a href="/2017/02/22/初学git的一些基础知识/"></a>
+      </li>
     
       <li>
         <a href="/2017/02/21/适用/">Hello fuck World</a>
