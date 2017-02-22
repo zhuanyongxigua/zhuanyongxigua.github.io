@@ -3,16 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>初学git的一些基础知识 | Hexo</title>
+  <title>angularJS是以MVC为设计模式的JS框架 | Hexo</title>
   <meta name="author" content="John Doe">
   
-  <meta name="description" content="版本控制​    提到git就不得不说版本控制，与git相关的系统都是版本控制系统，他们用于记录文件的更改以便随时可以返回需要的特定版本。它的发展历史，概括的说就是从可操作文件一个到多个，从单人工作到多人协同，从集中式到分布式。
-git工作原理​    git是一个DRCS（distributed ">
+  <meta name="description" content="angularJS是以MVC为设计模式的JS框架MVC(Model View Controller)设计模式（design pattern）也可以理解成运行方式。每一个使用angularJS的程序都有这三个部分：
+
+模型/Model，这个部分说成是自建数据库的话会更容易理解；
+视图/View，就是显">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="初学git的一些基础知识"/>
+  <meta property="og:title" content="angularJS是以MVC为设计模式的JS框架"/>
   <meta property="og:site_name" content="Hexo"/>
 
   
@@ -52,29 +54,28 @@ git工作原理​    git是一个DRCS（distributed ">
     <header>
       
         <div class="icon"></div>
-        <time datetime="2017-02-22T07:00:56.184Z"><a href="/2017/02/22/初学git的一些基础知识/">2017-02-22</a></time>
+        <time datetime="2017-02-22T07:07:09.213Z"><a href="/2017/02/22/对angularJS一些概念的理解/">2017-02-22</a></time>
       
       
   
-    <h1 class="title">初学git的一些基础知识</h1>
+    <h1 class="title">angularJS是以MVC为设计模式的JS框架</h1>
   
 
     </header>
     <div class="entry">
       
-        <h3 id="版本控制"><a href="#版本控制" class="headerlink" title="版本控制"></a>版本控制</h3><p>​    提到git就不得不说版本控制，与git相关的系统都是版本控制系统，他们用于记录文件的更改以便随时可以返回需要的特定版本。它的发展历史，概括的说就是从可操作文件一个到多个，从单人工作到多人协同，从集中式到分布式。</p>
-<h3 id="git工作原理"><a href="#git工作原理" class="headerlink" title="git工作原理"></a>git工作原理</h3><p>​    git是一个DRCS（distributed revision control system），它来自偶然，产于赌气。git 的工作原理也是它与其他版本控制软件的本质区别，每一次提交都相当于一个<strong>快照</strong>，改动的文件做记录，未改动的文件做链接。如下图，每一个纵向的<strong>version</strong>就是一个快照。</p>
-<p><img src="https://git-scm.com/book/en/v2/images/snapshots.png" alt="Git stores data as snapshots of the project over time."></p>
-<h3 id="git工作流程"><a href="#git工作流程" class="headerlink" title="git工作流程"></a>git工作流程</h3><p>​    git有三种状态，<strong>Committed</strong>（已提交），<strong>Modified</strong>（已修改）和<strong>Staged</strong>（已暂存）。已提交指的是文件已经老老实实地躺在你的数据库里面了；已修改是指已经变动但是并没有提交；已暂存的标示你已经<strong>标记</strong>这一次修改，但是标记的快照并没有合并到你的数据库里面。三种状态分别对应git的三个工作区域：<strong>the Git directory</strong>（本地仓库）, <strong>the working tree</strong>（工作目录）, <strong>and the staging area</strong>（暂存区域）。</p>
-<p><img src="http://images0.cnblogs.com/blog2015/512650/201508/181930031754207.png" alt="点击查看源网页"></p>
-<p>所以，当我们使用git 的时候，我们的工作流程是这样的：</p>
-<ol>
-<li>修改工作目录中的文件；</li>
-<li>标记快照暂存；</li>
-<li>提交到库。</li>
-</ol>
-<h3 id="参考文件"><a href="#参考文件" class="headerlink" title="参考文件"></a>参考文件</h3><p><a href="http://ericsink.com/vcbe/html/history_of_version_control.html" target="_blank" rel="external">http://ericsink.com/vcbe/html/history_of_version_control.html</a></p>
-<p><a href="https://git-scm.com/book/en/v2/Getting-Started-Git-Basics" target="_blank" rel="external">https://git-scm.com/book/en/v2/Getting-Started-Git-Basics</a></p>
+        <h2 id="angularJS是以MVC为设计模式的JS框架"><a href="#angularJS是以MVC为设计模式的JS框架" class="headerlink" title="angularJS是以MVC为设计模式的JS框架"></a>angularJS是以MVC为设计模式的JS框架</h2><p><strong>MVC</strong>(Model View Controller)<strong>设计模式</strong>（design pattern）也可以理解成运行方式。每一个使用angularJS的程序都有这三个部分：</p>
+<ul>
+<li>模型/Model，这个部分说成是自建数据库的话会更容易理解；</li>
+<li>视图/View，就是显示的部分；</li>
+<li>控制器/Controller，软件代码控制Model和View之间的相互作用。</li>
+</ul>
+<p><img src="https://www.codeproject.com/KB/aspnet/344292/mvc.PNG" alt=""></p>
+<p>在学习html、css和JavaScript的过程中经常会看到framework、library这些词汇，笼统的讲，他们都是人们为了快速解决问题、避免简单重复的体力劳动而做的一些工具或加工到一定程度的原材料。</p>
+<p>就好像你喜欢用豆腐做菜，可你并不需要每次都从种黄豆开始，已经有人做好了豆腐在那里卖，你只要拿过来直接用就可以了。</p>
+<p>而framework和library的区别，我现在的理解是，framework是比library加工程度更深的原材料。如果framework是豆腐，那library就是做豆腐需要的原材料。你当然也可以使用做豆腐的原材料去做菜。</p>
+<p><img src="http://o7w6l6vti.bkt.clouddn.com/Difference%20between%20Library%20and%20Framework%20%28in%20JavaScript%29.png" alt="image"></p>
+<p>不过豆腐的例子不能很好的说明的一点是好莱坞原则。开脑洞的说就是，豆腐可以自己使用你准备好的东西如调味料、锅和铲子等把自己做成做成美味的菜肴。</p>
 
       
     </div>
@@ -197,7 +198,7 @@ s.setAttribute('data-timestamp', +new Date());
 <script>
   var disqus_shortname = 'zhuanyongxigua-github-io';
   
-  var disqus_url = 'http://yoursite.com/2017/02/22/初学git的一些基础知识/';
+  var disqus_url = 'http://yoursite.com/2017/02/22/对angularJS一些概念的理解/';
   
   (function(){
     var dsq = document.createElement('script');
