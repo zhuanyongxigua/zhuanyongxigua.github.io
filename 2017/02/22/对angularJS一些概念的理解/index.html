@@ -1,68 +1,117 @@
-<!DOCTYPE HTML>
+
+<!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
   
   <title>对angularJS一些概念的理解 | Hexo</title>
-  <meta name="author" content="John Doe">
-  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="angularJS是以MVC为设计模式的JS框架MVC(Model View Controller)设计模式（design pattern）也可以理解成运行方式。每一个使用angularJS的程序都有这三个部分：
 
 模型/Model，这个部分说成是自建数据库的话会更容易理解；
-视图/View，就是显">
-  
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+视图/View，就是显示的部分；
+控制器/Controller，软件代码控制Model和View之间的相互作用。
 
-  <meta property="og:title" content="对angularJS一些概念的理解"/>
-  <meta property="og:site_name" content="Hexo"/>
 
-  
-    <meta property="og:image" content="undefined"/>
-  
+在学">
+<meta property="og:type" content="article">
+<meta property="og:title" content="对angularJS一些概念的理解">
+<meta property="og:url" content="http://yoursite.com/2017/02/22/对angularJS一些概念的理解/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="angularJS是以MVC为设计模式的JS框架MVC(Model View Controller)设计模式（design pattern）也可以理解成运行方式。每一个使用angularJS的程序都有这三个部分：
 
-  <link href="/favicon.png" rel="icon">
-  <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
-  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
-  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-  
+模型/Model，这个部分说成是自建数据库的话会更容易理解；
+视图/View，就是显示的部分；
+控制器/Controller，软件代码控制Model和View之间的相互作用。
 
+
+在学">
+<meta property="og:image" content="https://www.codeproject.com/KB/aspnet/344292/mvc.PNG">
+<meta property="og:image" content="http://o7w6l6vti.bkt.clouddn.com/Difference%20between%20Library%20and%20Framework%20%28in%20JavaScript%29.png">
+<meta property="og:updated_time" content="2017-02-22T12:31:02.733Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="对angularJS一些概念的理解">
+<meta name="twitter:description" content="angularJS是以MVC为设计模式的JS框架MVC(Model View Controller)设计模式（design pattern）也可以理解成运行方式。每一个使用angularJS的程序都有这三个部分：
+
+模型/Model，这个部分说成是自建数据库的话会更容易理解；
+视图/View，就是显示的部分；
+控制器/Controller，软件代码控制Model和View之间的相互作用。
+
+
+在学">
+<meta name="twitter:image" content="https://www.codeproject.com/KB/aspnet/344292/mvc.PNG">
+  
+    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+  
 </head>
-
-
 <body>
-  <header id="header" class="inner"><div class="alignleft">
-  <h1><a href="/">Hexo</a></h1>
-  <h2><a href="/"></a></h2>
-</div>
-<nav id="main-nav" class="alignright">
-  <ul>
-    
-      <li><a href="/">Home</a></li>
-    
-      <li><a href="/archives">Archives</a></li>
-    
-  </ul>
-  <div class="clearfix"></div>
-</nav>
-<div class="clearfix"></div>
+<div id="container">
+  <div id="wrap">
+    <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//www.baidu.com/baidu" method="get" accept-charset="utf-8" class="search-form">
+          <input type="search" name="word" maxlength="20" class="search-form-input" placeholder="Search">
+          <input type="submit" value="" class="search-form-submit">
+          <input name=tn type=hidden value="bds">
+          <input name=cl type=hidden value="3">
+          <input name=ct type=hidden value="2097152">
+          <input type="hidden" name="si" value="yoursite.com">
+        </form>
+      </div>
+    </div>
+  </div>
 </header>
-  <div id="content" class="inner">
-    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+    <div class="outer">
+      <section id="main"><article id="post-对angularJS一些概念的理解" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/02/22/对angularJS一些概念的理解/" class="article-date">
+  <time datetime="2017-02-22T07:07:09.213Z" itemprop="datePublished">2017-02-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2017-02-22T07:07:09.213Z"><a href="/2017/02/22/对angularJS一些概念的理解/">2017-02-22</a></time>
-      
-      
-  
-    <h1 class="title">对angularJS一些概念的理解</h1>
+    <h1 class="article-title" itemprop="name">
+      对angularJS一些概念的理解
+    </h1>
   
 
-    </header>
-    <div class="entry">
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
       
         <h2 id="angularJS是以MVC为设计模式的JS框架"><a href="#angularJS是以MVC为设计模式的JS框架" class="headerlink" title="angularJS是以MVC为设计模式的JS框架"></a>angularJS是以MVC为设计模式的JS框架</h2><p><strong>MVC</strong>(Model View Controller)<strong>设计模式</strong>（design pattern）也可以理解成运行方式。每一个使用angularJS的程序都有这三个部分：</p>
 <ul>
@@ -79,193 +128,198 @@
 
       
     </div>
-    <footer>
+    <footer class="article-footer">
       
-        
-        
-        
-  <div class="addthis addthis_toolbox addthis_default_style">
-    
-      <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
-    
-    
-      <a class="addthis_button_tweet"></a>
-    
-    
-      <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
-    
-    
-      <a class="addthis_button_pinterest_pinit" pi:pinit:layout="horizontal"></a>
-    
-    <a class="addthis_counter addthis_pill_style"></a>
-  </div>
-  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js"></script>
+        <a data-url="http://yoursite.com/2017/02/22/对angularJS一些概念的理解/" data-id="cj0hxwpd600023083xktgak42" class="article-share-link" data-share="baidu" data-title="对angularJS一些概念的理解">Share</a>
+      
 
       
-      <div class="clearfix"></div>
+        <a href="http://yoursite.com/2017/02/22/对angularJS一些概念的理解/#ds-thread" class="article-comment-link">Comments</a>
+      
+
+      
     </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/02/22/《结构思考力》读书笔记/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          《结构思考力》读书笔记
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/02/22/初学git的一些基础知识/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">初学git的一些基础知识</div>
+    </a>
+  
+</nav>
+
+  
 </article>
 
-<script id="dsq-count-scr" src="//zhuanyongxigua-github-io.disqus.com/count.js" async></script>
 
-<section id="comment">
-  <h1 class="title">Kommentare</h1>
-
-  
-  <div id="disqus_thread">
-    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-  </div>
-  
+  <section id="comments">
+    <div id="ds-thread" class="ds-thread" data-thread-key="2017/02/22/对angularJS一些概念的理解/" data-title="对angularJS一些概念的理解" data-url="http://yoursite.com/2017/02/22/对angularJS一些概念的理解/"></div>
+  </section>
 </section>
-
-
-<div id="disqus_thread"></div>
-<script>
-
-/**
-*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
-/*
-var disqus_config = function () {
-this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
-this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-};
-*/
-(function() { // DON'T EDIT BELOW THIS LINE
-var d = document, s = d.createElement('script');
-s.src = '//zhuanyongxigua-github-io.disqus.com/embed.js';
-s.setAttribute('data-timestamp', +new Date());
-(d.head || d.body).appendChild(s);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-
-</div></div>
-    <aside id="sidebar" class="alignright">
-  <div class="search">
-  <form action="//google.com/search" method="get" accept-charset="utf-8">
-    <input type="search" name="q" results="0" placeholder="Suche">
-    <input type="hidden" name="q" value="site:yoursite.com">
-  </form>
-</div>
-
+      
+      <aside id="sidebar">
   
-
-  
-
-  
-<div class="widget tag">
-  <h3 class="title">Neueste Artikel</h3>
-  <ul class="entry">
     
-      <li>
-        <a href="/2017/03/02/从三个区域理解git命令（基础篇）/">从三个区域理解git命令（基础篇）</a>
-      </li>
+  
     
-      <li>
-        <a href="/2017/02/27/如何在网络公共场合发帖提问/">如何在网络公共场合发帖提问</a>
-      </li>
+  
     
-      <li>
-        <a href="/2017/02/22/《结构思考力》读书笔记/">《结构思考力》读书笔记</a>
-      </li>
+  
     
-      <li>
-        <a href="/2017/02/22/对angularJS一些概念的理解/">对angularJS一些概念的理解</a>
-      </li>
-    
-      <li>
-        <a href="/2017/02/22/初学git的一些基础知识/">初学git的一些基础知识</a>
-      </li>
-    
-  </ul>
-</div>
-
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">4</span></li></ul>
+    </div>
+  </div>
 
   
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/03/02/从三个区域理解git命令（基础篇）/">从三个区域理解git命令（基础篇）</a>
+          </li>
+        
+          <li>
+            <a href="/2017/02/27/如何在网络公共场合发帖提问/">如何在网络公共场合发帖提问</a>
+          </li>
+        
+          <li>
+            <a href="/2017/02/22/《结构思考力》读书笔记/">《结构思考力》读书笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2017/02/22/对angularJS一些概念的理解/">对angularJS一些概念的理解</a>
+          </li>
+        
+          <li>
+            <a href="/2017/02/22/初学git的一些基础知识/">初学git的一些基础知识</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
 
   
-
-  
-
-  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Links</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="http://arvinxiang.com" target="_blank">主题作者</a>
+          </li>
+        
+          <li>
+            <a href="http://reqianduan.com" target="_blank">热前端</a>
+          </li>
+        
+          <li>
+            <a href="http://yuancheng.work" target="_blank">远程.work</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
 
   
 </aside>
-    <div class="clearfix"></div>
+      
+    </div>
+    <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 John Doe<br>
+      Powered by <a href="//hexo.io/" target="_blank">Hexo</a>
+      .
+      Theme by <a href="https://github.com/xiangming/landscape-plus" target="_blank">Landscape-plus</a>
+    </div>
   </div>
-  <footer id="footer" class="inner"><div class="alignleft">
-  
-  &copy; 2017 John Doe
-  
-</div>
-<div class="clearfix"></div>
-
-
-<script>
-  var disqus_shortname = 'zhuanyongxigua-github-io';
-  
-  var disqus_url = 'http://yoursite.com/2017/02/22/对angularJS一些概念的理解/';
-  
-  (function(){
-    var dsq = document.createElement('script');
-    dsq.type = 'text/javascript';
-    dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-  })();
-</script>
-
-
-
-<div id="disqus_thread"></div>
-<script>
-
-/**
-*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
-/*
-var disqus_config = function () {
-this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
-this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-};
-*/
-(function() { // DON'T EDIT BELOW THIS LINE
-var d = document, s = d.createElement('script');
-s.src = '//zhuanyongxigua-github-io.disqus.com/embed.js';
-s.setAttribute('data-timestamp', +new Date());
-(d.head || d.body).appendChild(s);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 </footer>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<script src="/js/jquery.imagesloaded.min.js"></script>
-<script src="/js/gallery.js"></script>
+  </div>
+  <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+  <!-- totop start -->
+<div id="totop">
+<a title="totop"><img src="/img/scrollup.png"/></a>
+</div>
 
+<!-- totop end -->
 
+<!-- 多说公共js代码 start -->
 <script type="text/javascript">
-var disqus_shortname = 'zhuanyongxigua-github-io';
+var duoshuoQuery = {short_name:"reqianduan"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共js代码 end -->
 
-(function(){
-  var dsq = document.createElement('script');
-  dsq.type = 'text/javascript';
-  dsq.async = true;
-  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-}());
+
+<!-- 百度分享 start -->
+
+<div id="article-share-box" class="article-share-box">
+  <div id="bdshare" class="bdsharebuttonbox article-share-links">
+    <a class="article-share-weibo" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a class="article-share-weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a class="article-share-qq" data-cmd="sqq" title="分享到QQ"></a>
+    <a class="article-share-renren" data-cmd="renren" title="分享到人人网"></a>
+    <a class="article-share-more" data-cmd="more" title="更多"></a>
+  </div>
+</div>
+<script>
+  function SetShareData(cmd, config) {
+    if (shareDataTitle && shareDataUrl) {
+      config.bdText = shareDataTitle;
+      config.bdUrl = shareDataUrl;
+    }
+    return config;
+  }
+  window._bd_share_config={
+    "common":{onBeforeClick: SetShareData},
+    "share":{"bdCustomStyle":"/css/bdshare.css"}
+  };
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
 </script>
 
+<!-- 百度分享 end -->
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
 
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
-<script type="text/javascript">
-(function($){
-  $('.fancybox').fancybox();
-})(jQuery);
-</script>
 
+
+<script src="/js/script.js"></script>
+
+</div>
 </body>
 </html>
