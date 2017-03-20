@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Hexo</title>
+  <title>从三个区域理解git命令（基础篇） | Hexo</title>
   <meta name="author" content="John Doe">
   
   <meta name="description" content="从三个区域理解git命令（基础篇）2.1 获取库在学习这些下面的命令之前，首先要清楚你的代码的三种状态，已修改、已暂存、以提交。以及他们对应的三个区域：工作目录、暂存区、库。
@@ -12,7 +12,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  
+  <meta property="og:title" content="从三个区域理解git命令（基础篇）"/>
   <meta property="og:site_name" content="Hexo"/>
 
   
@@ -56,7 +56,7 @@
       
       
   
-    <h1 class="title"></h1>
+    <h1 class="title">从三个区域理解git命令（基础篇）</h1>
   
 
     </header>
@@ -65,7 +65,7 @@
         <h1 id="从三个区域理解git命令（基础篇）"><a href="#从三个区域理解git命令（基础篇）" class="headerlink" title="从三个区域理解git命令（基础篇）"></a>从三个区域理解git命令（基础篇）</h1><h1 id="2-1-获取库"><a href="#2-1-获取库" class="headerlink" title="2.1 获取库"></a>2.1 获取库</h1><p>在学习这些下面的命令之前，首先要清楚你的代码的三种状态，已修改、已暂存、以提交。以及他们对应的三个区域：工作目录、暂存区、库。</p>
 <p>其实在除这三个区域之外还有一个区域，这个区域是在你的git系统之外的区域，暂且叫它<strong>非跟踪区</strong>，所以我们上面说的三个区域就可以统称为跟踪区了。</p>
 <p>下面这个链接是一个git的操作教学。</p>
-<p><a href="https://try.github.io" target="_blank" rel="external">https://try.github.io</a></p>
+<p><a href="https://try.github.io" target="_blank" rel="external"></a></p>
 <h2 id="库从哪来？"><a href="#库从哪来？" class="headerlink" title="库从哪来？"></a>库从哪来？</h2><h3 id="两个来源，一个是你的电脑，一个是别人的电脑"><a href="#两个来源，一个是你的电脑，一个是别人的电脑" class="headerlink" title="两个来源，一个是你的电脑，一个是别人的电脑"></a>两个来源，一个是你的电脑，一个是别人的电脑</h3><p><strong>不管在哪，他们现在都在非跟踪区。</strong>所以这一步的意义就是把代码从非跟踪区拉到你git管理的跟踪区。</p>
 <p><strong>如果是你的电脑</strong>，在你写的代码的那个<strong>文件夹</strong>右键，点击git bash here（前提是你要安装了git）；或者在terminal用cd命令到所在文件夹。</p>
 <p>然后</p>
@@ -89,8 +89,8 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git status</div></pre></td></tr></table></figure>
 <p>里面不但显示文件的状态，也会有相应的操作的提示。如果你觉得使用这个命令得到的信息过于冗长，那你就可以试着用<code>git status -s</code> 或者 <code>git status --short</code> 。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$ git status -s</div><div class="line"> M README</div><div class="line">MM Rakefile</div><div class="line">A  lib/git.rb</div><div class="line">M  lib/simplegit.rb</div><div class="line">?? LICENSE.txt</div></pre></td></tr></table></figure>
-<p> <code>??</code> 表示新的且<strong>没有被缓存</strong>的文件, </p>
-<p> <code>A</code> 新的且<strong>已经被缓存</strong>的文件, </p>
+<p> <code>??</code> 表示新的且<strong>没有被缓存</strong>的文件,</p>
+<p> <code>A</code> 新的且<strong>已经被缓存</strong>的文件,</p>
 <p> <code>M</code> 被修改的文件</p>
 <p><code>MM</code> 缓存之后再次修改的。</p>
 <h3 id="查看文件具体做了哪些修改"><a href="#查看文件具体做了哪些修改" class="headerlink" title="查看文件具体做了哪些修改"></a>查看文件具体做了哪些修改</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git diff</div></pre></td></tr></table></figure>
@@ -153,7 +153,7 @@
 <script id="dsq-count-scr" src="//zhuanyongxigua-github-io.disqus.com/count.js" async></script>
 
 <section id="comment">
-  <h1 class="title">Comentarios</h1>
+  <h1 class="title">Kommentare</h1>
 
   
   <div id="disqus_thread">
@@ -188,7 +188,7 @@ s.setAttribute('data-timestamp', +new Date());
     <aside id="sidebar" class="alignright">
   <div class="search">
   <form action="//google.com/search" method="get" accept-charset="utf-8">
-    <input type="search" name="q" results="0" placeholder="Buscar">
+    <input type="search" name="q" results="0" placeholder="Suche">
     <input type="hidden" name="q" value="site:yoursite.com">
   </form>
 </div>
@@ -199,11 +199,11 @@ s.setAttribute('data-timestamp', +new Date());
 
   
 <div class="widget tag">
-  <h3 class="title">Entradas Recientes</h3>
+  <h3 class="title">Neueste Artikel</h3>
   <ul class="entry">
     
       <li>
-        <a href="/2017/03/02/从三个区域理解git命令（基础篇）/"></a>
+        <a href="/2017/03/02/从三个区域理解git命令（基础篇）/">从三个区域理解git命令（基础篇）</a>
       </li>
     
       <li>
