@@ -1,93 +1,330 @@
+<!doctype html>
 
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
+
+
   
-  <title>Hexo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta property="og:type" content="website">
 <meta property="og:title" content="Hexo">
 <meta property="og:url" content="http://yoursite.com/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo">
-  
-    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  <link rel="stylesheet" href="/css/style.css">
-  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
-  
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/"/>
+
+
+
+
+
+  <title> Hexo </title>
 </head>
-<body>
-<div id="container">
-  <div id="wrap">
-    <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
-      </h1>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//www.baidu.com/baidu" method="get" accept-charset="utf-8" class="search-form">
-          <input type="search" name="word" maxlength="20" class="search-form-input" placeholder="Search">
-          <input type="submit" value="" class="search-form-submit">
-          <input name=tn type=hidden value="bds">
-          <input name=cl type=hidden value="3">
-          <input name=ct type=hidden value="2097152">
-          <input type="hidden" name="si" value="yoursite.com">
-        </form>
-      </div>
-    </div>
-  </div>
-</header>
-    <div class="outer">
-      <section id="main">
-  
-    <article id="post-一个关于闭包、回调函数和异步程序的例子" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/03/21/一个关于闭包、回调函数和异步程序的例子/" class="article-date">
-  <time datetime="2017-03-21T08:12:33.652Z" itemprop="datePublished">2017-03-21</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/21/一个关于闭包、回调函数和异步程序的例子/">一个关于回调函数的例子以及异步程序和非阻塞I/O的理解</a>
-    </h1>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
   
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left 
+   page-home 
+ ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+  <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/21/一个关于闭包、回调函数和异步程序的例子/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/03/21/一个关于闭包、回调函数和异步程序的例子/" itemprop="url">
+                  一个关于回调函数的例子以及异步程序和非阻塞I/O的理解
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-21T16:12:33+08:00">
+                2017-03-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
       </header>
     
-    <div class="article-entry" itemprop="articleBody">
+
+
+    <div class="post-body" itemprop="articleBody">
+
       
-        <p>JavaScript有一个明显的特征：第一类函数（first-class functions）<a href="https://en.wikipedia.org/wiki/First-class_function" target="_blank" rel="external">（wiki）</a> 。</p>
+      
+
+      
+        
+          
+            <p>JavaScript有一个明显的特征：第一类函数（first-class functions）<a href="https://en.wikipedia.org/wiki/First-class_function" target="_blank" rel="external">（wiki）</a> 。</p>
 <p>与第一类函数有关的名词还有第一类对象和第一类公民（头等公民）<a href="https://en.wikipedia.org/wiki/First-class_citizen" target="_blank" rel="external">（wiki）</a> ，在JavaScript中，函数是第一类对象或者说是第一类公民，简单理解，就是权限很大，可调用的资源多。这是因为这样，它才可以被当做参数或变量来使用。</p>
 <p>对于异步程序和非阻塞I/O，记得在知乎上看到过一个非常好的举例：你给图书馆打电话查书，图书馆的管理员会有两种反应，第一种：“麻烦等一下，不用挂电话，我查一下”；第二种：“知道了，等我查到了我给您回电话”。这里面的区别，一个在你，一个在电话线路。第一种情况下，你不能去干别的，只能老老实实的在电话前面等着，而且，别人在这段时间里没法给你打电话了。第二种情况就无所谓了，你可以去high，去耍，去上厕所，其他的朋友给你打电话你也接的到。第一种情况就是同步的、阻塞的，第二种就是异步的、非阻塞的。</p>
 <p>下面是一个nodejs的例子，创建一个rectangle-2.js的文件</p>
@@ -103,48 +340,126 @@
 <li>目光放到rectangle-2.js，程序运行，先在try里面判断，确定符合要求之后，就运行callback函数，也就是第三步中赋值给callback的那个函数，求得结果。</li>
 </ol>
 
+          
+        
       
     </div>
-    <footer class="article-footer">
+
+    <div>
       
-        <a data-url="http://yoursite.com/2017/03/21/一个关于闭包、回调函数和异步程序的例子/" data-id="cj0p9fknh0001jk83abex85qq" class="article-share-link">Share</a>
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
       
 
       
-        <a href="http://yoursite.com/2017/03/21/一个关于闭包、回调函数和异步程序的例子/#disqus_thread" class="article-comment-link">Comments</a>
+
       
 
+      
+      
+        <div class="post-eof"></div>
       
     </footer>
-  </div>
-  
-</article>
+  </article>
 
 
+    
+      
+
   
-    <article id="post-从三个区域理解git命令（基础篇）" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/03/02/从三个区域理解git命令（基础篇）/" class="article-date">
-  <time datetime="2017-03-02T02:37:16.966Z" itemprop="datePublished">2017-03-02</time>
-</a>
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/02/从三个区域理解git命令（基础篇）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
     
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+      <header class="post-header">
+
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/02/从三个区域理解git命令（基础篇）/">从三个区域理解git命令（基础篇）</a>
-    </h1>
-  
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/03/02/从三个区域理解git命令（基础篇）/" itemprop="url">
+                  从三个区域理解git命令（基础篇）
+                </a>
+              
+            
+          </h1>
+        
 
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-02T10:37:16+08:00">
+                2017-03-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
       </header>
     
-    <div class="article-entry" itemprop="articleBody">
+
+
+    <div class="post-body" itemprop="articleBody">
+
       
-        <h1 id="2-1-获取库"><a href="#2-1-获取库" class="headerlink" title="2.1 获取库"></a>2.1 获取库</h1><p>在学习这些下面的命令之前，首先要清楚你的代码的三种状态，已修改、已暂存、以提交。以及他们对应的三个区域：工作目录、暂存区、库。</p>
+      
+
+      
+        
+          
+            <h1 id="2-1-获取库"><a href="#2-1-获取库" class="headerlink" title="2.1 获取库"></a>2.1 获取库</h1><p>在学习这些下面的命令之前，首先要清楚你的代码的三种状态，已修改、已暂存、以提交。以及他们对应的三个区域：工作目录、暂存区、库。</p>
 <p>其实在除这三个区域之外还有一个区域，这个区域是在你的git系统之外的区域，暂且叫它<strong>非跟踪区</strong>，所以我们上面说的三个区域就可以统称为跟踪区了。</p>
 <p>下面这个链接是一个git的操作教学。</p>
 <p><a href="https://try.github.io" target="_blank" rel="external"></a></p>
@@ -202,48 +517,126 @@
 <p>如果是想替换<code>reset HEAD</code> 这样多单词的命令：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git config --global alias.unstage &apos;reset HEAD --&apos;</div></pre></td></tr></table></figure>
 
+          
+        
       
     </div>
-    <footer class="article-footer">
+
+    <div>
       
-        <a data-url="http://yoursite.com/2017/03/02/从三个区域理解git命令（基础篇）/" data-id="cj0p9fknl0002jk83atjac5vj" class="article-share-link">Share</a>
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
       
 
       
-        <a href="http://yoursite.com/2017/03/02/从三个区域理解git命令（基础篇）/#disqus_thread" class="article-comment-link">Comments</a>
+
       
 
+      
+      
+        <div class="post-eof"></div>
       
     </footer>
-  </div>
-  
-</article>
+  </article>
 
 
+    
+      
+
   
-    <article id="post-如何在网络公共场合发帖提问" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/02/27/如何在网络公共场合发帖提问/" class="article-date">
-  <time datetime="2017-02-27T04:18:23.908Z" itemprop="datePublished">2017-02-27</time>
-</a>
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/02/27/如何在网络公共场合发帖提问/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
     
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+      <header class="post-header">
+
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/27/如何在网络公共场合发帖提问/">如何在网络公共场合发帖提问</a>
-    </h1>
-  
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/02/27/如何在网络公共场合发帖提问/" itemprop="url">
+                  如何在网络公共场合发帖提问
+                </a>
+              
+            
+          </h1>
+        
 
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-27T12:18:23+08:00">
+                2017-02-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
       </header>
     
-    <div class="article-entry" itemprop="articleBody">
+
+
+    <div class="post-body" itemprop="articleBody">
+
       
-        <p>本文<a href="http://www.catb.org/esr/faqs/smart-questions.html" target="_blank" rel="external">《How To Ask Questions The Smart Way》</a>的学习笔记，仅供参考。</p>
+      
+
+      
+        
+          
+            <p>本文<a href="http://www.catb.org/esr/faqs/smart-questions.html" target="_blank" rel="external">《How To Ask Questions The Smart Way》</a>的学习笔记，仅供参考。</p>
 <p>概括的说就是在提问之前先<strong>自己尝试解决问题</strong>，未能解决，再提问。</p>
 <p>提问的根本原则是：让别人<strong>指点你</strong>，而不是让别人直接<strong>给你</strong>。</p>
 <h2 id="先做好自己的功课"><a href="#先做好自己的功课" class="headerlink" title="先做好自己的功课"></a>先做好自己的功课</h2><p>提问之前你要先做好下面的事情。</p>
@@ -308,48 +701,126 @@
 <h2 id="对于别人的回复"><a href="#对于别人的回复" class="headerlink" title="对于别人的回复"></a>对于别人的回复</h2><p>如果看不懂别人的回答，先不要急着回复提问，再执行一次<code>提问之前</code>的步骤。</p>
 <h4 id="如果还是不明白…"><a href="#如果还是不明白…" class="headerlink" title="如果还是不明白…"></a>如果还是不明白…</h4><p>回复的时候要加上自己已经学到了什么。</p>
 
+          
+        
       
     </div>
-    <footer class="article-footer">
+
+    <div>
       
-        <a data-url="http://yoursite.com/2017/02/27/如何在网络公共场合发帖提问/" data-id="cj0p9fknp0004jk838r5jk6ad" class="article-share-link">Share</a>
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
       
 
       
-        <a href="http://yoursite.com/2017/02/27/如何在网络公共场合发帖提问/#disqus_thread" class="article-comment-link">Comments</a>
+
       
 
+      
+      
+        <div class="post-eof"></div>
       
     </footer>
-  </div>
-  
-</article>
+  </article>
 
 
+    
+      
+
   
-    <article id="post-《结构思考力》读书笔记" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/02/22/《结构思考力》读书笔记/" class="article-date">
-  <time datetime="2017-02-22T12:27:57.820Z" itemprop="datePublished">2017-02-22</time>
-</a>
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/02/22/《结构思考力》读书笔记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
     
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+      <header class="post-header">
+
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/22/《结构思考力》读书笔记/">《结构思考力》读书笔记</a>
-    </h1>
-  
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/02/22/《结构思考力》读书笔记/" itemprop="url">
+                  《结构思考力》读书笔记
+                </a>
+              
+            
+          </h1>
+        
 
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-22T20:27:57+08:00">
+                2017-02-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
       </header>
     
-    <div class="article-entry" itemprop="articleBody">
+
+
+    <div class="post-body" itemprop="articleBody">
+
       
-        <h1 id="结构化思考"><a href="#结构化思考" class="headerlink" title="结构化思考"></a>结构化思考</h1><p>结构可以说是万物之本，大到宇宙星系、小到颗粒尘埃都有其特定的结构。我们很难想象没有结构的世界是什么样子的。在物质世界，人们通过结构来认识物质；在思维世界，人们也同样通过结构来认识事物、认识其中的规律和美。结构存在于每个整体与局部关系的无穷变化中，每个局部表现整体，而局部的意义又由整体来决定。因此，当我们面临一个问题时，如果可以从结构的视角去审视和思考，一定可以让我们看得更全面、更清晰。</p>
+      
+
+      
+        
+          
+            <h1 id="结构化思考"><a href="#结构化思考" class="headerlink" title="结构化思考"></a>结构化思考</h1><p>结构可以说是万物之本，大到宇宙星系、小到颗粒尘埃都有其特定的结构。我们很难想象没有结构的世界是什么样子的。在物质世界，人们通过结构来认识物质；在思维世界，人们也同样通过结构来认识事物、认识其中的规律和美。结构存在于每个整体与局部关系的无穷变化中，每个局部表现整体，而局部的意义又由整体来决定。因此，当我们面临一个问题时，如果可以从结构的视角去审视和思考，一定可以让我们看得更全面、更清晰。</p>
 <p>结构思考力是所有人都需要具备的核心技能。罗伯特卡茨在1955年发表过一篇《高效管理者的三大技能》的文章。他认为，高效的管理者应当具备三种基本技能：技术性技能、人际性技能和概念性技能。<br><img src="http://o7w6l6vti.bkt.clouddn.com/%E9%AB%98%E6%95%88%E7%AE%A1%E7%90%86%E8%80%85%E7%9A%84%E4%B8%89%E5%A4%A7%E6%8A%80%E8%83%BD.png" alt=""></p>
 <p>概念性技能就是指对复杂情况进行抽象和概念化的技能。而结构化思考的能力就是概念性技能中最关键的技能。它是一种“先总后分”的思考与表达方式，强调先框架后细节，现总结后具体，先结论后原因，先重复后次要。它分为三大阶段五个步骤。<br><img src="http://o7w6l6vti.bkt.clouddn.com/%E4%B8%89%E5%A4%A7%E9%98%B6%E6%AE%B5%E4%BA%94%E4%B8%AA%E6%AD%A5%E9%AA%A4.png" alt=""></p>
 <p>结构思考力有四个基本特点，也是金字塔原理的四个基本原则：“结论先行”、“以上统下”、“归类分组”和“逻辑递进”。再提炼一下就是“论证类比”四个关键字。其中“以上统下”表示上面的结论是下面理由论证得来的；这个四个基本原则贯穿整个方法的始终，在接收和表达的时候都会用到。</p>
@@ -361,48 +832,126 @@
 <p>通过前面几步，我们已经把很多杂乱无章的概念、思路、想法和经验整理得非常清晰了，但这仅限于我们自己能想明白，要做到别人也能听明白，并且容易记忆，还差最后一步。这里要学习的就是“卖点包装”，有一个很好的例子，出门四件事知道是什么吗？很多人会马上得出答案：“身手钥钱”。这就是一个很成功的包装，即使经过了很多年，我们还是可以很清楚的记得。</p>
 <p>以上几步就是一个较完整的运用结构思考力的过程。有一家公司在学习完结构思考力的课程之后在管理人员的门上都贴了这样的三句话：“汇报工作是结果，检讨工作说流程，请示工作说方案。” 它可以运用到我们工作生活的方方面面，助力我们做到思考清晰、表达有力，生活清爽、工作高效！</p>
 
+          
+        
       
     </div>
-    <footer class="article-footer">
+
+    <div>
       
-        <a data-url="http://yoursite.com/2017/02/22/《结构思考力》读书笔记/" data-id="cj0p9fkna0000jk83evah27eq" class="article-share-link">Share</a>
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
       
 
       
-        <a href="http://yoursite.com/2017/02/22/《结构思考力》读书笔记/#disqus_thread" class="article-comment-link">Comments</a>
+
       
 
+      
+      
+        <div class="post-eof"></div>
       
     </footer>
-  </div>
-  
-</article>
+  </article>
 
 
+    
+      
+
   
-    <article id="post-对angularJS一些概念的理解" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/02/22/对angularJS一些概念的理解/" class="article-date">
-  <time datetime="2017-02-22T07:07:09.213Z" itemprop="datePublished">2017-02-22</time>
-</a>
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/02/22/对angularJS一些概念的理解/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
     
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+      <header class="post-header">
+
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/22/对angularJS一些概念的理解/">对angularJS一些概念的理解</a>
-    </h1>
-  
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/02/22/对angularJS一些概念的理解/" itemprop="url">
+                  对angularJS一些概念的理解
+                </a>
+              
+            
+          </h1>
+        
 
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-22T15:07:09+08:00">
+                2017-02-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
       </header>
     
-    <div class="article-entry" itemprop="articleBody">
+
+
+    <div class="post-body" itemprop="articleBody">
+
       
-        <h2 id="angularJS是以MVC为设计模式的JS框架"><a href="#angularJS是以MVC为设计模式的JS框架" class="headerlink" title="angularJS是以MVC为设计模式的JS框架"></a>angularJS是以MVC为设计模式的JS框架</h2><p><strong>MVC</strong>(Model View Controller)<strong>设计模式</strong>（design pattern）也可以理解成运行方式。每一个使用angularJS的程序都有这三个部分：</p>
+      
+
+      
+        
+          
+            <h2 id="angularJS是以MVC为设计模式的JS框架"><a href="#angularJS是以MVC为设计模式的JS框架" class="headerlink" title="angularJS是以MVC为设计模式的JS框架"></a>angularJS是以MVC为设计模式的JS框架</h2><p><strong>MVC</strong>(Model View Controller)<strong>设计模式</strong>（design pattern）也可以理解成运行方式。每一个使用angularJS的程序都有这三个部分：</p>
 <ul>
 <li>模型/Model，这个部分说成是自建数据库的话会更容易理解；</li>
 <li>视图/View，就是显示的部分；</li>
@@ -415,48 +964,126 @@
 <p><img src="http://o7w6l6vti.bkt.clouddn.com/Difference%20between%20Library%20and%20Framework%20%28in%20JavaScript%29.png" alt="image"></p>
 <p>不过豆腐的例子不能很好的说明的一点是好莱坞原则。开脑洞的说就是，豆腐可以自己使用你准备好的东西如调味料、锅和铲子等把自己做成做成美味的菜肴。</p>
 
+          
+        
       
     </div>
-    <footer class="article-footer">
+
+    <div>
       
-        <a data-url="http://yoursite.com/2017/02/22/对angularJS一些概念的理解/" data-id="cj0p9fknt0005jk834m8szh9v" class="article-share-link">Share</a>
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
       
 
       
-        <a href="http://yoursite.com/2017/02/22/对angularJS一些概念的理解/#disqus_thread" class="article-comment-link">Comments</a>
+
       
 
+      
+      
+        <div class="post-eof"></div>
       
     </footer>
-  </div>
-  
-</article>
+  </article>
 
 
+    
+      
+
   
-    <article id="post-初学git的一些基础知识" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/02/22/初学git的一些基础知识/" class="article-date">
-  <time datetime="2017-02-22T07:00:56.184Z" itemprop="datePublished">2017-02-22</time>
-</a>
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/02/22/初学git的一些基础知识/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
     
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+      <header class="post-header">
+
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/22/初学git的一些基础知识/">初学git的一些基础知识</a>
-    </h1>
-  
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/02/22/初学git的一些基础知识/" itemprop="url">
+                  初学git的一些基础知识
+                </a>
+              
+            
+          </h1>
+        
 
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-22T15:00:56+08:00">
+                2017-02-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
       </header>
     
-    <div class="article-entry" itemprop="articleBody">
+
+
+    <div class="post-body" itemprop="articleBody">
+
       
-        <h3 id="版本控制"><a href="#版本控制" class="headerlink" title="版本控制"></a>版本控制</h3><p>​    提到git就不得不说版本控制，与git相关的系统都是版本控制系统，他们用于记录文件的更改以便随时可以返回需要的特定版本。它的发展历史，概括的说就是从可操作文件一个到多个，从单人工作到多人协同，从集中式到分布式。</p>
+      
+
+      
+        
+          
+            <h3 id="版本控制"><a href="#版本控制" class="headerlink" title="版本控制"></a>版本控制</h3><p>​    提到git就不得不说版本控制，与git相关的系统都是版本控制系统，他们用于记录文件的更改以便随时可以返回需要的特定版本。它的发展历史，概括的说就是从可操作文件一个到多个，从单人工作到多人协同，从集中式到分布式。</p>
 <h3 id="git工作原理"><a href="#git工作原理" class="headerlink" title="git工作原理"></a>git工作原理</h3><p>​    git是一个DRCS（distributed revision control system），它来自偶然，产于赌气。git 的工作原理也是它与其他版本控制软件的本质区别，每一次提交都相当于一个<strong>快照</strong>，改动的文件做记录，未改动的文件做链接。如下图，每一个纵向的<strong>version</strong>就是一个快照。</p>
 <p><img src="https://git-scm.com/book/en/v2/images/snapshots.png" alt="Git stores data as snapshots of the project over time."></p>
 <h3 id="git工作流程"><a href="#git工作流程" class="headerlink" title="git工作流程"></a>git工作流程</h3><p>​    git有三种状态，<strong>Committed</strong>（已提交），<strong>Modified</strong>（已修改）和<strong>Staged</strong>（已暂存）。已提交指的是文件已经老老实实地躺在你的数据库里面了；已修改是指已经变动但是并没有提交；已暂存的标示你已经<strong>标记</strong>这一次修改，但是标记的快照并没有合并到你的数据库里面。三种状态分别对应git的三个工作区域：<strong>the Git directory</strong>（本地仓库）, <strong>the working tree</strong>（工作目录）, <strong>and the staging area</strong>（暂存区域）。</p>
@@ -470,163 +1097,258 @@
 <h3 id="参考文件"><a href="#参考文件" class="headerlink" title="参考文件"></a>参考文件</h3><p><a href="http://ericsink.com/vcbe/html/history_of_version_control.html" target="_blank" rel="external">http://ericsink.com/vcbe/html/history_of_version_control.html</a></p>
 <p><a href="https://git-scm.com/book/en/v2/Getting-Started-Git-Basics" target="_blank" rel="external">https://git-scm.com/book/en/v2/Getting-Started-Git-Basics</a></p>
 
+          
+        
       
     </div>
-    <footer class="article-footer">
+
+    <div>
       
-        <a data-url="http://yoursite.com/2017/02/22/初学git的一些基础知识/" data-id="cj0p9fknn0003jk83dskk1zot" class="article-share-link">Share</a>
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
       
 
       
-        <a href="http://yoursite.com/2017/02/22/初学git的一些基础知识/#disqus_thread" class="article-comment-link">Comments</a>
+
       
 
+      
+      
+        <div class="post-eof"></div>
       
     </footer>
+  </article>
+
+
+    
+  </section>
+
+  
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
   </div>
-  
-</article>
 
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
 
-  
-
-</section>
       
-      <aside id="sidebar">
-  
-    
-  
-    
-  
-    
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">4</span></li></ul>
-    </div>
-  </div>
 
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2017/03/21/一个关于闭包、回调函数和异步程序的例子/">一个关于回调函数的例子以及异步程序和非阻塞I/O的理解</a>
-          </li>
-        
-          <li>
-            <a href="/2017/03/02/从三个区域理解git命令（基础篇）/">从三个区域理解git命令（基础篇）</a>
-          </li>
-        
-          <li>
-            <a href="/2017/02/27/如何在网络公共场合发帖提问/">如何在网络公共场合发帖提问</a>
-          </li>
-        
-          <li>
-            <a href="/2017/02/22/《结构思考力》读书笔记/">《结构思考力》读书笔记</a>
-          </li>
-        
-          <li>
-            <a href="/2017/02/22/对angularJS一些概念的理解/">对angularJS一些概念的理解</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Links</h3>
-    <div class="widget">
-      <ul>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
       
-    </div>
-    <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2017 John Doe<br>
-      Powered by <a href="//hexo.io/" target="_blank">Hexo</a>
-      .
-      Theme by <a href="https://github.com/xiangming/landscape-plus" target="_blank">Landscape-plus</a>
-    </div>
-  </div>
-</footer>
 
-  </div>
-  <nav id="mobile-nav">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="John Doe" />
+          <p class="site-author-name" itemprop="name">John Doe</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
   
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-  <!-- totop start -->
-<div id="totop">
-<a title="totop"><img src="/img/scrollup.png"/></a>
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
 </div>
 
-<!-- totop end -->
 
-<script>
-  var disqus_shortname = 'zhuanyongxigua-github-io';
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
   
-  (function(){
-    var dsq = document.createElement('script');
-    dsq.type = 'text/javascript';
-    dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-  })();
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
 </script>
 
 
-<!-- 百度分享 start -->
-
-<!-- 百度分享 end -->
-
-<div id="disqus_thread"></div>
-<script>
-
-/**
-*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
-/*
-var disqus_config = function () {
-this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
-this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-};
-*/
-(function() { // DON'T EDIT BELOW THIS LINE
-var d = document, s = d.createElement('script');
-s.src = 'https://EXAMPLE.disqus.com/embed.js';
-s.setAttribute('data-timestamp', +new Date());
-(d.head || d.body).appendChild(s);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script id="dsq-count-scr" src="//EXAMPLE.disqus.com/count.js" async></script>
 
 
 
 
-<script src="/js/script.js"></script>
 
-</div>
+
+
+  
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
 </body>
 </html>
