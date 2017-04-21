@@ -247,6 +247,169 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/20/用vultr建立网站/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/04/20/用vultr建立网站/" itemprop="url">
+                  用vultr建立网站
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-20T21:49:10+08:00">
+                2017-04-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>内容会运用到Linux、docker</p>
+<p>如果有visa，可以直接到<a href="www.vultr.com">vultr官网</a>付款购买服务器。如果没有，某宝上面有代沟。</p>
+<p>我在这里使用的配置是，Tokyo Ubuntu16.04 25GB SSD，也就是通常能买到的最低的配置</p>
+<p>我是在某宝上面代购的，谈好价钱后，对方会给你一个ip地址和用户名还有密码。</p>
+<p><img src="http://o7w6l6vti.bkt.clouddn.com/Screenshot_20_04_2017__8_59_PM.png" alt="某宝"></p>
+<p>之后打开terminal</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh root@45.76.222.131</div></pre></td></tr></table></figure>
+<p>terminal会提示输入密码，直接输入收到的密码就好。</p>
+<p>接着就要输入以下的命令了。</p>
+<p>生成一个ssh key</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh-keygen</div></pre></td></tr></table></figure>
+<p>显示公钥</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cat ~/.ssh/id_rsa.pub</div></pre></td></tr></table></figure>
+<p>把生成的公钥放到GitHub上面</p>
+<p>接着回来搭建基本的开发环境</p>
+<p>安装vim</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">apt-get install -y vim git</div></pre></td></tr></table></figure>
+<p>安装docker</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl-SsL https://get.docker.com | sh</div></pre></td></tr></table></figure>
+<p>查看docker中的容器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker ps -a</div></pre></td></tr></table></figure>
+<p>docker中安装node6.8</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker pull node:6.8</div></pre></td></tr></table></figure>
+<p>docker中安装mongodb:3.0</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker pull mongo:3.0</div></pre></td></tr></table></figure>
+<p>docker运行node</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker run -itd -v /root/.ssh/:/root/.ssh --name node --net=host node:6.8 bash</div></pre></td></tr></table></figure>
+<p>进入docker</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker exec -it node bash</div></pre></td></tr></table></figure>
+<p>从GitHub克隆过来自己写好的网页应用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git clone git@github.com:zhuanyongxigua/notepad-online.git</div></pre></td></tr></table></figure>
+<p>列出所有</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ls -all</div></pre></td></tr></table></figure>
+<p><strong>出容器</strong>（另开一个terminal重新进）运行mongodb</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker run -itd --name mgo --net=host mongo:3.0</div></pre></td></tr></table></figure>
+<p>然后就可以cd到克隆过来的文件里面使用<code>npm install</code>并<code>npm start</code>了</p>
+<p>如果运行出错，需要停掉程序</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker stop node</div></pre></td></tr></table></figure>
+<p>这里面的node就是上面创建的那个，因为上面创建的时候的name规定的是node</p>
+<p>改好错之后就继续运行node</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker start node</div></pre></td></tr></table></figure>
+<p>如果需要向mongodb post数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl -i -H &quot;Content-Type:application/json&quot; -XPOST -d &apos;这里是JSON数据&apos; url</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/07/使用autohotkey修改方向键、回车和启动程序/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -286,7 +449,7 @@
               
                 <span class="post-meta-item-text">Veröffentlicht am</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-07T16:32:33+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-07T17:14:06+08:00">
                 2017-04-07
               </time>
             
@@ -396,7 +559,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/21/一个关于闭包、回调函数和异步程序的例子/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/25/一个关于闭包、回调函数和异步程序的例子/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="John Doe">
@@ -418,7 +581,7 @@
             
               
                 
-                <a class="post-title-link" href="/2017/03/21/一个关于闭包、回调函数和异步程序的例子/" itemprop="url">
+                <a class="post-title-link" href="/2017/03/25/一个关于闭包、回调函数和异步程序的例子/" itemprop="url">
                   一个关于回调函数的例子以及异步程序和非阻塞I/O的理解
                 </a>
               
@@ -435,8 +598,8 @@
               
                 <span class="post-meta-item-text">Veröffentlicht am</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-21T16:12:33+08:00">
-                2017-03-21
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-25T17:10:08+08:00">
+                2017-03-25
               </time>
             
 
@@ -531,7 +694,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/02/从三个区域理解git命令（基础篇）/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/20/从三个区域理解git命令（基础篇）/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="John Doe">
@@ -553,7 +716,7 @@
             
               
                 
-                <a class="post-title-link" href="/2017/03/02/从三个区域理解git命令（基础篇）/" itemprop="url">
+                <a class="post-title-link" href="/2017/03/20/从三个区域理解git命令（基础篇）/" itemprop="url">
                   从三个区域理解git命令（基础篇）
                 </a>
               
@@ -570,8 +733,8 @@
               
                 <span class="post-meta-item-text">Veröffentlicht am</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-02T10:37:16+08:00">
-                2017-03-02
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-20T15:54:58+08:00">
+                2017-03-20
               </time>
             
 
@@ -747,7 +910,7 @@
               
                 <span class="post-meta-item-text">Veröffentlicht am</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-27T12:18:23+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-27T12:44:12+08:00">
                 2017-02-27
               </time>
             
@@ -892,137 +1055,6 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/02/22/《结构思考力》读书笔记/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/02/22/《结构思考力》读书笔记/" itemprop="url">
-                  《结构思考力》读书笔记
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-22T20:27:57+08:00">
-                2017-02-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="结构化思考"><a href="#结构化思考" class="headerlink" title="结构化思考"></a>结构化思考</h1><p>结构可以说是万物之本，大到宇宙星系、小到颗粒尘埃都有其特定的结构。我们很难想象没有结构的世界是什么样子的。在物质世界，人们通过结构来认识物质；在思维世界，人们也同样通过结构来认识事物、认识其中的规律和美。结构存在于每个整体与局部关系的无穷变化中，每个局部表现整体，而局部的意义又由整体来决定。因此，当我们面临一个问题时，如果可以从结构的视角去审视和思考，一定可以让我们看得更全面、更清晰。</p>
-<p>结构思考力是所有人都需要具备的核心技能。罗伯特卡茨在1955年发表过一篇《高效管理者的三大技能》的文章。他认为，高效的管理者应当具备三种基本技能：技术性技能、人际性技能和概念性技能。<br><img src="http://o7w6l6vti.bkt.clouddn.com/%E9%AB%98%E6%95%88%E7%AE%A1%E7%90%86%E8%80%85%E7%9A%84%E4%B8%89%E5%A4%A7%E6%8A%80%E8%83%BD.png" alt=""></p>
-<p>概念性技能就是指对复杂情况进行抽象和概念化的技能。而结构化思考的能力就是概念性技能中最关键的技能。它是一种“先总后分”的思考与表达方式，强调先框架后细节，现总结后具体，先结论后原因，先重复后次要。它分为三大阶段五个步骤。<br><img src="http://o7w6l6vti.bkt.clouddn.com/%E4%B8%89%E5%A4%A7%E9%98%B6%E6%AE%B5%E4%BA%94%E4%B8%AA%E6%AD%A5%E9%AA%A4.png" alt=""></p>
-<p>结构思考力有四个基本特点，也是金字塔原理的四个基本原则：“结论先行”、“以上统下”、“归类分组”和“逻辑递进”。再提炼一下就是“论证类比”四个关键字。其中“以上统下”表示上面的结论是下面理由论证得来的；这个四个基本原则贯穿整个方法的始终，在接收和表达的时候都会用到。</p>
-<p>第一步“明确理念打基础”中，最关键的就是要做到“隐形思维显性化”。日常工作生活中我们接收到的信息大多是主题不明确的、逻辑顺序不清晰的，甚至是杂乱无章的，这里我们就需要有意识的对他们进行整理。整理的过程具体包含三个步骤：1，识别信息中的事实、理由及结论；2，找出对应关系、并画出结构图；3，一句话概览出所有内容。</p>
-<p>第二步“基于目标定主题”就进入了构思阶段，这一内容要从“确定目标”、“设定主题”和“设计序言”三个方面加以阐述。“确定目标”的意思是，你在一次表达之后，希望对方有哪里行为？这里面的关键在于设定场景，比如你是谁，对方是谁。“设定主题”是基于上一步的目标得来的结论，如“我申请加薪20%”。“设计序言”的目的在于吸引对方的注意力，让对方更容易接受你的观点，它是一次表达的开场白。</p>
-<p>第三步“纵向结构分层次”，包含构建金字塔结构的两种方法：一是从上而下的搭建金字塔结构，叫做疑问回答做分解；二是从下往上搭建金字塔结构，叫做概括总结做聚合。其中第一种的方法的目的在于一点点的展开我们的结论，用悬念吸引对方并说服对方。而第二种方法主要针对整理信息，即包括我们从外界得到的信息，也包含我们自己大脑总蹦出的信息。当我们目标十分明确的时候，往往首选第一种方法；如果目标需要提炼才能得到，就只能使用第二种方法了。实际上，大多数情况下都是两种方法同时使用的。</p>
-<p>完成了第三步，我们的金字塔结构框架就基本上搭建完成了，这个框架完全符合“结论先行”和“以上统下”的基本原则。这一步我们要把构成框架的要素进一步加工，使他们属于同一类别并且有一定的逻辑顺序。这里面关键就是使这些要素符合“MECE原则”，MECE（Metually Exclusive Collectively Exhaustive）的中文意思就是“相互独立、完全穷尽”“相互独立”意味着问题的细分是在同一维度上并有明确的区分、不可重叠、“完全穷尽”则意味着全面、周密。下图比较形象的呈现了这一原则。</p>
-<p><img src="http://o7w6l6vti.bkt.clouddn.com/MECE%E5%8E%9F%E5%88%99.png" alt=""></p>
-<p>通过前面几步，我们已经把很多杂乱无章的概念、思路、想法和经验整理得非常清晰了，但这仅限于我们自己能想明白，要做到别人也能听明白，并且容易记忆，还差最后一步。这里要学习的就是“卖点包装”，有一个很好的例子，出门四件事知道是什么吗？很多人会马上得出答案：“身手钥钱”。这就是一个很成功的包装，即使经过了很多年，我们还是可以很清楚的记得。</p>
-<p>以上几步就是一个较完整的运用结构思考力的过程。有一家公司在学习完结构思考力的课程之后在管理人员的门上都贴了这样的三句话：“汇报工作是结果，检讨工作说流程，请示工作说方案。” 它可以运用到我们工作生活的方方面面，助力我们做到思考清晰、表达有力，生活清爽、工作高效！</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/02/22/对angularJS一些概念的理解/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1062,7 +1094,7 @@
               
                 <span class="post-meta-item-text">Veröffentlicht am</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-22T15:07:09+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-22T20:31:04+08:00">
                 2017-02-22
               </time>
             
@@ -1155,6 +1187,137 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/02/22/《结构思考力》读书笔记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/02/22/《结构思考力》读书笔记/" itemprop="url">
+                  《结构思考力》读书笔记
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-22T20:29:42+08:00">
+                2017-02-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="结构化思考"><a href="#结构化思考" class="headerlink" title="结构化思考"></a>结构化思考</h1><p>结构可以说是万物之本，大到宇宙星系、小到颗粒尘埃都有其特定的结构。我们很难想象没有结构的世界是什么样子的。在物质世界，人们通过结构来认识物质；在思维世界，人们也同样通过结构来认识事物、认识其中的规律和美。结构存在于每个整体与局部关系的无穷变化中，每个局部表现整体，而局部的意义又由整体来决定。因此，当我们面临一个问题时，如果可以从结构的视角去审视和思考，一定可以让我们看得更全面、更清晰。</p>
+<p>结构思考力是所有人都需要具备的核心技能。罗伯特卡茨在1955年发表过一篇《高效管理者的三大技能》的文章。他认为，高效的管理者应当具备三种基本技能：技术性技能、人际性技能和概念性技能。<br><img src="http://o7w6l6vti.bkt.clouddn.com/%E9%AB%98%E6%95%88%E7%AE%A1%E7%90%86%E8%80%85%E7%9A%84%E4%B8%89%E5%A4%A7%E6%8A%80%E8%83%BD.png" alt=""></p>
+<p>概念性技能就是指对复杂情况进行抽象和概念化的技能。而结构化思考的能力就是概念性技能中最关键的技能。它是一种“先总后分”的思考与表达方式，强调先框架后细节，现总结后具体，先结论后原因，先重复后次要。它分为三大阶段五个步骤。<br><img src="http://o7w6l6vti.bkt.clouddn.com/%E4%B8%89%E5%A4%A7%E9%98%B6%E6%AE%B5%E4%BA%94%E4%B8%AA%E6%AD%A5%E9%AA%A4.png" alt=""></p>
+<p>结构思考力有四个基本特点，也是金字塔原理的四个基本原则：“结论先行”、“以上统下”、“归类分组”和“逻辑递进”。再提炼一下就是“论证类比”四个关键字。其中“以上统下”表示上面的结论是下面理由论证得来的；这个四个基本原则贯穿整个方法的始终，在接收和表达的时候都会用到。</p>
+<p>第一步“明确理念打基础”中，最关键的就是要做到“隐形思维显性化”。日常工作生活中我们接收到的信息大多是主题不明确的、逻辑顺序不清晰的，甚至是杂乱无章的，这里我们就需要有意识的对他们进行整理。整理的过程具体包含三个步骤：1，识别信息中的事实、理由及结论；2，找出对应关系、并画出结构图；3，一句话概览出所有内容。</p>
+<p>第二步“基于目标定主题”就进入了构思阶段，这一内容要从“确定目标”、“设定主题”和“设计序言”三个方面加以阐述。“确定目标”的意思是，你在一次表达之后，希望对方有哪里行为？这里面的关键在于设定场景，比如你是谁，对方是谁。“设定主题”是基于上一步的目标得来的结论，如“我申请加薪20%”。“设计序言”的目的在于吸引对方的注意力，让对方更容易接受你的观点，它是一次表达的开场白。</p>
+<p>第三步“纵向结构分层次”，包含构建金字塔结构的两种方法：一是从上而下的搭建金字塔结构，叫做疑问回答做分解；二是从下往上搭建金字塔结构，叫做概括总结做聚合。其中第一种的方法的目的在于一点点的展开我们的结论，用悬念吸引对方并说服对方。而第二种方法主要针对整理信息，即包括我们从外界得到的信息，也包含我们自己大脑总蹦出的信息。当我们目标十分明确的时候，往往首选第一种方法；如果目标需要提炼才能得到，就只能使用第二种方法了。实际上，大多数情况下都是两种方法同时使用的。</p>
+<p>完成了第三步，我们的金字塔结构框架就基本上搭建完成了，这个框架完全符合“结论先行”和“以上统下”的基本原则。这一步我们要把构成框架的要素进一步加工，使他们属于同一类别并且有一定的逻辑顺序。这里面关键就是使这些要素符合“MECE原则”，MECE（Metually Exclusive Collectively Exhaustive）的中文意思就是“相互独立、完全穷尽”“相互独立”意味着问题的细分是在同一维度上并有明确的区分、不可重叠、“完全穷尽”则意味着全面、周密。下图比较形象的呈现了这一原则。</p>
+<p><img src="http://o7w6l6vti.bkt.clouddn.com/MECE%E5%8E%9F%E5%88%99.png" alt=""></p>
+<p>通过前面几步，我们已经把很多杂乱无章的概念、思路、想法和经验整理得非常清晰了，但这仅限于我们自己能想明白，要做到别人也能听明白，并且容易记忆，还差最后一步。这里要学习的就是“卖点包装”，有一个很好的例子，出门四件事知道是什么吗？很多人会马上得出答案：“身手钥钱”。这就是一个很成功的包装，即使经过了很多年，我们还是可以很清楚的记得。</p>
+<p>以上几步就是一个较完整的运用结构思考力的过程。有一家公司在学习完结构思考力的课程之后在管理人员的门上都贴了这样的三句话：“汇报工作是结果，检讨工作说流程，请示工作说方案。” 它可以运用到我们工作生活的方方面面，助力我们做到思考清晰、表达有力，生活清爽、工作高效！</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/02/22/初学git的一些基础知识/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1194,7 +1357,7 @@
               
                 <span class="post-meta-item-text">Veröffentlicht am</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-22T15:00:56+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-22T15:03:06+08:00">
                 2017-02-22
               </time>
             
@@ -1324,7 +1487,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">Artikel</span>
               </a>
             </div>
