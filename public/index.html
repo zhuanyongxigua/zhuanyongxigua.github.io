@@ -194,7 +194,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Accueil
           </a>
         </li>
       
@@ -204,7 +204,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -284,7 +284,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posté le</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-26T12:14:30+08:00">
                 2017-04-26
@@ -413,7 +413,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posté le</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-20T21:49:10+08:00">
                 2017-04-20
@@ -539,6 +539,170 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/13/webpack入门操作/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/04/13/webpack入门操作/" itemprop="url">
+                  webpack入门操作
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posté le</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-13T22:24:50+08:00">
+                2017-04-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="起步"><a href="#起步" class="headerlink" title="起步"></a>起步</h2><p><strong>在文件夹创建一个package.json</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm init</div></pre></td></tr></table></figure>
+<p><strong>安装webpack</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// 安装Webpack</div><div class="line">npm install --save-dev webpack</div></pre></td></tr></table></figure>
+<p><strong>新建一个webpack.config.js的文件并配置如下</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">module.exports = &#123;</div><div class="line">  entry:  __dirname + &quot;/app/main.js&quot;,//已多次提及的唯一入口文件</div><div class="line">  output: &#123;</div><div class="line">    path: __dirname + &quot;/public&quot;,//打包后的文件存放的地方</div><div class="line">    filename: &quot;bundle.js&quot;//打包后输出文件的文件名</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>__dirname是当前文件夹所在的位置，也就是当前目录的绝对路径，它是一个变量，如果把这个目录放到其他的地方它会自动变化。</p>
+</blockquote>
+<h2 id="加入一些基础功能"><a href="#加入一些基础功能" class="headerlink" title="加入一些基础功能"></a>加入一些基础功能</h2><p><strong>在package.json里面加入如下配置。</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  &quot;name&quot;: &quot;webpack-demo-practice&quot;,</div><div class="line">  &quot;version&quot;: &quot;1.0.0&quot;,</div><div class="line">  &quot;description&quot;: &quot;webpack-demo-practice&quot;,</div><div class="line">  &quot;scripts&quot;: &#123;</div><div class="line">    &quot;start&quot;: &quot;webpack&quot; //配置的地方就是这里啦，相当于把npm的start命令指向webpack命令</div><div class="line">  &#125;,</div><div class="line">  &quot;author&quot;: &quot;zhang&quot;,</div><div class="line">  &quot;license&quot;: &quot;ISC&quot;,</div><div class="line">  &quot;devDependencies&quot;: &#123;</div><div class="line">    &quot;webpack&quot;: &quot;^1.12.9&quot;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>package.json中的脚本部分已经默认在命令前添加了<code>node_modules/.bin</code>路径，所以无论是全局还是局部安装的Webpack，你都不需要写前面那指明详细的路径了。</p>
+<p><strong>在webpack.config.js文件中加入source maps</strong>，目的是找到代码的错误，方便我们改错</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">module.exports = &#123;</div><div class="line">  devtool: &apos;eval-source-map&apos;,      //配置生成Source Maps，选择合适的选项</div><div class="line">  entry:  __dirname + &quot;/app/main.js&quot;,</div><div class="line">  output: &#123;</div><div class="line">    path: __dirname + &quot;/public&quot;,</div><div class="line">    filename: &quot;bundle.js&quot;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>eval-source-map只是source maps中的一个选项，它更适用于开发阶段，至于source maps有哪些选项，需要自己去查一下了。</p>
+<p><strong>用webpack构建本地服务器</strong>，目的是在没有后端的情况下也可以模拟后端来帮助前端调试</p>
+<p>先安装webpack-dev-server</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install --save-dev webpack-dev-server</div></pre></td></tr></table></figure>
+<p>然后把配置加到webpack.config.js文件之中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">module.exports = &#123;</div><div class="line">  devtool: &apos;eval-source-map&apos;,</div><div class="line"></div><div class="line">  entry:  __dirname + &quot;/app/main.js&quot;,</div><div class="line">  output: &#123;</div><div class="line">    path: __dirname + &quot;/public&quot;,</div><div class="line">    filename: &quot;bundle.js&quot;</div><div class="line">  &#125;,</div><div class="line"></div><div class="line">  devServer: &#123;</div><div class="line">    contentBase: &quot;./public&quot;,//本地服务器所加载的页面所在的目录</div><div class="line">    colors: true,//终端中输出结果为彩色</div><div class="line">    historyApiFallback: true,//不跳转</div><div class="line">    inline: true//当改变代码是可以自动刷新页面</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="加入loader"><a href="#加入loader" class="headerlink" title="加入loader"></a>加入loader</h2><p>loader是webpack的加载器，它的功能有点<strong>类似于</strong>插件（plugin），他与webpack正牌的插件（plugin）是有区别的，loader主要用于加载资源，也可以说是转化资源，把各类语法转化在同一个文件之中。plugin的功能则更加丰富。</p>
+<p><strong>安装可以转换json的loader</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install --save-dev json-loader</div></pre></td></tr></table></figure>
+<p>修改webpack.config.js文件，把json加载器放到module里面</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">module.exports = &#123;</div><div class="line">  devtool: &apos;eval-source-map&apos;,</div><div class="line"></div><div class="line">  entry:  __dirname + &quot;/app/main.js&quot;,</div><div class="line">  output: &#123;</div><div class="line">    path: __dirname + &quot;/public&quot;,</div><div class="line">    filename: &quot;bundle.js&quot;</div><div class="line">  &#125;,</div><div class="line"></div><div class="line">  module: &#123;//在配置文件里添加JSON loader</div><div class="line">    loaders: [</div><div class="line">      &#123;</div><div class="line">        test: /\.json$/,    //正则表达式，用于匹配loader所处理文件的拓展名(必须)</div><div class="line">        loader: &quot;json&quot;      //loader的名称(必须)</div><div class="line">      &#125;</div><div class="line">    ]</div><div class="line">  &#125;,</div><div class="line"></div><div class="line">  devServer: &#123;</div><div class="line">    contentBase: &quot;./public&quot;,</div><div class="line">    colors: true,</div><div class="line">    historyApiFallback: true,</div><div class="line">    inline: true</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>可以编译JavaScript的loader，babel</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install --save-dev babel-core babel-loader babel-preset-es2015 babel-preset-react</div></pre></td></tr></table></figure>
+<p>在webpack.config.js中加入配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">module.exports = &#123;</div><div class="line">  devtool: &apos;eval-source-map&apos;,</div><div class="line"></div><div class="line">  entry:  __dirname + &quot;/app/main.js&quot;,</div><div class="line">  output: &#123;</div><div class="line">    path: __dirname + &quot;/public&quot;,</div><div class="line">    filename: &quot;bundle.js&quot;</div><div class="line">  &#125;,</div><div class="line"></div><div class="line">  module: &#123;</div><div class="line">    loaders: [</div><div class="line">      &#123;</div><div class="line">        test: /\.json$/,</div><div class="line">        loader: &quot;json&quot;</div><div class="line">      &#125;,</div><div class="line">      &#123;</div><div class="line">        test: /\.js$/,</div><div class="line">        exclude: /node_modules/,</div><div class="line">        loader: &apos;babel&apos;,</div><div class="line">        query: &#123;</div><div class="line">          presets: [&apos;es2015&apos;,&apos;react&apos;]</div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line">    ]</div><div class="line">  &#125;,</div><div class="line"></div><div class="line">  devServer: &#123;</div><div class="line">    contentBase: &quot;./public&quot;,</div><div class="line">    colors: true,</div><div class="line">    historyApiFallback: true,</div><div class="line">    inline: true</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>另外，由于babel的配置一般会比较多，所以webpack支持单独创建文件配置babel，webpack会自动调用，方法是创建一个<code>.babelrc</code>的文件，用于单独配置babel。</p>
+<p>单独配置babel的 情况下，webpack.config.js就要改为</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">// webpack.config.js</div><div class="line">module.exports = &#123;</div><div class="line">  devtool: &apos;eval-source-map&apos;,</div><div class="line"></div><div class="line">  entry:  __dirname + &quot;/app/main.js&quot;,</div><div class="line">  output: &#123;</div><div class="line">    path: __dirname + &quot;/public&quot;,</div><div class="line">    filename: &quot;bundle.js&quot;</div><div class="line">  &#125;,</div><div class="line"></div><div class="line">  module: &#123;</div><div class="line">    loaders: [</div><div class="line">      &#123;</div><div class="line">        test: /\.json$/,</div><div class="line">        loader: &quot;json&quot;</div><div class="line">      &#125;,</div><div class="line">      &#123;</div><div class="line">        test: /\.js$/,</div><div class="line">        exclude: /node_modules/,</div><div class="line">        loader: &apos;babel&apos;</div><div class="line">      &#125;</div><div class="line">    ]</div><div class="line">  &#125;,</div><div class="line"></div><div class="line">  devServer: &#123;</div><div class="line">    contentBase: &quot;./public&quot;,</div><div class="line">    colors: true,</div><div class="line">    historyApiFallback: true,</div><div class="line">    inline: true</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>新文件.babelrc的内容为</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">//.babelrc</div><div class="line">&#123;</div><div class="line">  &quot;presets&quot;: [&quot;react&quot;, &quot;es2015&quot;]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>安装处理css的loader</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">//安装</div><div class="line">npm install --save-dev style-loader css-loader</div></pre></td></tr></table></figure>
+<p>配置webpack.config.js</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">//使用</div><div class="line">module.exports = &#123;</div><div class="line">  devtool: &apos;eval-source-map&apos;,</div><div class="line"></div><div class="line">  entry:  __dirname + &quot;/app/main.js&quot;,</div><div class="line">  output: &#123;</div><div class="line">    path: __dirname + &quot;/build&quot;,</div><div class="line">    filename: &quot;bundle.js&quot;</div><div class="line">  &#125;,</div><div class="line"></div><div class="line">  module: &#123;</div><div class="line">    loaders: [</div><div class="line">      &#123;</div><div class="line">        test: /\.json$/,</div><div class="line">        loader: &quot;json&quot;</div><div class="line">      &#125;,</div><div class="line">      &#123;</div><div class="line">        test: /\.js$/,</div><div class="line">        exclude: /node_modules/,</div><div class="line">        loader: &apos;babel&apos;</div><div class="line">      &#125;,</div><div class="line">      &#123;</div><div class="line">        test: /\.css$/,</div><div class="line">        loader: &apos;style!css&apos;//添加的配置再这里</div><div class="line">      &#125;</div><div class="line">    ]</div><div class="line">  &#125;,</div><div class="line"></div><div class="line">  devServer: &#123;</div><div class="line">    contentBase: &quot;./public&quot;,</div><div class="line">    colors: true,</div><div class="line">    historyApiFallback: true,</div><div class="line">    inline: true</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>其中<code>!</code>可以理解成“和”，css文件同时使用这两个加载器处理</p>
+<p>css文件也需要放到入口文件里面，现在这个例子的入口文件是main.js</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">//main.js</div><div class="line">import &apos;./main.css&apos;;//导入css文件</div></pre></td></tr></table></figure>
+<h2 id="插件（plugin）"><a href="#插件（plugin）" class="headerlink" title="插件（plugin）"></a>插件（plugin）</h2><p>插件需要使用npm安装</p>
+<p>安装之后同样在webpack.config.js里面配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line">//使用</div><div class="line">module.exports = &#123;</div><div class="line">  devtool: &apos;eval-source-map&apos;,</div><div class="line"></div><div class="line">  entry:  __dirname + &quot;/app/main.js&quot;,</div><div class="line">  output: &#123;</div><div class="line">    path: __dirname + &quot;/build&quot;,</div><div class="line">    filename: &quot;bundle.js&quot;</div><div class="line">  &#125;,</div><div class="line"></div><div class="line">  module: &#123;</div><div class="line">    loaders: [</div><div class="line">      &#123;</div><div class="line">        test: /\.json$/,</div><div class="line">        loader: &quot;json&quot;</div><div class="line">      &#125;,</div><div class="line">      &#123;</div><div class="line">        test: /\.js$/,</div><div class="line">        exclude: /node_modules/,</div><div class="line">        loader: &apos;babel&apos;</div><div class="line">      &#125;,</div><div class="line">      &#123;</div><div class="line">        test: /\.css$/,</div><div class="line">        loader: &apos;style!css&apos;//添加的配置再这里</div><div class="line">      &#125;</div><div class="line">    ]</div><div class="line">  &#125;,</div><div class="line"></div><div class="line">  plugins: [</div><div class="line">    new webpack.BannerPlugin(&quot;Copyright Flying Unicorns inc.&quot;)</div><div class="line">  ],</div><div class="line"></div><div class="line">  devServer: &#123;</div><div class="line">    contentBase: &quot;./public&quot;,</div><div class="line">    colors: true,</div><div class="line">    historyApiFallback: true,</div><div class="line">    inline: true</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/07/使用autohotkey修改方向键、回车和启动程序/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -576,7 +740,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posté le</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-07T17:14:06+08:00">
                 2017-04-07
@@ -725,7 +889,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posté le</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-25T17:10:08+08:00">
                 2017-03-25
@@ -860,7 +1024,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posté le</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-20T15:54:58+08:00">
                 2017-03-20
@@ -1037,7 +1201,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posté le</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-27T12:44:12+08:00">
                 2017-02-27
@@ -1221,7 +1385,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posté le</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-22T20:31:04+08:00">
                 2017-02-22
@@ -1316,137 +1480,6 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/02/22/《结构思考力》读书笔记/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/02/22/《结构思考力》读书笔记/" itemprop="url">
-                  《结构思考力》读书笔记
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-22T20:29:42+08:00">
-                2017-02-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="结构化思考"><a href="#结构化思考" class="headerlink" title="结构化思考"></a>结构化思考</h1><p>结构可以说是万物之本，大到宇宙星系、小到颗粒尘埃都有其特定的结构。我们很难想象没有结构的世界是什么样子的。在物质世界，人们通过结构来认识物质；在思维世界，人们也同样通过结构来认识事物、认识其中的规律和美。结构存在于每个整体与局部关系的无穷变化中，每个局部表现整体，而局部的意义又由整体来决定。因此，当我们面临一个问题时，如果可以从结构的视角去审视和思考，一定可以让我们看得更全面、更清晰。</p>
-<p>结构思考力是所有人都需要具备的核心技能。罗伯特卡茨在1955年发表过一篇《高效管理者的三大技能》的文章。他认为，高效的管理者应当具备三种基本技能：技术性技能、人际性技能和概念性技能。<br><img src="http://o7w6l6vti.bkt.clouddn.com/%E9%AB%98%E6%95%88%E7%AE%A1%E7%90%86%E8%80%85%E7%9A%84%E4%B8%89%E5%A4%A7%E6%8A%80%E8%83%BD.png" alt=""></p>
-<p>概念性技能就是指对复杂情况进行抽象和概念化的技能。而结构化思考的能力就是概念性技能中最关键的技能。它是一种“先总后分”的思考与表达方式，强调先框架后细节，现总结后具体，先结论后原因，先重复后次要。它分为三大阶段五个步骤。<br><img src="http://o7w6l6vti.bkt.clouddn.com/%E4%B8%89%E5%A4%A7%E9%98%B6%E6%AE%B5%E4%BA%94%E4%B8%AA%E6%AD%A5%E9%AA%A4.png" alt=""></p>
-<p>结构思考力有四个基本特点，也是金字塔原理的四个基本原则：“结论先行”、“以上统下”、“归类分组”和“逻辑递进”。再提炼一下就是“论证类比”四个关键字。其中“以上统下”表示上面的结论是下面理由论证得来的；这个四个基本原则贯穿整个方法的始终，在接收和表达的时候都会用到。</p>
-<p>第一步“明确理念打基础”中，最关键的就是要做到“隐形思维显性化”。日常工作生活中我们接收到的信息大多是主题不明确的、逻辑顺序不清晰的，甚至是杂乱无章的，这里我们就需要有意识的对他们进行整理。整理的过程具体包含三个步骤：1，识别信息中的事实、理由及结论；2，找出对应关系、并画出结构图；3，一句话概览出所有内容。</p>
-<p>第二步“基于目标定主题”就进入了构思阶段，这一内容要从“确定目标”、“设定主题”和“设计序言”三个方面加以阐述。“确定目标”的意思是，你在一次表达之后，希望对方有哪里行为？这里面的关键在于设定场景，比如你是谁，对方是谁。“设定主题”是基于上一步的目标得来的结论，如“我申请加薪20%”。“设计序言”的目的在于吸引对方的注意力，让对方更容易接受你的观点，它是一次表达的开场白。</p>
-<p>第三步“纵向结构分层次”，包含构建金字塔结构的两种方法：一是从上而下的搭建金字塔结构，叫做疑问回答做分解；二是从下往上搭建金字塔结构，叫做概括总结做聚合。其中第一种的方法的目的在于一点点的展开我们的结论，用悬念吸引对方并说服对方。而第二种方法主要针对整理信息，即包括我们从外界得到的信息，也包含我们自己大脑总蹦出的信息。当我们目标十分明确的时候，往往首选第一种方法；如果目标需要提炼才能得到，就只能使用第二种方法了。实际上，大多数情况下都是两种方法同时使用的。</p>
-<p>完成了第三步，我们的金字塔结构框架就基本上搭建完成了，这个框架完全符合“结论先行”和“以上统下”的基本原则。这一步我们要把构成框架的要素进一步加工，使他们属于同一类别并且有一定的逻辑顺序。这里面关键就是使这些要素符合“MECE原则”，MECE（Metually Exclusive Collectively Exhaustive）的中文意思就是“相互独立、完全穷尽”“相互独立”意味着问题的细分是在同一维度上并有明确的区分、不可重叠、“完全穷尽”则意味着全面、周密。下图比较形象的呈现了这一原则。</p>
-<p><img src="http://o7w6l6vti.bkt.clouddn.com/MECE%E5%8E%9F%E5%88%99.png" alt=""></p>
-<p>通过前面几步，我们已经把很多杂乱无章的概念、思路、想法和经验整理得非常清晰了，但这仅限于我们自己能想明白，要做到别人也能听明白，并且容易记忆，还差最后一步。这里要学习的就是“卖点包装”，有一个很好的例子，出门四件事知道是什么吗？很多人会马上得出答案：“身手钥钱”。这就是一个很成功的包装，即使经过了很多年，我们还是可以很清楚的记得。</p>
-<p>以上几步就是一个较完整的运用结构思考力的过程。有一家公司在学习完结构思考力的课程之后在管理人员的门上都贴了这样的三句话：“汇报工作是结果，检讨工作说流程，请示工作说方案。” 它可以运用到我们工作生活的方方面面，助力我们做到思考清晰、表达有力，生活清爽、工作高效！</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/02/22/初学git的一些基础知识/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1484,7 +1517,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posté le</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-22T15:03:06+08:00">
                 2017-02-22
@@ -1617,7 +1650,7 @@
             <div class="site-state-item site-state-posts">
               <a href="/archives">
                 <span class="site-state-item-count">9</span>
-                <span class="site-state-item-name">Artikel</span>
+                <span class="site-state-item-name">articles</span>
               </a>
             </div>
           
@@ -1671,11 +1704,11 @@
 
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
-  Theme -
+  Thème -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
     NexT.Muse
   </a>
