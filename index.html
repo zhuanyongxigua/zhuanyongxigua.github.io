@@ -247,6 +247,151 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/20/Hexo博客从一台电脑移动到其他电脑/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/05/20/Hexo博客从一台电脑移动到其他电脑/" itemprop="url">
+                  Hexo博客从一台电脑迁移到其他电脑
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-20T16:18:46+08:00">
+                2017-05-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>hexo官方给了一些迁移的方法，不过它上面介绍的方法都是把博客文章从hexo系统迁移到其他博客系统的方法。然而我们这里要讨论的是：</p>
+<p><strong>当我们更换电脑的时候我们应该怎么办？</strong></p>
+<p>所以默认你已经成功利用hexo和github发布博客，如果还没有，可以看一下<a href="http://lixiaolai.com/2016/06/22/makecs-build-a-blog-with-hexo-on-github/" target="_blank" rel="external">教程</a></p>
+<p>具体的思路是：在生成的已经推到github上的hexo静态代码出建立一个分支，利用这个分支来管理自己hexo的源文件。</p>
+<p>如果能在刚刚配置hexo的时候就想好以后的迁移的问题就太好了，可以省掉很多麻烦，可实际使用中，刚刚配置hexo的时候，好多人都是初学，不会想到以后的问题，我就是这样的。</p>
+<p>具体的操作：</p>
+<p>克隆gitHub上面生成的静态文件到本地</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git clone https://github.com/yourname/hexo-test.github.io.git</div></pre></td></tr></table></figure>
+<p>把克隆到本地的文件除了git的文件都删掉，找不到git的文件的话就到删了吧。不要用<code>hexo init</code>初始化。</p>
+<p>将之前使用hexo写博客时候的整个目录（所有文件）搬过来。把该忽略的文件忽略了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">touch .gitignore</div></pre></td></tr></table></figure>
+<p>创建一个叫hexo的分支</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git checkout -b hexo</div></pre></td></tr></table></figure>
+<p>提交复制过来的文件到暂存区</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git add --all</div></pre></td></tr></table></figure>
+<p>提交</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git commit -m &quot;新建分支源文件&quot;</div></pre></td></tr></table></figure>
+<p>推送分支到github</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git push --set-upstream origin hexo</div></pre></td></tr></table></figure>
+<p>到这里基本上就搞定了，以后再推就可以直接<code>git push</code>了，hexo的操作跟以前一样。</p>
+<p>今后无论什么时候想要在其他电脑上面用hexo写博客，就直接把创建的分支克隆下来，<code>npm install</code>安装依赖之后就可以用了。</p>
+<p>克隆分支的操作</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git clone -b hexo https://github.com/yourname/hexo-test.github.io.git</div></pre></td></tr></table></figure>
+<p>因为上面创建的是一个名字叫hexo的分支，所以这里<code>-b</code>后面的是hexo，再把后面的gitHub的地址换成你自己的hexo博客的地址就可以了。</p>
+<p>这样做完了以后，每次写完博客发布之后不要忘了还要<code>git push</code>把源文件推到分支上。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/20/Git修改最后一次提交的内容的具体步骤/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1570,190 +1715,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/02/27/如何在网络公共场合发帖提问/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/02/27/如何在网络公共场合发帖提问/" itemprop="url">
-                  如何在网络公共场合发帖提问
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-27T21:34:40+08:00">
-                2017-02-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>本文<a href="http://www.catb.org/esr/faqs/smart-questions.html" target="_blank" rel="external">《How To Ask Questions The Smart Way》</a>的学习笔记，仅供参考。</p>
-<p>概括的说就是在提问之前先<strong>自己尝试解决问题</strong>，未能解决，再提问。</p>
-<p>提问的根本原则是：让别人<strong>指点你</strong>，而不是让别人直接<strong>给你</strong>。</p>
-<h2 id="先做好自己的功课"><a href="#先做好自己的功课" class="headerlink" title="先做好自己的功课"></a>先做好自己的功课</h2><p>提问之前你要先做好下面的事情。</p>
-<ol>
-<li>用google搜索。至于为什么要用google和<a href="https://b.xinshengdaxue.com/C04.html" target="_blank" rel="external">如何用google</a>，大家先去google一下吧。</li>
-<li>阅读软件的使用手册。</li>
-<li>阅读相关软件的FAQ。</li>
-<li>在论坛中搜索。</li>
-<li>自己检查和试验。</li>
-</ol>
-<h2 id="提问的时候"><a href="#提问的时候" class="headerlink" title="提问的时候"></a>提问的时候</h2><p>请先表明你已经上一部分所说的那里尝试和努力，</p>
-<p>如果你的问题是<code>可以不可以给点提示？</code>、<code>我的这个例子里面缺了什么？</code>或者<code>我应该检查什么地方？</code> ，那恭喜你已经入门了，如果你一般都是直接问<code>请把我需要的确切过程发给我</code>，那你可能需要更加认真的往下看。</p>
-<h3 id="在合适的地方提出合适的问题"><a href="#在合适的地方提出合适的问题" class="headerlink" title="在合适的地方提出合适的问题"></a>在合适的地方提出合适的问题</h3><p>例如，不要母婴论坛问编程的问题（相信没有人会这样做），不要在全是高手的地方问初级问题，不要重复贴出同样的问题，不要向跟你不熟也没有义务帮助你的人发送私人邮件。</p>
-<h4 id="关于网络论坛"><a href="#关于网络论坛" class="headerlink" title="关于网络论坛"></a>关于网络论坛</h4><p>搞清楚那个论坛是干什么的，搞清楚论坛里面每个版块是干什么的。</p>
-<h3 id="写好标题"><a href="#写好标题" class="headerlink" title="写好标题"></a>写好标题</h3><p>好标题=对象+偏差</p>
-<p><strong>对象</strong>是出问题的那个东西</p>
-<p><strong>偏差</strong>是指与你期望不一致的地方</p>
-<p>例如：</p>
-<blockquote>
-<p>愚蠢的描述：救命啊！我的电脑不能播放视频啦！</p>
-<p>聪明的描述；X.org 6.8.1的鼠标光标变形，某品牌显卡 MV1005 晶片組。</p>
-<p>更聪明的描述：X.org 6.8.1的鼠标光，在某品牌显卡 MV1005 晶片組环境下变形</p>
-</blockquote>
-<p>最后一个例子<code>变形</code>就是偏差，前面的就是对象。</p>
-<h3 id="描述问题"><a href="#描述问题" class="headerlink" title="描述问题"></a>描述问题</h3><h4 id="简洁有效"><a href="#简洁有效" class="headerlink" title="简洁有效"></a>简洁有效</h4><ul>
-<li>按时间顺序仔細、清楚地描述你的问题或bug的<strong>症狀</strong>，不要说你自己的<strong>猜测</strong>。</li>
-<li>描述问题发生的环境（电脑配置、操作系统、软件、以及相关信息），提供经销商的发行版和版本号。</li>
-<li>描述在提问前你是怎样去研究和理解這这问题的。</li>
-<li>描述在提问前为确定问题而采取的诊断步骤。</li>
-<li>描述最近做过什么可能相关的硬件或软件变更。</li>
-<li>如果可能的提供一个可以<code>再现这个问题的既定环境</code>的方法</li>
-</ul>
-<p>如果是关于代码的问题，注意不要把你上百行的代码全部贴出来，只要贴出出现问题的那个部分就可以了。比如<code>在第七行以后，我希望他得出&lt;x&gt;，但实际的结果却是&lt;y&gt;。</code></p>
-<p>例子：</p>
-<blockquote>
-<p><strong>愚蠢的描述：</strong>我在编译内核时接连遇到SIG11错误，怀疑主板上的某根电路丝断了，找到它们的最好办法是什么？</p>
-<p><strong>聪明的描述</strong> ：我组装的电脑（K6/233 CPU、FIC-PA2007 主板威盛 Apollo VP2 芯片组、Corsair PC133 SDRAM 256Mb 内存）最近在开机20分钟左右、做内核编译时频繁地报错，提示SIG11 ，但在头20分钟内从不出问题。重启动不会复位时钟，但会整夜关机。更换所有内存未解决问题，相关的典型编译会话日志附后。</p>
-</blockquote>
-<h4 id="说出目的，而不是你操作过程中的某一个步骤"><a href="#说出目的，而不是你操作过程中的某一个步骤" class="headerlink" title="说出目的，而不是你操作过程中的某一个步骤"></a>说出<strong>目的</strong>，而不是你操作过程中的某一个步骤</h4><p><strong>在开头就直接说你的目的是什么 ，然后再陈述你的问题。</strong></p>
-<p><strong>经常遇到这样的情况：寻求帮助的人有更进一步的目的，只是在前进的过程中遇到了阻碍，他们提出的问题只针对当下的步骤。其实很有可能不是现在的这一步出了问题，而是你的路径根本就错了。</strong></p>
-<blockquote>
-<p><strong>愚蠢的问题</strong>：我怎样才能让某图形程序的颜色拾取器取得十六进制的RGB值？</p>
-<p><strong>聪明的问题</strong> ：我正试着用自己选定数值的颜色替换一幅图片的色表，我现在知道的唯一方法是编辑每个表槽，但却无法让某图形程序的颜色拾取器取得十六进制的RGB值。</p>
-</blockquote>
-<h3 id="语句要清晰、正确、精炼且表达通顺"><a href="#语句要清晰、正确、精炼且表达通顺" class="headerlink" title="语句要清晰、正确、精炼且表达通顺"></a>语句要清晰、正确、精炼且表达通顺</h3><p>写东西粗心的人，思考和编程也好不到哪去。</p>
-<p>花一点时间组织语言，使问题能够正确、清晰地表达出来。</p>
-<p>如果你用英语提问，那你要注意拼写、标点和大小写，不要用“u”代替“you”这种简化。</p>
-<p>如果你的英语水平不是特别好，在提问的时候可以加上这些。</p>
-<blockquote>
-<ul>
-<li>English is not my native language; please excuse typing errors.</li>
-<li>If you speak $LANGUAGE, please email/PM me; I may need assistance translating my question.</li>
-<li>I am familiar with the technical terms, but some slang expressions and idioms are difficult for me.</li>
-<li>I’ve posted my question in $LANGUAGE and English. I’ll be glad to translate responses, if you only use one or the other.</li>
-</ul>
-</blockquote>
-<p>不要用无意义的话结束提问，比如<code>你能帮助我吗</code>或者<code>这有答案吗？</code> 。一般来说，避免用<code>是或否</code> 、<code>对或错</code>、 <code>有或没有</code>类型的问句。<strong>另外</strong>，无论你多着急，也不要在标题里面写“急求”“紧急”等词语。</p>
-<h3 id="解决问题后记得回复"><a href="#解决问题后记得回复" class="headerlink" title="解决问题后记得回复"></a>解决问题后记得回复</h3><p>问题解决之后向所有人发声明说明问题已经解决并感谢所有人。</p>
-<p>方式是在标题里面加上<code>已修正</code>、<code>已解决</code>，这样做不但可以让可提供帮助的人不再浪费时间浏览你的问题，也可令有相同问题的人也会更加容易找到你。</p>
-<p>之后写一个<strong>简单</strong>的总结，一个<code>你好，原来时网络线出了问题，谢谢大家！</code>就比什么都不说要好。也可以说一下问题是怎么解决的。</p>
-<p>列出那些帮助过你的名字。</p>
-<h2 id="对于别人的回复"><a href="#对于别人的回复" class="headerlink" title="对于别人的回复"></a>对于别人的回复</h2><p>如果看不懂别人的回答，先不要急着回复提问，再执行一次<code>提问之前</code>的步骤。</p>
-<h4 id="如果还是不明白…"><a href="#如果还是不明白…" class="headerlink" title="如果还是不明白…"></a>如果还是不明白…</h4><p>回复的时候要加上自己已经学到了什么。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1803,7 +1764,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">Artikel</span>
               </a>
             </div>
