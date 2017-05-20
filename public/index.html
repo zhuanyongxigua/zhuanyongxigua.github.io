@@ -194,7 +194,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Accueil
+            Startseite
           </a>
         </li>
       
@@ -204,7 +204,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Archiv
           </a>
         </li>
       
@@ -237,6 +237,730 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/20/Hexo博客从一台电脑移动到其他电脑/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/05/20/Hexo博客从一台电脑移动到其他电脑/" itemprop="url">
+                  Hexo博客从一台电脑迁移到其他电脑
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-20T16:18:46+08:00">
+                2017-05-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>hexo官方给了一些迁移的方法，不过它上面介绍的方法都是把博客文章从hexo系统迁移到其他博客系统的方法。然而我们这里要讨论的是：</p>
+<p><strong>当我们更换电脑的时候我们应该怎么办？</strong></p>
+<p>所以默认你已经成功利用hexo和github发布博客，如果还没有，可以看一下<a href="http://lixiaolai.com/2016/06/22/makecs-build-a-blog-with-hexo-on-github/" target="_blank" rel="external">教程</a></p>
+<p>具体的思路是：在生成的已经推到github上的hexo静态代码出建立一个分支，利用这个分支来管理自己hexo的源文件。</p>
+<p>如果能在刚刚配置hexo的时候就想好以后的迁移的问题就太好了，可以省掉很多麻烦，可实际使用中，刚刚配置hexo的时候，好多人都是初学，不会想到以后的问题，我就是这样的。</p>
+<p>具体的操作：</p>
+<p>克隆gitHub上面生成的静态文件到本地</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git clone https://github.com/yourname/hexo-test.github.io.git</div></pre></td></tr></table></figure>
+<p>把克隆到本地的文件除了git的文件都删掉，找不到git的文件的话就到删了吧。不要用<code>hexo init</code>初始化。</p>
+<p>将之前使用hexo写博客时候的整个目录（所有文件）搬过来。把该忽略的文件忽略了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">touch .gitignore</div></pre></td></tr></table></figure>
+<p>创建一个叫hexo的分支</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git checkout -b hexo</div></pre></td></tr></table></figure>
+<p>提交复制过来的文件到暂存区</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git add --all</div></pre></td></tr></table></figure>
+<p>提交</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git commit -m &quot;新建分支源文件&quot;</div></pre></td></tr></table></figure>
+<p>推送分支到github</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git push --set-upstream origin hexo</div></pre></td></tr></table></figure>
+<p>到这里基本上就搞定了，以后再推就可以直接<code>git push</code>了，hexo的操作跟以前一样。</p>
+<p>今后无论什么时候想要在其他电脑上面用hexo写博客，就直接把创建的分支克隆下来，<code>npm install</code>安装依赖之后就可以用了。</p>
+<p>克隆分支的操作</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git clone -b hexo https://github.com/yourname/hexo-test.github.io.git</div></pre></td></tr></table></figure>
+<p>因为上面创建的是一个名字叫hexo的分支，所以这里<code>-b</code>后面的是hexo，再把后面的gitHub的地址换成你自己的hexo博客的地址就可以了。</p>
+<p>这样做完了以后，每次写完博客发布之后不要忘了还要<code>git push</code>把源文件推到分支上。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/20/Git修改最后一次提交的内容的具体步骤/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/05/20/Git修改最后一次提交的内容的具体步骤/" itemprop="url">
+                  Git修改最后一次提交的内容的具体步骤
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-20T09:50:54+08:00">
+                2017-05-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><strong>只是针对第一次提交</strong></p>
+<p>如果发现最后一次的提交出现了错误，需要重新提交，就可以用<code>git commit --amend</code>。</p>
+<p>比如已经提交了README.md，但是发现还有创建一个新文件一块提交</p>
+<img src="/2017/05/20/Git修改最后一次提交的内容的具体步骤/Jietu20170520-093718.jpg" alt="已提交未暂存" title="已提交未暂存">
+<p>这是就要先把新文件放到暂存区，用<code>git add test.html</code></p>
+<img src="/2017/05/20/Git修改最后一次提交的内容的具体步骤/Jietu20170520-093835.jpg" alt="已提交已暂存" title="已提交已暂存">
+<p>再使用命令<code>git commit --amend</code>，如果出现了一种编辑的模式</p>
+<img src="/2017/05/20/Git修改最后一次提交的内容的具体步骤/Jietu20170520-094641.jpg" alt="编辑状态" title="编辑状态">
+<p>直接输入<code>:wq</code>然后按回车，这里需要注意的是<strong>直接输入</strong>，直接输入的意思就是不是先按esc或者其他的什么键，直接<code>shift</code>加L右边的键输入冒号，紧接着加上wq，也就是写入并退出。</p>
+<img src="/2017/05/20/Git修改最后一次提交的内容的具体步骤/Jietu20170520-094700.jpg" alt="输入:wq" title="输入:wq">
+<p>新添加到暂存区的文件就被放到同一次提交里面了。</p>
+<img src="/2017/05/20/Git修改最后一次提交的内容的具体步骤/Jietu20170520-094821.jpg" alt="完成了" title="完成了">
+<p>如果是不是添加新的文件，只是觉得在最后一次提交的时候有的文件没有修改完全，那就在修改完了之后，把修改的文件用<code>git add</code>加到暂存区，其他的步骤跟上面是一模一样的。</p>
+<p>如果仅仅是想修改一下最后一次提交的提交信息，那就输入这样的命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git commit --amend -m &quot;新的提交信息&quot;</div></pre></td></tr></table></figure>
+<p>就可以了，之后没有任何其他的操作</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/19/Hexo发布博客引用自带图片的方法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/05/19/Hexo发布博客引用自带图片的方法/" itemprop="url">
+                  Hexo发布博客引用自带图片的方法
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-19T22:41:01+08:00">
+                2017-05-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>有两种方法，第一种是不用插件的情况，第二种是使用一种hexo的插件。</p>
+<p>无论哪种方法都有一个共同的前提：修改<code>_config.yml</code>配置文件<code>post_asset_folder</code>项为<code>true</code>。</p>
+<p>创建博客是使用命令创建：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo new [layout] &lt;title&gt;</div></pre></td></tr></table></figure>
+<p>其中的layout项可以省略，例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo new &quot;这是一个新的博客&quot;</div></pre></td></tr></table></figure>
+<p>使用完命令之后，在source/_post文件夹里面就会出现一个“这是一个新的博客.md”的文件和一个“这是一个新的博客”的文件夹。<br><img src="/2017/05/19/Hexo发布博客引用自带图片的方法/Jietu20170519-223817.jpg" alt="这是一个新的博客的图片" title="这是一个新的博客的图片"><br></p>
+<p>下一步就是把需要的图片放到新创建的那个<strong>文件夹</strong>里面去。</p>
+<h2 id="引用图片的第一种方法"><a href="#引用图片的第一种方法" class="headerlink" title="引用图片的第一种方法"></a>引用图片的第一种方法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;% asset_img 这是一个新的博客的图片.jpg 这是一个新的博客的图片的说明 %&#125;</div></pre></td></tr></table></figure>
+<p>用此种方法，而不是以前的<code>![]()</code>方法，前提是你的hexo的版本是hexo3以上，到package.json里面看一下吧。如果不是hexo3以上的版本，那就只能用第二种方法了。</p>
+<p>例子</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">我现在写了一个段落，并且想在这个段落的某一个地方&#123;% asset_img 这是一个新的博客的图片.jpg 这是一个新的博客的图片的说明 %&#125;引入一张图片</div></pre></td></tr></table></figure>
+<p>错误的例子</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">我现在写了一个段落，并且想在这个段落的某一个地方![这是一个新的博客的图片的说明](这是一个新的博客的图片.jpg)引入一张图片</div></pre></td></tr></table></figure>
+<h2 id="下面是第二种方法，hexo插件的方法"><a href="#下面是第二种方法，hexo插件的方法" class="headerlink" title="下面是第二种方法，hexo插件的方法"></a>下面是第二种方法，hexo插件的方法</h2><p>这是插件的<a href="https://github.com/CodeFalling/hexo-asset-image" target="_blank" rel="external">链接</a></p>
+<p>安装</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install hexo-asset-image --save</div></pre></td></tr></table></figure>
+<p>之后就可以按照正常的方法使用的，比如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">我现在写了一个段落，并且想在这个段落的某一个地方![这是一个新的博客的图片的说明](这是一个新的博客/这是一个新的博客的图片.jpg)引入一张图片</div></pre></td></tr></table></figure>
+<p>和</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">我现在写了一个段落，并且想在这个段落的某一个地方![这是一个新的博客的图片的说明](这是一个新的博客的图片.jpg)引入一张图片</div></pre></td></tr></table></figure>
+<p>都可以实现。</p>
+<p>此两种方法除了操作有些区别之外，在图片的显示上也略有不同，第一种的图片信息是会显示出来的，而第二种中括号里面的信息是不会显示的。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/18/git的起步的操作流程/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/05/18/git的起步的操作流程/" itemprop="url">
+                  git的起步的操作流程
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-18T21:34:40+08:00">
+                2017-05-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>先初始化</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git init</div></pre></td></tr></table></figure>
+<p>加入一个README文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git add README.md</div></pre></td></tr></table></figure>
+<p>第一次提交</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git commit -m &quot;first commit&quot;</div></pre></td></tr></table></figure>
+<p>链接远程仓库（已经在远程创建了一个未初始化的仓库）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git remote add origin https://github.com/yourproject/-.git</div></pre></td></tr></table></figure>
+<p>第一次push</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git push -u origin master</div></pre></td></tr></table></figure>
+<p>这个时候这个已经被git的文件夹里面只有一个README.md的文件，接下来就可以写自己的代码了，在第一次需要提交自己的代码之前，先要规定需要忽略的文件</p>
+<p>建立.gitignore文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">touch .gitignore</div></pre></td></tr></table></figure>
+<p>在创建的文件里面加入需要忽略的文件或文件夹例如<code>node_modules/</code>，具体的过滤选项</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">*.a       # 忽略所有 .a 结尾的文件</div><div class="line">!lib.a    # 但 lib.a 除外</div><div class="line">/TODO     # 仅仅忽略项目根目录下的 TODO 文件，不包括 subdir/TODO</div><div class="line">build/    # 忽略 build/ 目录下的所有文件</div><div class="line">doc/*.txt # 会忽略 doc/notes.txt 但不包括 doc/server/arch.txt</div></pre></td></tr></table></figure>
+<p>然后在<code>git add --all</code>和<code>git push</code>。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/01/webpack入门操作/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/05/01/webpack入门操作/" itemprop="url">
+                  webpack入门操作
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-01T21:34:40+08:00">
+                2017-05-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="起步"><a href="#起步" class="headerlink" title="起步"></a>起步</h2><p><strong>在文件夹创建一个package.json</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm init</div></pre></td></tr></table></figure>
+<p><strong>安装webpack</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// 安装Webpack</div><div class="line">npm install --save-dev webpack</div></pre></td></tr></table></figure>
+<p><strong>新建一个webpack.config.js的文件并配置如下</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">module.exports = &#123;</div><div class="line">  entry:  __dirname + &quot;/app/main.js&quot;,//已多次提及的唯一入口文件</div><div class="line">  output: &#123;</div><div class="line">    path: __dirname + &quot;/public&quot;,//打包后的文件存放的地方</div><div class="line">    filename: &quot;bundle.js&quot;//打包后输出文件的文件名</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>__dirname是当前文件夹所在的位置，也就是当前目录的绝对路径，它是一个变量，如果把这个目录放到其他的地方它会自动变化。</p>
+</blockquote>
+<h2 id="加入一些基础功能"><a href="#加入一些基础功能" class="headerlink" title="加入一些基础功能"></a>加入一些基础功能</h2><p><strong>在package.json里面加入如下配置。</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  &quot;name&quot;: &quot;webpack-demo-practice&quot;,</div><div class="line">  &quot;version&quot;: &quot;1.0.0&quot;,</div><div class="line">  &quot;description&quot;: &quot;webpack-demo-practice&quot;,</div><div class="line">  &quot;scripts&quot;: &#123;</div><div class="line">    &quot;start&quot;: &quot;webpack&quot; //配置的地方就是这里啦，相当于把npm的start命令指向webpack命令</div><div class="line">  &#125;,</div><div class="line">  &quot;author&quot;: &quot;zhang&quot;,</div><div class="line">  &quot;license&quot;: &quot;ISC&quot;,</div><div class="line">  &quot;devDependencies&quot;: &#123;</div><div class="line">    &quot;webpack&quot;: &quot;^1.12.9&quot;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>package.json中的脚本部分已经默认在命令前添加了<code>node_modules/.bin</code>路径，所以无论是全局还是局部安装的Webpack，你都不需要写前面那指明详细的路径了。</p>
+<p><strong>在webpack.config.js文件中加入source maps</strong>，目的是找到代码的错误，方便我们改错</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">module.exports = &#123;</div><div class="line">  devtool: &apos;eval-source-map&apos;,      //配置生成Source Maps，选择合适的选项</div><div class="line">  entry:  __dirname + &quot;/app/main.js&quot;,</div><div class="line">  output: &#123;</div><div class="line">    path: __dirname + &quot;/public&quot;,</div><div class="line">    filename: &quot;bundle.js&quot;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>eval-source-map只是source maps中的一个选项，它更适用于开发阶段，至于source maps有哪些选项，需要自己去查一下了。</p>
+<p><strong>用webpack构建本地服务器</strong>，目的是在没有后端的情况下也可以模拟后端来帮助前端调试</p>
+<p>先安装webpack-dev-server</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install --save-dev webpack-dev-server</div></pre></td></tr></table></figure>
+<p>然后把配置加到webpack.config.js文件之中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">module.exports = &#123;</div><div class="line">  devtool: &apos;eval-source-map&apos;,</div><div class="line"></div><div class="line">  entry:  __dirname + &quot;/app/main.js&quot;,</div><div class="line">  output: &#123;</div><div class="line">    path: __dirname + &quot;/public&quot;,</div><div class="line">    filename: &quot;bundle.js&quot;</div><div class="line">  &#125;,</div><div class="line"></div><div class="line">  devServer: &#123;</div><div class="line">    contentBase: &quot;./public&quot;,//本地服务器所加载的页面所在的目录</div><div class="line">    colors: true,//终端中输出结果为彩色</div><div class="line">    historyApiFallback: true,//不跳转</div><div class="line">    inline: true//当改变代码是可以自动刷新页面</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="加入loader"><a href="#加入loader" class="headerlink" title="加入loader"></a>加入loader</h2><p>loader是webpack的加载器，它的功能有点<strong>类似于</strong>插件（plugin），他与webpack正牌的插件（plugin）是有区别的，loader主要用于加载资源，也可以说是转化资源，把各类语法转化在同一个文件之中。plugin的功能则更加丰富。</p>
+<p><strong>安装可以转换json的loader</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install --save-dev json-loader</div></pre></td></tr></table></figure>
+<p>修改webpack.config.js文件，把json加载器放到module里面</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">module.exports = &#123;</div><div class="line">  devtool: &apos;eval-source-map&apos;,</div><div class="line"></div><div class="line">  entry:  __dirname + &quot;/app/main.js&quot;,</div><div class="line">  output: &#123;</div><div class="line">    path: __dirname + &quot;/public&quot;,</div><div class="line">    filename: &quot;bundle.js&quot;</div><div class="line">  &#125;,</div><div class="line"></div><div class="line">  module: &#123;//在配置文件里添加JSON loader</div><div class="line">    loaders: [</div><div class="line">      &#123;</div><div class="line">        test: /\.json$/,    //正则表达式，用于匹配loader所处理文件的拓展名(必须)</div><div class="line">        loader: &quot;json&quot;      //loader的名称(必须)</div><div class="line">      &#125;</div><div class="line">    ]</div><div class="line">  &#125;,</div><div class="line"></div><div class="line">  devServer: &#123;</div><div class="line">    contentBase: &quot;./public&quot;,</div><div class="line">    colors: true,</div><div class="line">    historyApiFallback: true,</div><div class="line">    inline: true</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>可以编译JavaScript的loader，babel</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install --save-dev babel-core babel-loader babel-preset-es2015 babel-preset-react</div></pre></td></tr></table></figure>
+<p>在webpack.config.js中加入配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">module.exports = &#123;</div><div class="line">  devtool: &apos;eval-source-map&apos;,</div><div class="line"></div><div class="line">  entry:  __dirname + &quot;/app/main.js&quot;,</div><div class="line">  output: &#123;</div><div class="line">    path: __dirname + &quot;/public&quot;,</div><div class="line">    filename: &quot;bundle.js&quot;</div><div class="line">  &#125;,</div><div class="line"></div><div class="line">  module: &#123;</div><div class="line">    loaders: [</div><div class="line">      &#123;</div><div class="line">        test: /\.json$/,</div><div class="line">        loader: &quot;json&quot;</div><div class="line">      &#125;,</div><div class="line">      &#123;</div><div class="line">        test: /\.js$/,</div><div class="line">        exclude: /node_modules/,</div><div class="line">        loader: &apos;babel&apos;,</div><div class="line">        query: &#123;</div><div class="line">          presets: [&apos;es2015&apos;,&apos;react&apos;]</div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line">    ]</div><div class="line">  &#125;,</div><div class="line"></div><div class="line">  devServer: &#123;</div><div class="line">    contentBase: &quot;./public&quot;,</div><div class="line">    colors: true,</div><div class="line">    historyApiFallback: true,</div><div class="line">    inline: true</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>另外，由于babel的配置一般会比较多，所以webpack支持单独创建文件配置babel，webpack会自动调用，方法是创建一个<code>.babelrc</code>的文件，用于单独配置babel。</p>
+<p>单独配置babel的 情况下，webpack.config.js就要改为</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">// webpack.config.js</div><div class="line">module.exports = &#123;</div><div class="line">  devtool: &apos;eval-source-map&apos;,</div><div class="line"></div><div class="line">  entry:  __dirname + &quot;/app/main.js&quot;,</div><div class="line">  output: &#123;</div><div class="line">    path: __dirname + &quot;/public&quot;,</div><div class="line">    filename: &quot;bundle.js&quot;</div><div class="line">  &#125;,</div><div class="line"></div><div class="line">  module: &#123;</div><div class="line">    loaders: [</div><div class="line">      &#123;</div><div class="line">        test: /\.json$/,</div><div class="line">        loader: &quot;json&quot;</div><div class="line">      &#125;,</div><div class="line">      &#123;</div><div class="line">        test: /\.js$/,</div><div class="line">        exclude: /node_modules/,</div><div class="line">        loader: &apos;babel&apos;</div><div class="line">      &#125;</div><div class="line">    ]</div><div class="line">  &#125;,</div><div class="line"></div><div class="line">  devServer: &#123;</div><div class="line">    contentBase: &quot;./public&quot;,</div><div class="line">    colors: true,</div><div class="line">    historyApiFallback: true,</div><div class="line">    inline: true</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>新文件.babelrc的内容为</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">//.babelrc</div><div class="line">&#123;</div><div class="line">  &quot;presets&quot;: [&quot;react&quot;, &quot;es2015&quot;]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>安装处理css的loader</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">//安装</div><div class="line">npm install --save-dev style-loader css-loader</div></pre></td></tr></table></figure>
+<p>配置webpack.config.js</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">//使用</div><div class="line">module.exports = &#123;</div><div class="line">  devtool: &apos;eval-source-map&apos;,</div><div class="line"></div><div class="line">  entry:  __dirname + &quot;/app/main.js&quot;,</div><div class="line">  output: &#123;</div><div class="line">    path: __dirname + &quot;/build&quot;,</div><div class="line">    filename: &quot;bundle.js&quot;</div><div class="line">  &#125;,</div><div class="line"></div><div class="line">  module: &#123;</div><div class="line">    loaders: [</div><div class="line">      &#123;</div><div class="line">        test: /\.json$/,</div><div class="line">        loader: &quot;json&quot;</div><div class="line">      &#125;,</div><div class="line">      &#123;</div><div class="line">        test: /\.js$/,</div><div class="line">        exclude: /node_modules/,</div><div class="line">        loader: &apos;babel&apos;</div><div class="line">      &#125;,</div><div class="line">      &#123;</div><div class="line">        test: /\.css$/,</div><div class="line">        loader: &apos;style!css&apos;//添加的配置再这里</div><div class="line">      &#125;</div><div class="line">    ]</div><div class="line">  &#125;,</div><div class="line"></div><div class="line">  devServer: &#123;</div><div class="line">    contentBase: &quot;./public&quot;,</div><div class="line">    colors: true,</div><div class="line">    historyApiFallback: true,</div><div class="line">    inline: true</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>其中<code>!</code>可以理解成“和”，css文件同时使用这两个加载器处理</p>
+<p>css文件也需要放到入口文件里面，现在这个例子的入口文件是main.js</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">//main.js</div><div class="line">import &apos;./main.css&apos;;//导入css文件</div></pre></td></tr></table></figure>
+<h2 id="插件（plugin）"><a href="#插件（plugin）" class="headerlink" title="插件（plugin）"></a>插件（plugin）</h2><p>插件需要使用npm安装</p>
+<p>安装之后同样在webpack.config.js里面配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line">//使用</div><div class="line">module.exports = &#123;</div><div class="line">  devtool: &apos;eval-source-map&apos;,</div><div class="line"></div><div class="line">  entry:  __dirname + &quot;/app/main.js&quot;,</div><div class="line">  output: &#123;</div><div class="line">    path: __dirname + &quot;/build&quot;,</div><div class="line">    filename: &quot;bundle.js&quot;</div><div class="line">  &#125;,</div><div class="line"></div><div class="line">  module: &#123;</div><div class="line">    loaders: [</div><div class="line">      &#123;</div><div class="line">        test: /\.json$/,</div><div class="line">        loader: &quot;json&quot;</div><div class="line">      &#125;,</div><div class="line">      &#123;</div><div class="line">        test: /\.js$/,</div><div class="line">        exclude: /node_modules/,</div><div class="line">        loader: &apos;babel&apos;</div><div class="line">      &#125;,</div><div class="line">      &#123;</div><div class="line">        test: /\.css$/,</div><div class="line">        loader: &apos;style!css&apos;//添加的配置再这里</div><div class="line">      &#125;</div><div class="line">    ]</div><div class="line">  &#125;,</div><div class="line"></div><div class="line">  plugins: [</div><div class="line">    new webpack.BannerPlugin(&quot;Copyright Flying Unicorns inc.&quot;)</div><div class="line">  ],</div><div class="line"></div><div class="line">  devServer: &#123;</div><div class="line">    contentBase: &quot;./public&quot;,</div><div class="line">    colors: true,</div><div class="line">    historyApiFallback: true,</div><div class="line">    inline: true</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
     
       
 
@@ -284,9 +1008,9 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posté le</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-26T12:14:30+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-26T21:34:40+08:00">
                 2017-04-26
               </time>
             
@@ -413,9 +1137,9 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posté le</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-20T21:49:10+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-20T21:34:40+08:00">
                 2017-04-20
               </time>
             
@@ -539,170 +1263,6 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/13/webpack入门操作/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/04/13/webpack入门操作/" itemprop="url">
-                  webpack入门操作
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posté le</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-13T22:24:50+08:00">
-                2017-04-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="起步"><a href="#起步" class="headerlink" title="起步"></a>起步</h2><p><strong>在文件夹创建一个package.json</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm init</div></pre></td></tr></table></figure>
-<p><strong>安装webpack</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// 安装Webpack</div><div class="line">npm install --save-dev webpack</div></pre></td></tr></table></figure>
-<p><strong>新建一个webpack.config.js的文件并配置如下</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">module.exports = &#123;</div><div class="line">  entry:  __dirname + &quot;/app/main.js&quot;,//已多次提及的唯一入口文件</div><div class="line">  output: &#123;</div><div class="line">    path: __dirname + &quot;/public&quot;,//打包后的文件存放的地方</div><div class="line">    filename: &quot;bundle.js&quot;//打包后输出文件的文件名</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<blockquote>
-<p>__dirname是当前文件夹所在的位置，也就是当前目录的绝对路径，它是一个变量，如果把这个目录放到其他的地方它会自动变化。</p>
-</blockquote>
-<h2 id="加入一些基础功能"><a href="#加入一些基础功能" class="headerlink" title="加入一些基础功能"></a>加入一些基础功能</h2><p><strong>在package.json里面加入如下配置。</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  &quot;name&quot;: &quot;webpack-demo-practice&quot;,</div><div class="line">  &quot;version&quot;: &quot;1.0.0&quot;,</div><div class="line">  &quot;description&quot;: &quot;webpack-demo-practice&quot;,</div><div class="line">  &quot;scripts&quot;: &#123;</div><div class="line">    &quot;start&quot;: &quot;webpack&quot; //配置的地方就是这里啦，相当于把npm的start命令指向webpack命令</div><div class="line">  &#125;,</div><div class="line">  &quot;author&quot;: &quot;zhang&quot;,</div><div class="line">  &quot;license&quot;: &quot;ISC&quot;,</div><div class="line">  &quot;devDependencies&quot;: &#123;</div><div class="line">    &quot;webpack&quot;: &quot;^1.12.9&quot;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>package.json中的脚本部分已经默认在命令前添加了<code>node_modules/.bin</code>路径，所以无论是全局还是局部安装的Webpack，你都不需要写前面那指明详细的路径了。</p>
-<p><strong>在webpack.config.js文件中加入source maps</strong>，目的是找到代码的错误，方便我们改错</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">module.exports = &#123;</div><div class="line">  devtool: &apos;eval-source-map&apos;,      //配置生成Source Maps，选择合适的选项</div><div class="line">  entry:  __dirname + &quot;/app/main.js&quot;,</div><div class="line">  output: &#123;</div><div class="line">    path: __dirname + &quot;/public&quot;,</div><div class="line">    filename: &quot;bundle.js&quot;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>eval-source-map只是source maps中的一个选项，它更适用于开发阶段，至于source maps有哪些选项，需要自己去查一下了。</p>
-<p><strong>用webpack构建本地服务器</strong>，目的是在没有后端的情况下也可以模拟后端来帮助前端调试</p>
-<p>先安装webpack-dev-server</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install --save-dev webpack-dev-server</div></pre></td></tr></table></figure>
-<p>然后把配置加到webpack.config.js文件之中</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">module.exports = &#123;</div><div class="line">  devtool: &apos;eval-source-map&apos;,</div><div class="line"></div><div class="line">  entry:  __dirname + &quot;/app/main.js&quot;,</div><div class="line">  output: &#123;</div><div class="line">    path: __dirname + &quot;/public&quot;,</div><div class="line">    filename: &quot;bundle.js&quot;</div><div class="line">  &#125;,</div><div class="line"></div><div class="line">  devServer: &#123;</div><div class="line">    contentBase: &quot;./public&quot;,//本地服务器所加载的页面所在的目录</div><div class="line">    colors: true,//终端中输出结果为彩色</div><div class="line">    historyApiFallback: true,//不跳转</div><div class="line">    inline: true//当改变代码是可以自动刷新页面</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="加入loader"><a href="#加入loader" class="headerlink" title="加入loader"></a>加入loader</h2><p>loader是webpack的加载器，它的功能有点<strong>类似于</strong>插件（plugin），他与webpack正牌的插件（plugin）是有区别的，loader主要用于加载资源，也可以说是转化资源，把各类语法转化在同一个文件之中。plugin的功能则更加丰富。</p>
-<p><strong>安装可以转换json的loader</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install --save-dev json-loader</div></pre></td></tr></table></figure>
-<p>修改webpack.config.js文件，把json加载器放到module里面</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">module.exports = &#123;</div><div class="line">  devtool: &apos;eval-source-map&apos;,</div><div class="line"></div><div class="line">  entry:  __dirname + &quot;/app/main.js&quot;,</div><div class="line">  output: &#123;</div><div class="line">    path: __dirname + &quot;/public&quot;,</div><div class="line">    filename: &quot;bundle.js&quot;</div><div class="line">  &#125;,</div><div class="line"></div><div class="line">  module: &#123;//在配置文件里添加JSON loader</div><div class="line">    loaders: [</div><div class="line">      &#123;</div><div class="line">        test: /\.json$/,    //正则表达式，用于匹配loader所处理文件的拓展名(必须)</div><div class="line">        loader: &quot;json&quot;      //loader的名称(必须)</div><div class="line">      &#125;</div><div class="line">    ]</div><div class="line">  &#125;,</div><div class="line"></div><div class="line">  devServer: &#123;</div><div class="line">    contentBase: &quot;./public&quot;,</div><div class="line">    colors: true,</div><div class="line">    historyApiFallback: true,</div><div class="line">    inline: true</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><strong>可以编译JavaScript的loader，babel</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install --save-dev babel-core babel-loader babel-preset-es2015 babel-preset-react</div></pre></td></tr></table></figure>
-<p>在webpack.config.js中加入配置</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">module.exports = &#123;</div><div class="line">  devtool: &apos;eval-source-map&apos;,</div><div class="line"></div><div class="line">  entry:  __dirname + &quot;/app/main.js&quot;,</div><div class="line">  output: &#123;</div><div class="line">    path: __dirname + &quot;/public&quot;,</div><div class="line">    filename: &quot;bundle.js&quot;</div><div class="line">  &#125;,</div><div class="line"></div><div class="line">  module: &#123;</div><div class="line">    loaders: [</div><div class="line">      &#123;</div><div class="line">        test: /\.json$/,</div><div class="line">        loader: &quot;json&quot;</div><div class="line">      &#125;,</div><div class="line">      &#123;</div><div class="line">        test: /\.js$/,</div><div class="line">        exclude: /node_modules/,</div><div class="line">        loader: &apos;babel&apos;,</div><div class="line">        query: &#123;</div><div class="line">          presets: [&apos;es2015&apos;,&apos;react&apos;]</div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line">    ]</div><div class="line">  &#125;,</div><div class="line"></div><div class="line">  devServer: &#123;</div><div class="line">    contentBase: &quot;./public&quot;,</div><div class="line">    colors: true,</div><div class="line">    historyApiFallback: true,</div><div class="line">    inline: true</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>另外，由于babel的配置一般会比较多，所以webpack支持单独创建文件配置babel，webpack会自动调用，方法是创建一个<code>.babelrc</code>的文件，用于单独配置babel。</p>
-<p>单独配置babel的 情况下，webpack.config.js就要改为</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">// webpack.config.js</div><div class="line">module.exports = &#123;</div><div class="line">  devtool: &apos;eval-source-map&apos;,</div><div class="line"></div><div class="line">  entry:  __dirname + &quot;/app/main.js&quot;,</div><div class="line">  output: &#123;</div><div class="line">    path: __dirname + &quot;/public&quot;,</div><div class="line">    filename: &quot;bundle.js&quot;</div><div class="line">  &#125;,</div><div class="line"></div><div class="line">  module: &#123;</div><div class="line">    loaders: [</div><div class="line">      &#123;</div><div class="line">        test: /\.json$/,</div><div class="line">        loader: &quot;json&quot;</div><div class="line">      &#125;,</div><div class="line">      &#123;</div><div class="line">        test: /\.js$/,</div><div class="line">        exclude: /node_modules/,</div><div class="line">        loader: &apos;babel&apos;</div><div class="line">      &#125;</div><div class="line">    ]</div><div class="line">  &#125;,</div><div class="line"></div><div class="line">  devServer: &#123;</div><div class="line">    contentBase: &quot;./public&quot;,</div><div class="line">    colors: true,</div><div class="line">    historyApiFallback: true,</div><div class="line">    inline: true</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>新文件.babelrc的内容为</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">//.babelrc</div><div class="line">&#123;</div><div class="line">  &quot;presets&quot;: [&quot;react&quot;, &quot;es2015&quot;]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><strong>安装处理css的loader</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">//安装</div><div class="line">npm install --save-dev style-loader css-loader</div></pre></td></tr></table></figure>
-<p>配置webpack.config.js</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">//使用</div><div class="line">module.exports = &#123;</div><div class="line">  devtool: &apos;eval-source-map&apos;,</div><div class="line"></div><div class="line">  entry:  __dirname + &quot;/app/main.js&quot;,</div><div class="line">  output: &#123;</div><div class="line">    path: __dirname + &quot;/build&quot;,</div><div class="line">    filename: &quot;bundle.js&quot;</div><div class="line">  &#125;,</div><div class="line"></div><div class="line">  module: &#123;</div><div class="line">    loaders: [</div><div class="line">      &#123;</div><div class="line">        test: /\.json$/,</div><div class="line">        loader: &quot;json&quot;</div><div class="line">      &#125;,</div><div class="line">      &#123;</div><div class="line">        test: /\.js$/,</div><div class="line">        exclude: /node_modules/,</div><div class="line">        loader: &apos;babel&apos;</div><div class="line">      &#125;,</div><div class="line">      &#123;</div><div class="line">        test: /\.css$/,</div><div class="line">        loader: &apos;style!css&apos;//添加的配置再这里</div><div class="line">      &#125;</div><div class="line">    ]</div><div class="line">  &#125;,</div><div class="line"></div><div class="line">  devServer: &#123;</div><div class="line">    contentBase: &quot;./public&quot;,</div><div class="line">    colors: true,</div><div class="line">    historyApiFallback: true,</div><div class="line">    inline: true</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>其中<code>!</code>可以理解成“和”，css文件同时使用这两个加载器处理</p>
-<p>css文件也需要放到入口文件里面，现在这个例子的入口文件是main.js</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">//main.js</div><div class="line">import &apos;./main.css&apos;;//导入css文件</div></pre></td></tr></table></figure>
-<h2 id="插件（plugin）"><a href="#插件（plugin）" class="headerlink" title="插件（plugin）"></a>插件（plugin）</h2><p>插件需要使用npm安装</p>
-<p>安装之后同样在webpack.config.js里面配置</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line">//使用</div><div class="line">module.exports = &#123;</div><div class="line">  devtool: &apos;eval-source-map&apos;,</div><div class="line"></div><div class="line">  entry:  __dirname + &quot;/app/main.js&quot;,</div><div class="line">  output: &#123;</div><div class="line">    path: __dirname + &quot;/build&quot;,</div><div class="line">    filename: &quot;bundle.js&quot;</div><div class="line">  &#125;,</div><div class="line"></div><div class="line">  module: &#123;</div><div class="line">    loaders: [</div><div class="line">      &#123;</div><div class="line">        test: /\.json$/,</div><div class="line">        loader: &quot;json&quot;</div><div class="line">      &#125;,</div><div class="line">      &#123;</div><div class="line">        test: /\.js$/,</div><div class="line">        exclude: /node_modules/,</div><div class="line">        loader: &apos;babel&apos;</div><div class="line">      &#125;,</div><div class="line">      &#123;</div><div class="line">        test: /\.css$/,</div><div class="line">        loader: &apos;style!css&apos;//添加的配置再这里</div><div class="line">      &#125;</div><div class="line">    ]</div><div class="line">  &#125;,</div><div class="line"></div><div class="line">  plugins: [</div><div class="line">    new webpack.BannerPlugin(&quot;Copyright Flying Unicorns inc.&quot;)</div><div class="line">  ],</div><div class="line"></div><div class="line">  devServer: &#123;</div><div class="line">    contentBase: &quot;./public&quot;,</div><div class="line">    colors: true,</div><div class="line">    historyApiFallback: true,</div><div class="line">    inline: true</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/07/使用autohotkey修改方向键、回车和启动程序/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -740,9 +1300,9 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posté le</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-07T17:14:06+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-07T21:34:40+08:00">
                 2017-04-07
               </time>
             
@@ -889,9 +1449,9 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posté le</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-25T17:10:08+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-25T21:34:40+08:00">
                 2017-03-25
               </time>
             
@@ -1024,9 +1584,9 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posté le</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-20T15:54:58+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-20T21:34:40+08:00">
                 2017-03-20
               </time>
             
@@ -1155,458 +1715,13 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/02/27/如何在网络公共场合发帖提问/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/02/27/如何在网络公共场合发帖提问/" itemprop="url">
-                  如何在网络公共场合发帖提问
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posté le</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-27T12:44:12+08:00">
-                2017-02-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>本文<a href="http://www.catb.org/esr/faqs/smart-questions.html" target="_blank" rel="external">《How To Ask Questions The Smart Way》</a>的学习笔记，仅供参考。</p>
-<p>概括的说就是在提问之前先<strong>自己尝试解决问题</strong>，未能解决，再提问。</p>
-<p>提问的根本原则是：让别人<strong>指点你</strong>，而不是让别人直接<strong>给你</strong>。</p>
-<h2 id="先做好自己的功课"><a href="#先做好自己的功课" class="headerlink" title="先做好自己的功课"></a>先做好自己的功课</h2><p>提问之前你要先做好下面的事情。</p>
-<ol>
-<li>用google搜索。至于为什么要用google和<a href="https://b.xinshengdaxue.com/C04.html" target="_blank" rel="external">如何用google</a>，大家先去google一下吧。</li>
-<li>阅读软件的使用手册。</li>
-<li>阅读相关软件的FAQ。</li>
-<li>在论坛中搜索。</li>
-<li>自己检查和试验。</li>
-</ol>
-<h2 id="提问的时候"><a href="#提问的时候" class="headerlink" title="提问的时候"></a>提问的时候</h2><p>请先表明你已经上一部分所说的那里尝试和努力，</p>
-<p>如果你的问题是<code>可以不可以给点提示？</code>、<code>我的这个例子里面缺了什么？</code>或者<code>我应该检查什么地方？</code> ，那恭喜你已经入门了，如果你一般都是直接问<code>请把我需要的确切过程发给我</code>，那你可能需要更加认真的往下看。</p>
-<h3 id="在合适的地方提出合适的问题"><a href="#在合适的地方提出合适的问题" class="headerlink" title="在合适的地方提出合适的问题"></a>在合适的地方提出合适的问题</h3><p>例如，不要母婴论坛问编程的问题（相信没有人会这样做），不要在全是高手的地方问初级问题，不要重复贴出同样的问题，不要向跟你不熟也没有义务帮助你的人发送私人邮件。</p>
-<h4 id="关于网络论坛"><a href="#关于网络论坛" class="headerlink" title="关于网络论坛"></a>关于网络论坛</h4><p>搞清楚那个论坛是干什么的，搞清楚论坛里面每个版块是干什么的。</p>
-<h3 id="写好标题"><a href="#写好标题" class="headerlink" title="写好标题"></a>写好标题</h3><p>好标题=对象+偏差</p>
-<p><strong>对象</strong>是出问题的那个东西</p>
-<p><strong>偏差</strong>是指与你期望不一致的地方</p>
-<p>例如：</p>
-<blockquote>
-<p>愚蠢的描述：救命啊！我的电脑不能播放视频啦！</p>
-<p>聪明的描述；X.org 6.8.1的鼠标光标变形，某品牌显卡 MV1005 晶片組。</p>
-<p>更聪明的描述：X.org 6.8.1的鼠标光，在某品牌显卡 MV1005 晶片組环境下变形</p>
-</blockquote>
-<p>最后一个例子<code>变形</code>就是偏差，前面的就是对象。</p>
-<h3 id="描述问题"><a href="#描述问题" class="headerlink" title="描述问题"></a>描述问题</h3><h4 id="简洁有效"><a href="#简洁有效" class="headerlink" title="简洁有效"></a>简洁有效</h4><ul>
-<li>按时间顺序仔細、清楚地描述你的问题或bug的<strong>症狀</strong>，不要说你自己的<strong>猜测</strong>。</li>
-<li>描述问题发生的环境（电脑配置、操作系统、软件、以及相关信息），提供经销商的发行版和版本号。</li>
-<li>描述在提问前你是怎样去研究和理解這这问题的。</li>
-<li>描述在提问前为确定问题而采取的诊断步骤。</li>
-<li>描述最近做过什么可能相关的硬件或软件变更。</li>
-<li>如果可能的提供一个可以<code>再现这个问题的既定环境</code>的方法</li>
-</ul>
-<p>如果是关于代码的问题，注意不要把你上百行的代码全部贴出来，只要贴出出现问题的那个部分就可以了。比如<code>在第七行以后，我希望他得出&lt;x&gt;，但实际的结果却是&lt;y&gt;。</code></p>
-<p>例子：</p>
-<blockquote>
-<p><strong>愚蠢的描述：</strong>我在编译内核时接连遇到SIG11错误，怀疑主板上的某根电路丝断了，找到它们的最好办法是什么？</p>
-<p><strong>聪明的描述</strong> ：我组装的电脑（K6/233 CPU、FIC-PA2007 主板威盛 Apollo VP2 芯片组、Corsair PC133 SDRAM 256Mb 内存）最近在开机20分钟左右、做内核编译时频繁地报错，提示SIG11 ，但在头20分钟内从不出问题。重启动不会复位时钟，但会整夜关机。更换所有内存未解决问题，相关的典型编译会话日志附后。</p>
-</blockquote>
-<h4 id="说出目的，而不是你操作过程中的某一个步骤"><a href="#说出目的，而不是你操作过程中的某一个步骤" class="headerlink" title="说出目的，而不是你操作过程中的某一个步骤"></a>说出<strong>目的</strong>，而不是你操作过程中的某一个步骤</h4><p><strong>在开头就直接说你的目的是什么 ，然后再陈述你的问题。</strong></p>
-<p><strong>经常遇到这样的情况：寻求帮助的人有更进一步的目的，只是在前进的过程中遇到了阻碍，他们提出的问题只针对当下的步骤。其实很有可能不是现在的这一步出了问题，而是你的路径根本就错了。</strong></p>
-<blockquote>
-<p><strong>愚蠢的问题</strong>：我怎样才能让某图形程序的颜色拾取器取得十六进制的RGB值？</p>
-<p><strong>聪明的问题</strong> ：我正试着用自己选定数值的颜色替换一幅图片的色表，我现在知道的唯一方法是编辑每个表槽，但却无法让某图形程序的颜色拾取器取得十六进制的RGB值。</p>
-</blockquote>
-<h3 id="语句要清晰、正确、精炼且表达通顺"><a href="#语句要清晰、正确、精炼且表达通顺" class="headerlink" title="语句要清晰、正确、精炼且表达通顺"></a>语句要清晰、正确、精炼且表达通顺</h3><p>写东西粗心的人，思考和编程也好不到哪去。</p>
-<p>花一点时间组织语言，使问题能够正确、清晰地表达出来。</p>
-<p>如果你用英语提问，那你要注意拼写、标点和大小写，不要用“u”代替“you”这种简化。</p>
-<p>如果你的英语水平不是特别好，在提问的时候可以加上这些。</p>
-<blockquote>
-<ul>
-<li>English is not my native language; please excuse typing errors.</li>
-<li>If you speak $LANGUAGE, please email/PM me; I may need assistance translating my question.</li>
-<li>I am familiar with the technical terms, but some slang expressions and idioms are difficult for me.</li>
-<li>I’ve posted my question in $LANGUAGE and English. I’ll be glad to translate responses, if you only use one or the other.</li>
-</ul>
-</blockquote>
-<p>不要用无意义的话结束提问，比如<code>你能帮助我吗</code>或者<code>这有答案吗？</code> 。一般来说，避免用<code>是或否</code> 、<code>对或错</code>、 <code>有或没有</code>类型的问句。<strong>另外</strong>，无论你多着急，也不要在标题里面写“急求”“紧急”等词语。</p>
-<h3 id="解决问题后记得回复"><a href="#解决问题后记得回复" class="headerlink" title="解决问题后记得回复"></a>解决问题后记得回复</h3><p>问题解决之后向所有人发声明说明问题已经解决并感谢所有人。</p>
-<p>方式是在标题里面加上<code>已修正</code>、<code>已解决</code>，这样做不但可以让可提供帮助的人不再浪费时间浏览你的问题，也可令有相同问题的人也会更加容易找到你。</p>
-<p>之后写一个<strong>简单</strong>的总结，一个<code>你好，原来时网络线出了问题，谢谢大家！</code>就比什么都不说要好。也可以说一下问题是怎么解决的。</p>
-<p>列出那些帮助过你的名字。</p>
-<h2 id="对于别人的回复"><a href="#对于别人的回复" class="headerlink" title="对于别人的回复"></a>对于别人的回复</h2><p>如果看不懂别人的回答，先不要急着回复提问，再执行一次<code>提问之前</code>的步骤。</p>
-<h4 id="如果还是不明白…"><a href="#如果还是不明白…" class="headerlink" title="如果还是不明白…"></a>如果还是不明白…</h4><p>回复的时候要加上自己已经学到了什么。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/02/22/对angularJS一些概念的理解/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/02/22/对angularJS一些概念的理解/" itemprop="url">
-                  对angularJS一些概念的理解
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posté le</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-22T20:31:04+08:00">
-                2017-02-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="angularJS是以MVC为设计模式的JS框架"><a href="#angularJS是以MVC为设计模式的JS框架" class="headerlink" title="angularJS是以MVC为设计模式的JS框架"></a>angularJS是以MVC为设计模式的JS框架</h2><p><strong>MVC</strong>(Model View Controller)<strong>设计模式</strong>（design pattern）也可以理解成运行方式。每一个使用angularJS的程序都有这三个部分：</p>
-<ul>
-<li>模型/Model，这个部分说成是自建数据库的话会更容易理解；</li>
-<li>视图/View，就是显示的部分；</li>
-<li>控制器/Controller，软件代码控制Model和View之间的相互作用。</li>
-</ul>
-<p><img src="https://www.codeproject.com/KB/aspnet/344292/mvc.PNG" alt=""></p>
-<p>在学习html、css和JavaScript的过程中经常会看到framework、library这些词汇，笼统的讲，他们都是人们为了快速解决问题、避免简单重复的体力劳动而做的一些工具或加工到一定程度的原材料。</p>
-<p>就好像你喜欢用豆腐做菜，可你并不需要每次都从种黄豆开始，已经有人做好了豆腐在那里卖，你只要拿过来直接用就可以了。</p>
-<p>而framework和library的区别，我现在的理解是，framework是比library加工程度更深的原材料。如果framework是豆腐，那library就是做豆腐需要的原材料。你当然也可以使用做豆腐的原材料去做菜。</p>
-<p><img src="http://o7w6l6vti.bkt.clouddn.com/Difference%20between%20Library%20and%20Framework%20%28in%20JavaScript%29.png" alt="image"></p>
-<p>不过豆腐的例子不能很好的说明的一点是好莱坞原则。开脑洞的说就是，豆腐可以自己使用你准备好的东西如调味料、锅和铲子等把自己做成做成美味的菜肴。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/02/22/初学git的一些基础知识/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/02/22/初学git的一些基础知识/" itemprop="url">
-                  初学git的一些基础知识
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posté le</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-22T15:03:06+08:00">
-                2017-02-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="版本控制"><a href="#版本控制" class="headerlink" title="版本控制"></a>版本控制</h3><p>​    提到git就不得不说版本控制，与git相关的系统都是版本控制系统，他们用于记录文件的更改以便随时可以返回需要的特定版本。它的发展历史，概括的说就是从可操作文件一个到多个，从单人工作到多人协同，从集中式到分布式。</p>
-<h3 id="git工作原理"><a href="#git工作原理" class="headerlink" title="git工作原理"></a>git工作原理</h3><p>​    git是一个DRCS（distributed revision control system），它来自偶然，产于赌气。git 的工作原理也是它与其他版本控制软件的本质区别，每一次提交都相当于一个<strong>快照</strong>，改动的文件做记录，未改动的文件做链接。如下图，每一个纵向的<strong>version</strong>就是一个快照。</p>
-<p><img src="https://git-scm.com/book/en/v2/images/snapshots.png" alt="Git stores data as snapshots of the project over time."></p>
-<h3 id="git工作流程"><a href="#git工作流程" class="headerlink" title="git工作流程"></a>git工作流程</h3><p>​    git有三种状态，<strong>Committed</strong>（已提交），<strong>Modified</strong>（已修改）和<strong>Staged</strong>（已暂存）。已提交指的是文件已经老老实实地躺在你的数据库里面了；已修改是指已经变动但是并没有提交；已暂存的标示你已经<strong>标记</strong>这一次修改，但是标记的快照并没有合并到你的数据库里面。三种状态分别对应git的三个工作区域：<strong>the Git directory</strong>（本地仓库）, <strong>the working tree</strong>（工作目录）, <strong>and the staging area</strong>（暂存区域）。</p>
-<p><img src="http://images0.cnblogs.com/blog2015/512650/201508/181930031754207.png" alt="点击查看源网页"></p>
-<p>所以，当我们使用git 的时候，我们的工作流程是这样的：</p>
-<ol>
-<li>修改工作目录中的文件；</li>
-<li>标记快照暂存；</li>
-<li>提交到库。</li>
-</ol>
-<h3 id="参考文件"><a href="#参考文件" class="headerlink" title="参考文件"></a>参考文件</h3><p><a href="http://ericsink.com/vcbe/html/history_of_version_control.html" target="_blank" rel="external">http://ericsink.com/vcbe/html/history_of_version_control.html</a></p>
-<p><a href="https://git-scm.com/book/en/v2/Getting-Started-Git-Basics" target="_blank" rel="external">https://git-scm.com/book/en/v2/Getting-Started-Git-Basics</a></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
 
 
           </div>
@@ -1649,8 +1764,8 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">9</span>
-                <span class="site-state-item-name">articles</span>
+                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-name">Artikel</span>
               </a>
             </div>
           
@@ -1704,11 +1819,11 @@
 
 
 <div class="powered-by">
-  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
-  Thème -
+  Theme -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
     NexT.Muse
   </a>

@@ -1,5 +1,6 @@
 ---
 title: 对angularJS一些概念的理解
+date: 2017-02-22 21:34:40
 ---
 ## angularJS是以MVC为设计模式的JS框架
 **MVC**(Model View Controller)**设计模式**（design pattern）也可以理解成运行方式。每一个使用angularJS的程序都有这三个部分：
