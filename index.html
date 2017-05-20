@@ -194,7 +194,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            Startseite
           </a>
         </li>
       
@@ -204,7 +204,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Archiv
           </a>
         </li>
       
@@ -237,6 +237,143 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/20/Git修改最后一次提交的内容的具体步骤/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/05/20/Git修改最后一次提交的内容的具体步骤/" itemprop="url">
+                  Git修改最后一次提交的内容的具体步骤
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-20T09:50:54+08:00">
+                2017-05-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><strong>只是针对第一次提交</strong></p>
+<p>如果发现最后一次的提交出现了错误，需要重新提交，就可以用<code>git commit --amend</code>。</p>
+<p>比如已经提交了README.md，但是发现还有创建一个新文件一块提交</p>
+
+<p><img src="/2017/05/20/Git修改最后一次提交的内容的具体步骤/jietu20170520-093718.jpg" alt="已提交未暂存"></p>
+<p>这是就要先把新文件放到暂存区，用<code>git add test.html</code></p>
+<img src="/2017/05/20/Git修改最后一次提交的内容的具体步骤/Jietu20170520-093835.jpg" alt="已提交已暂存" title="已提交已暂存">
+<p>再使用命令<code>git commit --amend</code>，如果出现了一种编辑的模式</p>
+<img src="/2017/05/20/Git修改最后一次提交的内容的具体步骤/Jietu20170520-094641.jpg" alt="编辑状态" title="编辑状态">
+<p>直接输入<code>:wq</code>然后按回车，这里需要注意的是<strong>直接输入</strong>，直接输入的意思就是不是先按esc或者其他的什么键，直接<code>shift</code>加L右边的键输入冒号，紧接着加上wq，也就是写入并退出。</p>
+<img src="/2017/05/20/Git修改最后一次提交的内容的具体步骤/Jietu20170520-094700.jpg" alt="输入:wq" title="输入:wq">
+<p>新添加到暂存区的文件就被放到同一次提交里面了。</p>
+<img src="/2017/05/20/Git修改最后一次提交的内容的具体步骤/Jietu20170520-094821.jpg" alt="完成了" title="完成了">
+<p>如果是不是添加新的文件，只是觉得在最后一次提交的时候有的文件没有修改完全，那就在修改完了之后，把修改的文件用<code>git add</code>加到暂存区，其他的步骤跟上面是一模一样的。</p>
+<p>如果仅仅是想修改一下最后一次提交的提交信息，那就输入这样的命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git commit --amend -m &quot;新的提交信息&quot;</div></pre></td></tr></table></figure>
+<p>就可以了，之后没有任何其他的操作</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
     
       
 
@@ -284,7 +421,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-19T22:41:01+08:00">
                 2017-05-19
@@ -330,15 +467,15 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo new [layout] &lt;title&gt;</div></pre></td></tr></table></figure>
 <p>其中的layout项可以省略，例如：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo new &quot;这是一个新的博客&quot;</div></pre></td></tr></table></figure>
-<p>使用完命令之后，在source/_post文件夹里面就会出现一个“这是一个新的博客.md”的文件和一个“这是一个新的博客”的文件夹。<br><img src="/2017/05/19/Hexo发布博客引用自带图片的方法/Jietu20170519-223817.jpg" alt="这是一个新的博客的图片" title="这是一个新的博客的图片"></p>
+<p>使用完命令之后，在source/_post文件夹里面就会出现一个“这是一个新的博客.md”的文件和一个“这是一个新的博客”的文件夹。<br><img src="/2017/05/19/Hexo发布博客引用自带图片的方法/Jietu20170519-223817.jpg" alt="这是一个新的博客的图片" title="这是一个新的博客的图片"><br></p>
 <p>下一步就是把需要的图片放到新创建的那个<strong>文件夹</strong>里面去。</p>
-<h4 id="引用图片的第一种方法"><a href="#引用图片的第一种方法" class="headerlink" title="引用图片的第一种方法"></a>引用图片的第一种方法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;% asset_img 这是一个新的博客的图片.jpg 这是一个新的博客的图片的说明 %&#125;</div></pre></td></tr></table></figure>
-<p>用此种方法，而不是以前的<code>![]()</code>方法。</p>
+<h2 id="引用图片的第一种方法"><a href="#引用图片的第一种方法" class="headerlink" title="引用图片的第一种方法"></a>引用图片的第一种方法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;% asset_img 这是一个新的博客的图片.jpg 这是一个新的博客的图片的说明 %&#125;</div></pre></td></tr></table></figure>
+<p>用此种方法，而不是以前的<code>![]()</code>方法，前提是你的hexo的版本是hexo3以上，到package.json里面看一下吧。如果不是hexo3以上的版本，那就只能用第二种方法了。</p>
 <p>例子</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">我现在写了一个段落，并且想在这个段落的某一个地方&#123;% asset_img 这是一个新的博客的图片.jpg 这是一个新的博客的图片的说明 %&#125;引入一张图片</div></pre></td></tr></table></figure>
 <p>错误的例子</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">我现在写了一个段落，并且想在这个段落的某一个地方![这是一个新的博客的图片的说明](这是一个新的博客的图片.jpg)引入一张图片</div></pre></td></tr></table></figure>
-<h4 id="下面是第二种方法，hexo插件的方法"><a href="#下面是第二种方法，hexo插件的方法" class="headerlink" title="下面是第二种方法，hexo插件的方法"></a>下面是第二种方法，hexo插件的方法</h4><p>这是插件的<a href="https://github.com/CodeFalling/hexo-asset-image" target="_blank" rel="external">链接</a></p>
+<h2 id="下面是第二种方法，hexo插件的方法"><a href="#下面是第二种方法，hexo插件的方法" class="headerlink" title="下面是第二种方法，hexo插件的方法"></a>下面是第二种方法，hexo插件的方法</h2><p>这是插件的<a href="https://github.com/CodeFalling/hexo-asset-image" target="_blank" rel="external">链接</a></p>
 <p>安装</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install hexo-asset-image --save</div></pre></td></tr></table></figure>
 <p>之后就可以按照正常的方法使用的，比如：</p>
@@ -426,7 +563,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-18T21:34:40+08:00">
                 2017-05-18
@@ -562,7 +699,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-01T21:34:40+08:00">
                 2017-05-01
@@ -726,7 +863,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-26T21:34:40+08:00">
                 2017-04-26
@@ -855,7 +992,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-20T21:34:40+08:00">
                 2017-04-20
@@ -1018,7 +1155,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-07T21:34:40+08:00">
                 2017-04-07
@@ -1167,7 +1304,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-25T21:34:40+08:00">
                 2017-03-25
@@ -1302,7 +1439,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-20T21:34:40+08:00">
                 2017-03-20
@@ -1479,7 +1616,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-27T21:34:40+08:00">
                 2017-02-27
@@ -1617,139 +1754,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/02/22/初学git的一些基础知识/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/02/22/初学git的一些基础知识/" itemprop="url">
-                  初学git的一些基础知识
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-22T21:34:40+08:00">
-                2017-02-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="版本控制"><a href="#版本控制" class="headerlink" title="版本控制"></a>版本控制</h3><p>​    提到git就不得不说版本控制，与git相关的系统都是版本控制系统，他们用于记录文件的更改以便随时可以返回需要的特定版本。它的发展历史，概括的说就是从可操作文件一个到多个，从单人工作到多人协同，从集中式到分布式。</p>
-<h3 id="git工作原理"><a href="#git工作原理" class="headerlink" title="git工作原理"></a>git工作原理</h3><p>​    git是一个DRCS（distributed revision control system），它来自偶然，产于赌气。git 的工作原理也是它与其他版本控制软件的本质区别，每一次提交都相当于一个<strong>快照</strong>，改动的文件做记录，未改动的文件做链接。如下图，每一个纵向的<strong>version</strong>就是一个快照。</p>
-<p><img src="https://git-scm.com/book/en/v2/images/snapshots.png" alt="Git stores data as snapshots of the project over time."></p>
-<h3 id="git工作流程"><a href="#git工作流程" class="headerlink" title="git工作流程"></a>git工作流程</h3><p>​    git有三种状态，<strong>Committed</strong>（已提交），<strong>Modified</strong>（已修改）和<strong>Staged</strong>（已暂存）。已提交指的是文件已经老老实实地躺在你的数据库里面了；已修改是指已经变动但是并没有提交；已暂存的标示你已经<strong>标记</strong>这一次修改，但是标记的快照并没有合并到你的数据库里面。三种状态分别对应git的三个工作区域：<strong>the Git directory</strong>（本地仓库）, <strong>the working tree</strong>（工作目录）, <strong>and the staging area</strong>（暂存区域）。</p>
-<p><img src="http://images0.cnblogs.com/blog2015/512650/201508/181930031754207.png" alt="点击查看源网页"></p>
-<p>所以，当我们使用git 的时候，我们的工作流程是这样的：</p>
-<ol>
-<li>修改工作目录中的文件；</li>
-<li>标记快照暂存；</li>
-<li>提交到库。</li>
-</ol>
-<h3 id="参考文件"><a href="#参考文件" class="headerlink" title="参考文件"></a>参考文件</h3><p><a href="http://ericsink.com/vcbe/html/history_of_version_control.html" target="_blank" rel="external">http://ericsink.com/vcbe/html/history_of_version_control.html</a></p>
-<p><a href="https://git-scm.com/book/en/v2/Getting-Started-Git-Basics" target="_blank" rel="external">https://git-scm.com/book/en/v2/Getting-Started-Git-Basics</a></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1799,8 +1803,8 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">11</span>
-                <span class="site-state-item-name">posts</span>
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">Artikel</span>
               </a>
             </div>
           
@@ -1854,7 +1858,7 @@
 
 
 <div class="powered-by">
-  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
