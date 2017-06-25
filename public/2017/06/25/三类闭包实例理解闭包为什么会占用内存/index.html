@@ -1,0 +1,667 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="在试图弄清这个问题之前，先要理解栈内存、堆内存和预处理。 占用内存，不会销毁的闭包实例例1：123456789var num = 12;function fn() &amp;#123;    var num = 100;    return function () &amp;#123;        console.log(num);    &amp;#125;&amp;#125;var f = fn();f(); 例1的图示">
+<meta name="keywords">
+<meta property="og:type" content="article">
+<meta property="og:title" content="三类闭包实例理解闭包为什么会占用内存">
+<meta property="og:url" content="http://yoursite.com/2017/06/25/三类闭包实例理解闭包为什么会占用内存/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="在试图弄清这个问题之前，先要理解栈内存、堆内存和预处理。 占用内存，不会销毁的闭包实例例1：123456789var num = 12;function fn() &amp;#123;    var num = 100;    return function () &amp;#123;        console.log(num);    &amp;#125;&amp;#125;var f = fn();f(); 例1的图示">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNc79ly1fgxrucbxedj30uf0el40j.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79ly1fgxs049ilwj30pt0eu0u7.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNc79ly1fgxt61ar16j30ms0aymya.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1fgxsu3f7vtj30uv0djq4j.jpg">
+<meta property="og:updated_time" content="2017-06-25T14:23:37.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="三类闭包实例理解闭包为什么会占用内存">
+<meta name="twitter:description" content="在试图弄清这个问题之前，先要理解栈内存、堆内存和预处理。 占用内存，不会销毁的闭包实例例1：123456789var num = 12;function fn() &amp;#123;    var num = 100;    return function () &amp;#123;        console.log(num);    &amp;#125;&amp;#125;var f = fn();f(); 例1的图示">
+<meta name="twitter:image" content="https://ws2.sinaimg.cn/large/006tNc79ly1fgxrucbxedj30uf0el40j.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/06/25/三类闭包实例理解闭包为什么会占用内存/"/>
+
+
+
+
+
+  <title> 三类闭包实例理解闭包为什么会占用内存 | Hexo </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/25/三类闭包实例理解闭包为什么会占用内存/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                三类闭包实例理解闭包为什么会占用内存
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-25T22:16:54+08:00">
+                2017-06-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>在试图弄清这个问题之前，先要理解<a href="https://zhuanyongxigua.github.io/2017/06/25/%E6%A0%88%E5%86%85%E5%AD%98%E3%80%81%E5%A0%86%E5%86%85%E5%AD%98%E5%92%8C%E9%A2%84%E5%A4%84%E7%90%86/" target="_blank" rel="external">栈内存、堆内存和预处理</a>。</p>
+<h2 id="占用内存，不会销毁的闭包实例"><a href="#占用内存，不会销毁的闭包实例" class="headerlink" title="占用内存，不会销毁的闭包实例"></a>占用内存，不会销毁的闭包实例</h2><h3 id="例1："><a href="#例1：" class="headerlink" title="例1："></a>例1：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">var num = 12;</div><div class="line">function fn() &#123;</div><div class="line">    var num = 100;</div><div class="line">    return function () &#123;</div><div class="line">        console.log(num);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">var f = fn();</div><div class="line">f();</div></pre></td></tr></table></figure>
+<p>例1的图示</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNc79ly1fgxrucbxedj30uf0el40j.jpg" alt=""></p>
+<p><strong>未被占用的堆内存才会被销毁</strong></p>
+<p>所以，正如图中椭圆形关键点中说明的那样，堆内存xxxfff111被返回给了全局变量f，而全局变量只有在窗口关闭的时候才会销毁，<strong>因此堆内存xxxfff111将一直被占用而不会销毁</strong>，定义它的局部作用域A也不会被销毁。</p>
+<h3 id="例2"><a href="#例2" class="headerlink" title="例2"></a>例2</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">var oDiv = document.getElementById(&quot;div1&quot;);</div><div class="line">~function() &#123;</div><div class="line">    oDiv.onclick = function() &#123;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;();</div></pre></td></tr></table></figure>
+<p>这段代码的特点是：私有作用域给DOM元素的事件绑定一个方法。</p>
+<p>例2的图示：</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tNc79ly1fgxs049ilwj30pt0eu0u7.jpg" alt=""></p>
+<p>正如图中椭圆形关键点所说，标签对象的属性里面会自带一个onclick的属性，未被赋值时其值为null。那么，在自执行函数执行的时候，其创建的作用域所占用的堆内存xxxfff111同样也会被全局的堆内存xxxfff000占用（这里要注意，是堆内存占用堆内存），所以堆内存xxxfff111和栈内存A都不会被销毁。</p>
+<h2 id="不占用内存，立即销毁的实例"><a href="#不占用内存，立即销毁的实例" class="headerlink" title="不占用内存，立即销毁的实例"></a>不占用内存，立即销毁的实例</h2><p>只需要将例1稍作修改。</p>
+<h3 id="例3："><a href="#例3：" class="headerlink" title="例3："></a>例3：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">function fn()&#123;</div><div class="line">    var num = 100;</div><div class="line">    return function()&#123;</div><div class="line">        console.log(num);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">fn();	//主要修改在这里</div></pre></td></tr></table></figure>
+<p>例3的图示</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNc79ly1fgxt61ar16j30ms0aymya.jpg" alt=""></p>
+<p>由于在函数fn中，xxxfff111是被return的，所以栈内存A的预解释不会处理xxxfff111，它只在fn函数执行的时候才会生成，而函数fn的栈内存A每次被执行之后都会被销毁。</p>
+<h2 id="暂时占用内存，延时销毁的闭包实例"><a href="#暂时占用内存，延时销毁的闭包实例" class="headerlink" title="暂时占用内存，延时销毁的闭包实例"></a>暂时占用内存，延时销毁的闭包实例</h2><p>将例3稍作修改，就变成了延时销毁的闭包实例。</p>
+<h3 id="例4："><a href="#例4：" class="headerlink" title="例4："></a>例4：</h3>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">function fn()&#123;</div><div class="line">    var num = 100;</div><div class="line">    return function()&#123;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">fn()();	//这里到底发生了什么？其实是执行了一次fn之后，把返回的子函数有执行了一次，所以在子函数执行的时候，栈内存fn()是不能销毁的，但是子函数执行完毕后因为没有被占用，所以最终还是要被销毁的，所以最终fn()还是会被销毁的。</div></pre></td></tr></table></figure>
+<p>例4的图示：</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fgxsu3f7vtj30uv0djq4j.jpg" alt=""></p>
+<p>正如途中椭圆形关键点处所说，<code>fn()()</code>的意思是在执行完<code>fn()</code>之后再把返回的值函数执行一遍。因此在子函数执行的时候，堆内存xxxfff111被占用了，相应的栈内存A也将保留。</p>
+<p>可堆内存xxxfff111中保存的子函数在执行完成之后还是会被销毁，接着堆内存xxxfff111就作为未被占用的堆内存而被销毁，最终栈内存A也会被销毁。</p>
+<p>所以，栈内存在执行完之后会被保留一段时间，这段时间等于其子函数执行的时间。</p>
+<p>参考资料：</p>
+<p>JavaScript高级程序设计(第三版)。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/06/25/栈内存、堆内存和预处理/" rel="prev" title="栈内存、堆内存和预处理">
+                栈内存、堆内存和预处理 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="John Doe" />
+          <p class="site-author-name" itemprop="name">John Doe</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">Artikel</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#占用内存，不会销毁的闭包实例"><span class="nav-number">1.</span> <span class="nav-text">占用内存，不会销毁的闭包实例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#例1："><span class="nav-number">1.1.</span> <span class="nav-text">例1：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#例2"><span class="nav-number">1.2.</span> <span class="nav-text">例2</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#不占用内存，立即销毁的实例"><span class="nav-number">2.</span> <span class="nav-text">不占用内存，立即销毁的实例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#例3："><span class="nav-number">2.1.</span> <span class="nav-text">例3：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#暂时占用内存，延时销毁的闭包实例"><span class="nav-number">3.</span> <span class="nav-text">暂时占用内存，延时销毁的闭包实例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#例4："><span class="nav-number">3.1.</span> <span class="nav-text">例4：</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+</div>
+
+
+<div class="powered-by">
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
