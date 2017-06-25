@@ -47,7 +47,7 @@ apt-get install -y vim git
 安装docker
 
 ~~~
-curl-SsL https://get.docker.com | sh
+curl -SsL https://get.docker.com | sh
 ~~~
 
 查看docker中的容器

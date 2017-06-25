@@ -194,7 +194,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Accueil
           </a>
         </li>
       
@@ -204,7 +204,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -237,6 +237,158 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/25/栈内存、堆内存和预处理/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/06/25/栈内存、堆内存和预处理/" itemprop="url">
+                  栈内存、堆内存和预处理
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posté le</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-25T16:46:54+08:00">
+                2017-06-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>浏览器是如何运行JavaScript代码的？</p>
+<p>看例1：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">var num = 12;</div><div class="line">function fn() &#123;</div><div class="line">    var num = 100;</div><div class="line">&#125;</div><div class="line">f();</div><div class="line">num = 200;</div></pre></td></tr></table></figure>
+<p>用图解释这一行代码是如何执行的。</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tNc79ly1fgxag0eo14j30ff0blaat.jpg" alt="图例一"></p>
+<p>这是一个简单的图示，现在我们来增加几个概念：栈内存、堆内存和预处理。</p>
+<h4 id="栈内存"><a href="#栈内存" class="headerlink" title="栈内存"></a>栈内存</h4><p>栈内存用来存放基本数据类型(Number、String、Boolean、Null和Undefined)，<strong>在执行完之后销毁。</strong></p>
+<p>栈内存与另一个概念息息相关——作用域，即代码的执行环境。上图中左边的栈内存就是全局作用域，而右边的则是局部作用域。全局作用域在浏览器窗口关闭之后才销毁。局部作用域在执行完之后就会销毁。</p>
+<p>JavaScript规定，父作用域不能使用子作用域中变量和方程，而反过来是可以的。这个反过来的方向链条则被称为作用域链。</p>
+<p>这里需要注意的是，<strong>判断子作用域的父作用域是哪一个，要看这个子作用域是在哪里定义的，而不是在哪里执行。</strong></p>
+<h4 id="堆内存"><a href="#堆内存" class="headerlink" title="堆内存"></a>堆内存</h4><p>堆内存用来存放引用数据类型(object、array、function、date)，<strong>在没有被引用之后销毁。</strong></p>
+<p>当我们声明和定义了一个引用数据类型之后，这个对象保存在堆内存中，而这个对象的地址则保存在栈内存中以用于引用。</p>
+<p>在全局作用域声明和定义的引用数据类型，销毁的方法是手动赋值null。</p>
+<h4 id="看一组例子来说明栈内存与堆内存的区别："><a href="#看一组例子来说明栈内存与堆内存的区别：" class="headerlink" title="看一组例子来说明栈内存与堆内存的区别："></a>看一组例子来说明栈内存与堆内存的区别：</h4><p>例2</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var a = 20;</div><div class="line">var b = a;</div><div class="line">b = 30;</div><div class="line">// a等于多少？</div></pre></td></tr></table></figure>
+<p>例3</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var m = &#123; a: 10, b: 20 &#125;</div><div class="line">var n = m;</div><div class="line">n.a = 15;</div><div class="line">// m.a的值是分别是什么？</div></pre></td></tr></table></figure>
+<p>例2的图解</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tNc79ly1fgxhh3tnlgj30no059q3b.jpg" alt=""></p>
+<p>例3的图解</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fgxhq85drcj30g309waah.jpg" alt=""></p>
+<p>由上两个图解可见，当基本数据类型传递的时候，其实是复制了一个新的数据给另一个变量；而当引用类型传递的时候，复制的仅仅是引用数据类型的地址，两个变量通过地址指向的是同一个堆内存中的数据。</p>
+<p>所以在例3中，当我们改变n.a的时候，m.a也同样改变了。</p>
+<h4 id="预处理"><a href="#预处理" class="headerlink" title="预处理"></a>预处理</h4><p>预处理是浏览器在执行代码前要做的任务，它包括变量的声明和函数声明与定义。</p>
+<p>预处理是<strong>变量提升</strong>的原因。</p>
+<p>当我们写了<code>var num = 12</code>这样的一行代码的时候，在执行时其实是分为两步：声明<code>var num</code>和定义<code>num = 12</code>。对于变量，预处理只做声明而不做定义。</p>
+<p>而相对于函数<code>function fn(){var num 12}</code>，同样有声明和定义之分，与变量不同的是，预处理时声明和定义全部执行。具体步骤是：声明<code>function fn()</code>，定义<code>fn() = &quot;{var num = 12}&quot;</code>。</p>
+<p>理解了栈内存、堆内存和预处理之后，重新画出例1的图示：</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tNc79ly1fgxj9il06dj30g60bvwfi.jpg" alt=""></p>
+<p>这里的堆内存xxxfff000被全局作用域的函数fn引用，而全局作用域只有在浏览器窗口关闭的时候才会销毁，所以，只要浏览器窗口没有关闭，则堆内存xxxfff000一直被引用而不会销毁。</p>
+<p>参考资料：</p>
+<p>JavaScript高级程序设计(第三版)；</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
     
       
 
@@ -284,7 +436,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posté le</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-21T10:27:37+08:00">
                 2017-05-21
@@ -462,7 +614,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posté le</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-20T16:18:46+08:00">
                 2017-05-20
@@ -607,7 +759,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posté le</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-20T09:50:54+08:00">
                 2017-05-20
@@ -743,7 +895,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posté le</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-19T22:41:01+08:00">
                 2017-05-19
@@ -886,7 +1038,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posté le</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-18T21:34:40+08:00">
                 2017-05-18
@@ -1022,7 +1174,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posté le</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-01T21:34:40+08:00">
                 2017-05-01
@@ -1186,7 +1338,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posté le</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-26T21:34:40+08:00">
                 2017-04-26
@@ -1315,7 +1467,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posté le</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-20T21:34:40+08:00">
                 2017-04-20
@@ -1373,7 +1525,7 @@
 <p>安装vim</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">apt-get install -y vim git</div></pre></td></tr></table></figure>
 <p>安装docker</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl-SsL https://get.docker.com | sh</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl -SsL https://get.docker.com | sh</div></pre></td></tr></table></figure>
 <p>查看docker中的容器</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker ps -a</div></pre></td></tr></table></figure>
 <p>docker中安装node6.8</p>
@@ -1478,7 +1630,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posté le</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-07T21:34:40+08:00">
                 2017-04-07
@@ -1581,141 +1733,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/25/一个关于闭包、回调函数和异步程序的例子/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/03/25/一个关于闭包、回调函数和异步程序的例子/" itemprop="url">
-                  一个关于回调函数的例子以及异步程序和非阻塞I/O的理解
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-25T21:34:40+08:00">
-                2017-03-25
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>JavaScript有一个明显的特征：第一类函数（first-class functions）<a href="https://en.wikipedia.org/wiki/First-class_function" target="_blank" rel="external">（wiki）</a> 。</p>
-<p>与第一类函数有关的名词还有第一类对象和第一类公民（头等公民）<a href="https://en.wikipedia.org/wiki/First-class_citizen" target="_blank" rel="external">（wiki）</a> ，在JavaScript中，函数是第一类对象或者说是第一类公民，简单理解，就是权限很大，可调用的资源多。这是因为这样，它才可以被当做参数或变量来使用。</p>
-<p>对于异步程序和非阻塞I/O，记得在知乎上看到过一个非常好的举例：你给图书馆打电话查书，图书馆的管理员会有两种反应，第一种：“麻烦等一下，不用挂电话，我查一下”；第二种：“知道了，等我查到了我给您回电话”。这里面的区别，一个在你，一个在电话线路。第一种情况下，你不能去干别的，只能老老实实的在电话前面等着，而且，别人在这段时间里没法给你打电话了。第二种情况就无所谓了，你可以去high，去耍，去上厕所，其他的朋友给你打电话你也接的到。第一种情况就是同步的、阻塞的，第二种就是异步的、非阻塞的。</p>
-<p>下面是一个nodejs的例子，创建一个rectangle-2.js的文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">module.exports = function(x,y,callback) &#123;</div><div class="line">  try &#123;</div><div class="line">    if (x &lt; 0 || y &lt; 0) &#123;</div><div class="line">        throw new Error(&quot;Rectangle dimensions should be greater than zero: l = &quot;</div><div class="line">                            + x + &quot;, and b = &quot; + y);</div><div class="line">    &#125;</div><div class="line">    else</div><div class="line">         callback(null, &#123;</div><div class="line">            perimeter: function () &#123;</div><div class="line">        		   return (2*(x+y));</div><div class="line">			&#125;,</div><div class="line">            area:function () &#123;</div><div class="line">        		    return (x*y);</div><div class="line">			&#125;</div><div class="line">    &#125;);</div><div class="line">  &#125;</div><div class="line">  catch (error) &#123;</div><div class="line">        callback(error,null);</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>在创建一个<em>solve-2.js</em>的文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">var rect = require(&apos;./rectangle-2&apos;);</div><div class="line"></div><div class="line">function solveRect(l,b) &#123;</div><div class="line">    console.log(&quot;Solving for rectangle with l = &quot;</div><div class="line">                + l + &quot; and b = &quot; + b);</div><div class="line">    rect(l,b, function(err,rectangle) &#123;</div><div class="line">        if (err) &#123;</div><div class="line">	    console.log(err);</div><div class="line">	&#125;</div><div class="line">	else &#123;</div><div class="line">	    console.log(&quot;The area of a rectangle of dimensions length = &quot;</div><div class="line">                 + l + &quot; and breadth = &quot; + b + &quot; is &quot; + rectangle.area());</div><div class="line">            console.log(&quot;The perimeter of a rectangle of dimensions length = &quot;</div><div class="line">                 + l + &quot; and breadth = &quot; + b + &quot; is &quot; + rectangle.perimeter());</div><div class="line">	&#125;</div><div class="line">    &#125;);</div><div class="line">&#125;;</div><div class="line"></div><div class="line">solveRect(2,4);</div><div class="line">solveRect(3,5);</div><div class="line">solveRect(-3,5);</div></pre></td></tr></table></figure>
-<p>程序是这样运行的，用node命令</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">node solve-2</div></pre></td></tr></table></figure>
-<ol>
-<li>运行solve-2.js，rectangle-2.js文件被引用，并赋值给变量rect。</li>
-<li>在最后几行，函数solveRect被调用三次，分别赋值(2,4)、(3,5)和(-3,5)，</li>
-<li>在函数solveRect运行到调用rect时，也相当于是一个赋值的过程，l赋值给rectangle-2.js文件中函数的x，b赋值给y，rect的第三个参数，也就是那个匿名方程，赋值给了callback。到这里solve-2.js就运行完了，可以该干嘛干嘛了。</li>
-<li>目光放到rectangle-2.js，程序运行，先在try里面判断，确定符合要求之后，就运行callback函数，也就是第三步中赋值给callback的那个函数，求得结果。</li>
-</ol>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1765,8 +1782,8 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">14</span>
-                <span class="site-state-item-name">Artikel</span>
+                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-name">articles</span>
               </a>
             </div>
           
@@ -1820,11 +1837,11 @@
 
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
-  Theme -
+  Thème -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
     NexT.Muse
   </a>

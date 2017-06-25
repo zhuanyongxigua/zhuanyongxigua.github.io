@@ -194,7 +194,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Accueil
           </a>
         </li>
       
@@ -204,7 +204,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -237,6 +237,141 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/25/一个关于闭包、回调函数和异步程序的例子/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/03/25/一个关于闭包、回调函数和异步程序的例子/" itemprop="url">
+                  一个关于回调函数的例子以及异步程序和非阻塞I/O的理解
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posté le</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-25T21:34:40+08:00">
+                2017-03-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>JavaScript有一个明显的特征：第一类函数（first-class functions）<a href="https://en.wikipedia.org/wiki/First-class_function" target="_blank" rel="external">（wiki）</a> 。</p>
+<p>与第一类函数有关的名词还有第一类对象和第一类公民（头等公民）<a href="https://en.wikipedia.org/wiki/First-class_citizen" target="_blank" rel="external">（wiki）</a> ，在JavaScript中，函数是第一类对象或者说是第一类公民，简单理解，就是权限很大，可调用的资源多。这是因为这样，它才可以被当做参数或变量来使用。</p>
+<p>对于异步程序和非阻塞I/O，记得在知乎上看到过一个非常好的举例：你给图书馆打电话查书，图书馆的管理员会有两种反应，第一种：“麻烦等一下，不用挂电话，我查一下”；第二种：“知道了，等我查到了我给您回电话”。这里面的区别，一个在你，一个在电话线路。第一种情况下，你不能去干别的，只能老老实实的在电话前面等着，而且，别人在这段时间里没法给你打电话了。第二种情况就无所谓了，你可以去high，去耍，去上厕所，其他的朋友给你打电话你也接的到。第一种情况就是同步的、阻塞的，第二种就是异步的、非阻塞的。</p>
+<p>下面是一个nodejs的例子，创建一个rectangle-2.js的文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">module.exports = function(x,y,callback) &#123;</div><div class="line">  try &#123;</div><div class="line">    if (x &lt; 0 || y &lt; 0) &#123;</div><div class="line">        throw new Error(&quot;Rectangle dimensions should be greater than zero: l = &quot;</div><div class="line">                            + x + &quot;, and b = &quot; + y);</div><div class="line">    &#125;</div><div class="line">    else</div><div class="line">         callback(null, &#123;</div><div class="line">            perimeter: function () &#123;</div><div class="line">        		   return (2*(x+y));</div><div class="line">			&#125;,</div><div class="line">            area:function () &#123;</div><div class="line">        		    return (x*y);</div><div class="line">			&#125;</div><div class="line">    &#125;);</div><div class="line">  &#125;</div><div class="line">  catch (error) &#123;</div><div class="line">        callback(error,null);</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在创建一个<em>solve-2.js</em>的文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">var rect = require(&apos;./rectangle-2&apos;);</div><div class="line"></div><div class="line">function solveRect(l,b) &#123;</div><div class="line">    console.log(&quot;Solving for rectangle with l = &quot;</div><div class="line">                + l + &quot; and b = &quot; + b);</div><div class="line">    rect(l,b, function(err,rectangle) &#123;</div><div class="line">        if (err) &#123;</div><div class="line">	    console.log(err);</div><div class="line">	&#125;</div><div class="line">	else &#123;</div><div class="line">	    console.log(&quot;The area of a rectangle of dimensions length = &quot;</div><div class="line">                 + l + &quot; and breadth = &quot; + b + &quot; is &quot; + rectangle.area());</div><div class="line">            console.log(&quot;The perimeter of a rectangle of dimensions length = &quot;</div><div class="line">                 + l + &quot; and breadth = &quot; + b + &quot; is &quot; + rectangle.perimeter());</div><div class="line">	&#125;</div><div class="line">    &#125;);</div><div class="line">&#125;;</div><div class="line"></div><div class="line">solveRect(2,4);</div><div class="line">solveRect(3,5);</div><div class="line">solveRect(-3,5);</div></pre></td></tr></table></figure>
+<p>程序是这样运行的，用node命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">node solve-2</div></pre></td></tr></table></figure>
+<ol>
+<li>运行solve-2.js，rectangle-2.js文件被引用，并赋值给变量rect。</li>
+<li>在最后几行，函数solveRect被调用三次，分别赋值(2,4)、(3,5)和(-3,5)，</li>
+<li>在函数solveRect运行到调用rect时，也相当于是一个赋值的过程，l赋值给rectangle-2.js文件中函数的x，b赋值给y，rect的第三个参数，也就是那个匿名方程，赋值给了callback。到这里solve-2.js就运行完了，可以该干嘛干嘛了。</li>
+<li>目光放到rectangle-2.js，程序运行，先在try里面判断，确定符合要求之后，就运行callback函数，也就是第三步中赋值给callback的那个函数，求得结果。</li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
     
       
 
@@ -284,7 +419,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posté le</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-20T21:34:40+08:00">
                 2017-03-20
@@ -461,7 +596,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posté le</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-27T21:34:40+08:00">
                 2017-02-27
@@ -608,6 +743,138 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/02/22/对angularJS一些概念的理解/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/02/22/对angularJS一些概念的理解/" itemprop="url">
+                  对angularJS一些概念的理解
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posté le</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-22T21:34:40+08:00">
+                2017-02-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="angularJS是以MVC为设计模式的JS框架"><a href="#angularJS是以MVC为设计模式的JS框架" class="headerlink" title="angularJS是以MVC为设计模式的JS框架"></a>angularJS是以MVC为设计模式的JS框架</h2><p><strong>MVC</strong>(Model View Controller)<strong>设计模式</strong>（design pattern）也可以理解成运行方式。每一个使用angularJS的程序都有这三个部分：</p>
+<ul>
+<li>模型/Model，这个部分说成是自建数据库的话会更容易理解；</li>
+<li>视图/View，就是显示的部分；</li>
+<li>控制器/Controller，软件代码控制Model和View之间的相互作用。</li>
+</ul>
+<p><img src="https://www.codeproject.com/KB/aspnet/344292/mvc.PNG" alt=""></p>
+<p>在学习html、css和JavaScript的过程中经常会看到framework、library这些词汇，笼统的讲，他们都是人们为了快速解决问题、避免简单重复的体力劳动而做的一些工具或加工到一定程度的原材料。</p>
+<p>就好像你喜欢用豆腐做菜，可你并不需要每次都从种黄豆开始，已经有人做好了豆腐在那里卖，你只要拿过来直接用就可以了。</p>
+<p>而framework和library的区别，我现在的理解是，framework是比library加工程度更深的原材料。如果framework是豆腐，那library就是做豆腐需要的原材料。你当然也可以使用做豆腐的原材料去做菜。</p>
+<p><img src="http://o7w6l6vti.bkt.clouddn.com/Difference%20between%20Library%20and%20Framework%20%28in%20JavaScript%29.png" alt="image"></p>
+<p>不过豆腐的例子不能很好的说明的一点是好莱坞原则。开脑洞的说就是，豆腐可以自己使用你准备好的东西如调味料、锅和铲子等把自己做成做成美味的菜肴。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/02/22/初学git的一些基础知识/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -645,7 +912,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posté le</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-22T21:34:40+08:00">
                 2017-02-22
@@ -732,138 +999,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/02/22/对angularJS一些概念的理解/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/02/22/对angularJS一些概念的理解/" itemprop="url">
-                  对angularJS一些概念的理解
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-22T21:34:40+08:00">
-                2017-02-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="angularJS是以MVC为设计模式的JS框架"><a href="#angularJS是以MVC为设计模式的JS框架" class="headerlink" title="angularJS是以MVC为设计模式的JS框架"></a>angularJS是以MVC为设计模式的JS框架</h2><p><strong>MVC</strong>(Model View Controller)<strong>设计模式</strong>（design pattern）也可以理解成运行方式。每一个使用angularJS的程序都有这三个部分：</p>
-<ul>
-<li>模型/Model，这个部分说成是自建数据库的话会更容易理解；</li>
-<li>视图/View，就是显示的部分；</li>
-<li>控制器/Controller，软件代码控制Model和View之间的相互作用。</li>
-</ul>
-<p><img src="https://www.codeproject.com/KB/aspnet/344292/mvc.PNG" alt=""></p>
-<p>在学习html、css和JavaScript的过程中经常会看到framework、library这些词汇，笼统的讲，他们都是人们为了快速解决问题、避免简单重复的体力劳动而做的一些工具或加工到一定程度的原材料。</p>
-<p>就好像你喜欢用豆腐做菜，可你并不需要每次都从种黄豆开始，已经有人做好了豆腐在那里卖，你只要拿过来直接用就可以了。</p>
-<p>而framework和library的区别，我现在的理解是，framework是比library加工程度更深的原材料。如果framework是豆腐，那library就是做豆腐需要的原材料。你当然也可以使用做豆腐的原材料去做菜。</p>
-<p><img src="http://o7w6l6vti.bkt.clouddn.com/Difference%20between%20Library%20and%20Framework%20%28in%20JavaScript%29.png" alt="image"></p>
-<p>不过豆腐的例子不能很好的说明的一点是好莱坞原则。开脑洞的说就是，豆腐可以自己使用你准备好的东西如调味料、锅和铲子等把自己做成做成美味的菜肴。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -913,8 +1048,8 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">14</span>
-                <span class="site-state-item-name">Artikel</span>
+                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-name">articles</span>
               </a>
             </div>
           
@@ -968,11 +1103,11 @@
 
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
-  Theme -
+  Thème -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
     NexT.Muse
   </a>
