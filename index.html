@@ -194,7 +194,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -204,7 +204,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -237,6 +237,151 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/25/三类闭包实例理解闭包为什么会占用内存/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/06/25/三类闭包实例理解闭包为什么会占用内存/" itemprop="url">
+                  三类闭包实例理解闭包为什么会占用内存
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-25T22:16:54+08:00">
+                2017-06-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>在试图弄清种鸽问题之前，先要理解<a href="https://zhuanyongxigua.github.io/2017/06/25/%E6%A0%88%E5%86%85%E5%AD%98%E3%80%81%E5%A0%86%E5%86%85%E5%AD%98%E5%92%8C%E9%A2%84%E5%A4%84%E7%90%86/" target="_blank" rel="external">栈内存、堆内存和预处理</a>。</p>
+<h2 id="占用内存，不会销毁的闭包实例"><a href="#占用内存，不会销毁的闭包实例" class="headerlink" title="占用内存，不会销毁的闭包实例"></a>占用内存，不会销毁的闭包实例</h2><h3 id="例1："><a href="#例1：" class="headerlink" title="例1："></a>例1：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">var num = 12;</div><div class="line">function fn() &#123;</div><div class="line">    var num = 100;</div><div class="line">    return function () &#123;</div><div class="line">        console.log(num);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">var f = fn();</div><div class="line">f();</div></pre></td></tr></table></figure>
+<p>例1的图示</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNc79ly1fgxrucbxedj30uf0el40j.jpg" alt=""></p>
+<p><strong>未被占用的堆内存才会被销毁</strong></p>
+<p>所以，正如图中椭圆形关键点中说明的那样，堆内存xxxfff111被返回给了全局变量f，而全局变量只有在窗口关闭的时候才会销毁，<strong>因此堆内存xxxfff111将一直被占用而不会销毁</strong>，定义它的局部作用域A也不会被销毁。</p>
+<h3 id="例2"><a href="#例2" class="headerlink" title="例2"></a>例2</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">var oDiv = document.getElementById(&quot;div1&quot;);</div><div class="line">~function() &#123;</div><div class="line">    oDiv.onclick = function() &#123;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;();</div></pre></td></tr></table></figure>
+<p>这段代码的特点是：私有作用域给DOM元素的事件绑定一个方法。</p>
+<p>例2的图示：</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tNc79ly1fgxs049ilwj30pt0eu0u7.jpg" alt=""></p>
+<p>正如图中椭圆形关键点所说，标签对象的属性里面会自带一个onclick的属性，未被赋值时其值为null。那么，在自执行函数执行的时候，其创建的作用域所占用的堆内存xxxfff111同样也会被全局的堆内存xxxfff000占用（这里要注意，是堆内存占用堆内存），所以堆内存xxxfff111和栈内存A都不会被销毁。</p>
+<h2 id="不占用内存，立即销毁的实例"><a href="#不占用内存，立即销毁的实例" class="headerlink" title="不占用内存，立即销毁的实例"></a>不占用内存，立即销毁的实例</h2><p>只需要将例1稍作修改。</p>
+<h3 id="例3："><a href="#例3：" class="headerlink" title="例3："></a>例3：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">function fn()&#123;</div><div class="line">    var num = 100;</div><div class="line">    return function()&#123;</div><div class="line">        console.log(num);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">fn();	//主要修改在这里</div></pre></td></tr></table></figure>
+<p>例3的图示</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNc79ly1fgxt61ar16j30ms0aymya.jpg" alt=""></p>
+<p>由于在函数fn中，xxxfff111是被return的，所以栈内存A的预解释不会处理xxxfff111，它只在fn函数执行的时候才会生成，而函数fn的栈内存A每次被执行之后都会被销毁。</p>
+<h2 id="暂时占用内存，延时销毁的闭包实例"><a href="#暂时占用内存，延时销毁的闭包实例" class="headerlink" title="暂时占用内存，延时销毁的闭包实例"></a>暂时占用内存，延时销毁的闭包实例</h2><p>将例3稍作修改，就变成了延时销毁的闭包实例。</p>
+<h3 id="例4："><a href="#例4：" class="headerlink" title="例4："></a>例4：</h3>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">function fn()&#123;</div><div class="line">    var num = 100;</div><div class="line">    return function()&#123;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">fn()();	//这里到底发生了什么？其实是执行了一次fn之后，把返回的子函数有执行了一次，所以在子函数执行的时候，栈内存fn()是不能销毁的，但是子函数执行完毕后因为没有被占用，所以最终还是要被销毁的，所以最终fn()还是会被销毁的。</div></pre></td></tr></table></figure>
+<p>例4的图示：</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fgxsu3f7vtj30uv0djq4j.jpg" alt=""></p>
+<p>正如途中椭圆形关键点处所说，<code>fn()()</code>的意思是在执行完<code>fn()</code>之后再把返回的值函数执行一遍。因此在子函数执行的时候，堆内存xxxfff111被占用了，相应的栈内存A也将保留。</p>
+<p>可堆内存xxxfff111中保存的子函数在执行完成之后还是会被销毁，接着堆内存xxxfff111就作为未被占用的堆内存而被销毁，最终栈内存A也会被销毁。</p>
+<p>所以，栈内存在执行完之后会被保留一段时间，这段时间等于其子函数执行的时间。</p>
+<p>参考资料：</p>
+<p>JavaScript高级程序设计(第三版)。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
     
       
 
@@ -284,7 +429,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-25T16:46:54+08:00">
                 2017-06-25
@@ -436,7 +581,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-21T10:27:37+08:00">
                 2017-05-21
@@ -614,7 +759,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-20T16:18:46+08:00">
                 2017-05-20
@@ -759,7 +904,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-20T09:50:54+08:00">
                 2017-05-20
@@ -895,7 +1040,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-19T22:41:01+08:00">
                 2017-05-19
@@ -1038,7 +1183,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-18T21:34:40+08:00">
                 2017-05-18
@@ -1174,7 +1319,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-01T21:34:40+08:00">
                 2017-05-01
@@ -1338,7 +1483,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-26T21:34:40+08:00">
                 2017-04-26
@@ -1467,7 +1612,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-20T21:34:40+08:00">
                 2017-04-20
@@ -1584,155 +1729,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/07/使用autohotkey修改方向键、回车和启动程序/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/04/07/使用autohotkey修改方向键、回车和启动程序/" itemprop="url">
-                  使用autohotkey修改方向键、回车和启动程序
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-07T21:34:40+08:00">
-                2017-04-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><a href="https://autohotkey.com/" target="_blank" rel="external">autohotkey官网</a></p>
-<p><a href="https://autohotkey.com/docs/AutoHotkey.htm" target="_blank" rel="external">autohotkey官方文档</a></p>
-<p><a href="http://ahkcn.sourceforge.net/docs/AutoHotkey.htm" target="_blank" rel="external">官方文档中文版</a></p>
-<h3 id="具体步骤"><a href="#具体步骤" class="headerlink" title="具体步骤"></a>具体步骤</h3><ol>
-<li><p>下载并安装autohotkey。</p>
-</li>
-<li><p>在你觉得合适的地方鼠标右键-新建-autohotkey script（脚本）；或者创建一个别的文件，再把后缀改成ahk也可以</p>
-</li>
-<li><p>一个新建的ahk文档里面会有这些东西</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">#NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.</div><div class="line">; #Warn  ; Enable warnings to assist with detecting common errors.</div><div class="line">SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.</div><div class="line">SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.</div></pre></td></tr></table></figure>
-<p>不用管这些</p>
-</li>
-<li><p>在下面输入</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">!j::</div><div class="line">   Send, &#123;Down&#125;</div><div class="line">Return</div><div class="line"></div><div class="line">!l::</div><div class="line">   Send, &#123;Right&#125;</div><div class="line">Return</div><div class="line"></div><div class="line">!h::</div><div class="line">   Send, &#123;Left&#125;</div><div class="line">Return</div><div class="line"></div><div class="line">!k::</div><div class="line">   Send, &#123;Up&#125;</div><div class="line">Return</div></pre></td></tr></table></figure>
-<p>这几句话是把↑改成了alt+k；↓为alt+j；←为alt+h；→为alt+l。如果想用ctrl代替alt，就把<code>!</code> 换成<code>^</code> 。其他的<code>+</code> 代表shift，<code>#</code> 代表windows键，更详细的看<a href="http://ahkcn.sourceforge.net/docs/Hotkeys.htm" target="_blank" rel="external">这个</a>。如果不需要其他功能了，直接保存并关闭，跳到第 步。</p>
-</li>
-<li><p><strong>加入修改回车的功能</strong>。键盘左侧的Capslock（锁定大小写）键使用频率相对还是不高的，而回车键的位置又有点坑，改之。直接复制这段这两行。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$CapsLock::Enter</div><div class="line"></div><div class="line">LAlt &amp; Capslock::SetCapsLockState, % GetKeyState(&quot;CapsLock&quot;, &quot;T&quot;) ? &quot;Off&quot; : &quot;On&quot;</div></pre></td></tr></table></figure>
-<p>这样，左侧的Capslock键就成了回车，以后小量的大写字母用shift+字母，如果有大量的大写字母的输入，用<code>alt+Capslock</code> ，跟之前Capslock是一样的。</p>
-</li>
-<li><p>autohotkey也可以用快捷键启动软件，例如</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">!o::</div><div class="line">   Run, C:\Program Files\Everything\Everything.exe</div><div class="line">Return</div></pre></td></tr></table></figure>
-<p>现在<code>alt+o</code>就是启动everything的快捷键了。同样的，如果想用ctrl代替alt，就把<code>!</code> 换成<code>^</code> 。其他的<code>+</code> 代表shift，<code>#</code> 代表windows键，更详细的看<a href="http://ahkcn.sourceforge.net/docs/Hotkeys.htm" target="_blank" rel="external">这个</a>。如果想启动其他的软件，就把上面的路径换成你想启动的那个软件的路径机就可以了。</p>
-</li>
-<li><p>保存，关闭</p>
-</li>
-<li><p>在编辑好的文件点击鼠标右键，选择编译脚本，也可能是Compile script，也可能是Compile脚本，都是一样的。编译之后就会生成一个<code>.exe</code>的文件，把这个文件放到开机启动文件夹中（C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp），每次开机就可以自动启动了。</p>
-</li>
-</ol>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1782,8 +1778,8 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">15</span>
-                <span class="site-state-item-name">Artikel</span>
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">posts</span>
               </a>
             </div>
           
@@ -1837,7 +1833,7 @@
 
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
