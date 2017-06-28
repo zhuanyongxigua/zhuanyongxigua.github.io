@@ -247,6 +247,131 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/28/练习用原生JavaScript编写与JavaScript数组方法slice功能一样的函数/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/06/28/练习用原生JavaScript编写与JavaScript数组方法slice功能一样的函数/" itemprop="url">
+                  练习用原生JavaScript编写与JavaScript数组方法slice功能一样的函数
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-28T21:01:40+08:00">
+                2017-06-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>刚刚开始的时候感觉不太难，越写越发现之前忽略的可能性很多。</p>
+<p>当只有一个变量的时候，把代码写出来不是特别困难。可当有两个变量的时候，情况就复杂了很多。我在刚开始写的时候就在想如何把冗余的代码裁减掉，结果就是大脑宕机。最后老老实实的在纸上，用最笨的方法把所有的可能性都列出来，再去想如何把类似的代码拿出来就变得很容易了。</p>
+<p>所以，如果觉得大脑硬件不够用了，那就用最笨的办法先去把事情做了，然后再去优化。</p>
+<p>最后写出来的东西</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div></pre></td><td class="code"><pre><div class="line">Array.prototype.mySlice = function () &#123;</div><div class="line">    var n = arguments[0];</div><div class="line">    var m = arguments[1];</div><div class="line">    if (n &gt;= 0) &#123;</div><div class="line">        var nN = Math.floor(n);</div><div class="line">    &#125;else &#123;</div><div class="line">        var nN = Math.ceil(n);</div><div class="line">    &#125;</div><div class="line">    if (m &gt;= 0) &#123;</div><div class="line">        var nM = Math.floor(m);</div><div class="line">    &#125;else &#123;</div><div class="line">        var nM = Math.ceil(m);</div><div class="line">    &#125;</div><div class="line">    var aArray1 = [];</div><div class="line">    if (arguments.length == 1) &#123;</div><div class="line">        if (nN &lt;= -this.length) &#123;</div><div class="line">            for (var i = 0; i &lt; this.length; i++) &#123;</div><div class="line">                aArray1[i] = this[i];</div><div class="line">            &#125;</div><div class="line">            return aArray1;</div><div class="line">        &#125;</div><div class="line">        else if (nN &gt; -this.length &amp;&amp; nN &lt; 0) &#123;</div><div class="line">            for (var i = 0; i &lt; -nN; i++) &#123;</div><div class="line">                aArray1[i] = this[nN + this.length + i];</div><div class="line">            &#125;</div><div class="line">            return aArray1;</div><div class="line">        &#125;else if (nN == 0) &#123;</div><div class="line">            for (var i = 0; i &lt; this.length; i++) &#123;</div><div class="line">                aArray1[i] = this[i];</div><div class="line">            &#125;</div><div class="line">            return aArray1;</div><div class="line">        &#125;else if (nN &gt; 0 &amp;&amp; nN &lt;= this.length) &#123;</div><div class="line">            for (var i = 0; i &lt; this.length - nN; i++) &#123;</div><div class="line">                aArray1[i] = this[nN + i]</div><div class="line">            &#125;</div><div class="line">            return aArray1;</div><div class="line">        &#125;</div><div class="line">        else &#123;</div><div class="line">            return [];</div><div class="line">        &#125;</div><div class="line">    &#125; else &#123;</div><div class="line">        if (nN + 1 &gt; this.length) &#123;</div><div class="line">            return [];</div><div class="line">        &#125;else if (nM &lt; -this.length) &#123;</div><div class="line">            return [];</div><div class="line">        &#125;else &#123;</div><div class="line">            if (nN &gt;= 0) &#123;</div><div class="line">                if (nM &gt;= 0 &amp;&amp; nM &lt;= this.length-1) &#123;</div><div class="line">                    if (nN &gt;= nM) &#123;</div><div class="line">                        return [];</div><div class="line">                    &#125;else &#123;</div><div class="line">                        for (var i = 0; i &lt; (nM - nN); i++) &#123;</div><div class="line">                            aArray1[i] = this[nN + i];</div><div class="line">                        &#125;</div><div class="line">                        return aArray1;</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">                else if (nM &gt; this.length-1) &#123;</div><div class="line">                    for (var i = 0; i &lt; this.length - nN; i++) &#123;</div><div class="line">                        aArray1[i] = this[nN + i];</div><div class="line">                    &#125;</div><div class="line">                    return aArray1;</div><div class="line">                &#125;</div><div class="line">                else if (nM &lt;= -1) &#123;</div><div class="line">                    if ((-nM + nN) &gt;= this.length) &#123;</div><div class="line">                        return [];</div><div class="line">                    &#125;else &#123;</div><div class="line">                        for (var i = 0; i &lt; (this.length + nM - nN); i++) &#123;</div><div class="line">                            aArray1[i] = this[nN + i];</div><div class="line">                        &#125;</div><div class="line">                        return aArray1;</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">                else &#123;</div><div class="line">                    return [];</div><div class="line">                &#125;</div><div class="line"></div><div class="line">            &#125;</div><div class="line">            else if (nN &lt;= -1 &amp;&amp; nN &gt; -this.length) &#123;</div><div class="line">                if (nM &gt; 0 &amp;&amp; nM &lt;= this.length-1) &#123;</div><div class="line">                    if (- nN + nM &lt;= this.length) &#123;</div><div class="line">                        return [];</div><div class="line">                    &#125;else &#123;</div><div class="line">                        for (var i = 0; i &lt; nM - nN - this.length; i++) &#123;</div><div class="line">                            aArray1[i] = this[nN + this.length + i];</div><div class="line">                        &#125;</div><div class="line">                        return aArray1;</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">                else if (nM &gt; this.length-1) &#123;</div><div class="line">                    for (var i = 0; i &lt; -nN; i++) &#123;</div><div class="line">                        aArray1[i] = this[this.length + nN + i];</div><div class="line">                    &#125;</div><div class="line">                    return aArray1;</div><div class="line">                &#125;</div><div class="line">                else if (nM &lt;= -1) &#123;</div><div class="line">                    if (nN &lt; nM) &#123;</div><div class="line">                        for (var i = 0; i &lt; (nM - nN); i++) &#123;</div><div class="line">                            aArray1[i] = this[this.length + nN + i];</div><div class="line">                        &#125;</div><div class="line">                        return aArray1;</div><div class="line">                    &#125;else &#123;</div><div class="line">                        return [];</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">                else &#123;</div><div class="line">                    return [];</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">            else &#123;</div><div class="line">                if (nM &gt; 0 &amp;&amp; nM &lt;= this.length -1) &#123;</div><div class="line">                    for (var i = 0; i &lt; nM; i++) &#123;</div><div class="line">                        aArray1[i] = this[i];</div><div class="line">                    &#125;</div><div class="line">                    return aArray1;</div><div class="line">                &#125;else if (nM &lt;= -1 &amp;&amp; nM &gt; -this.length) &#123;</div><div class="line">                    for (var i = 0; i &lt; (this.length + nM); i++) &#123;</div><div class="line">                        aArray1[i] = this[i];</div><div class="line">                    &#125;</div><div class="line">                    return aArray1;</div><div class="line">                &#125;else if (nM &gt; this.length-1) &#123;</div><div class="line">                    for (var i = 0; i &lt; this.length; i++) &#123;</div><div class="line">                        aArray1[i] = this[i]</div><div class="line">                    &#125;</div><div class="line">                    return aArray1;</div><div class="line">                &#125;</div><div class="line">                else &#123;</div><div class="line">                    return [];</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">//测试部分。</div><div class="line">var aTest = [0, 1, 2, 3, 4];</div><div class="line">var b = [];</div><div class="line">for (var i = 0; i &lt; 10; i++) &#123;</div><div class="line">    var n = Math.random() * 100 - 50;</div><div class="line">    b[i] = n;</div><div class="line">&#125;</div><div class="line">for (var i = 0; i &lt; b.length; i++) &#123;</div><div class="line">    for (var j = 0; j &lt;b.length; j++) &#123;</div><div class="line">        console.log(b[i], b[j]);</div><div class="line">        console.log(aTest.slice(b[i], b[j]));</div><div class="line">        console.log(aTest.mySlice(b[i], b[j]));</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">//测试一个参数的情况。</div><div class="line">// for (var i = 0; i &lt; a.length; i++) &#123;</div><div class="line">//         console.log(b[i]);</div><div class="line">//         console.log(aTest.slice(b[i]));</div><div class="line">//         console.log(aTest.mySlice(b[i]));</div><div class="line">// &#125;</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/25/三类闭包实例理解闭包为什么会占用内存/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1566,169 +1691,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/20/用vultr建立网站/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/04/20/用vultr建立网站/" itemprop="url">
-                  用vultr建立网站
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-20T21:34:40+08:00">
-                2017-04-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>内容会运用到Linux、docker</p>
-<p>如果有visa，可以直接到<a href="www.vultr.com">vultr官网</a>付款购买服务器。如果没有，某宝上面有代沟。</p>
-<p>我在这里使用的配置是，Tokyo Ubuntu16.04 25GB SSD，也就是通常能买到的最低的配置</p>
-<p>我是在某宝上面代购的，谈好价钱后，对方会给你一个ip地址和用户名还有密码。</p>
-<p><img src="http://o7w6l6vti.bkt.clouddn.com/Screenshot_20_04_2017__8_59_PM.png" alt="某宝"></p>
-<p>之后打开terminal</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh root@45.76.222.131</div></pre></td></tr></table></figure>
-<p>terminal会提示输入密码，直接输入收到的密码就好。</p>
-<p>接着就要输入以下的命令了。</p>
-<p>生成一个ssh key</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh-keygen</div></pre></td></tr></table></figure>
-<p>显示公钥</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cat ~/.ssh/id_rsa.pub</div></pre></td></tr></table></figure>
-<p>把生成的公钥放到GitHub上面</p>
-<p>接着回来搭建基本的开发环境</p>
-<p>安装vim</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">apt-get install -y vim git</div></pre></td></tr></table></figure>
-<p>安装docker</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl -SsL https://get.docker.com | sh</div></pre></td></tr></table></figure>
-<p>查看docker中的容器</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker ps -a</div></pre></td></tr></table></figure>
-<p>docker中安装node6.8</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker pull node:6.8</div></pre></td></tr></table></figure>
-<p>docker中安装mongodb:3.0</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker pull mongo:3.0</div></pre></td></tr></table></figure>
-<p>docker运行node</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker run -itd -v /root/.ssh/:/root/.ssh --name node --net=host node:6.8 bash</div></pre></td></tr></table></figure>
-<p>进入docker</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker exec -it node bash</div></pre></td></tr></table></figure>
-<p>从GitHub克隆过来自己写好的网页应用</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git clone git@github.com:zhuanyongxigua/notepad-online.git</div></pre></td></tr></table></figure>
-<p>列出所有</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ls -all</div></pre></td></tr></table></figure>
-<p><strong>出容器</strong>（另开一个terminal重新进）运行mongodb</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker run -itd --name mgo --net=host mongo:3.0</div></pre></td></tr></table></figure>
-<p>然后就可以cd到克隆过来的文件里面使用<code>npm install</code>并<code>npm start</code>了</p>
-<p>如果运行出错，需要停掉程序</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker stop node</div></pre></td></tr></table></figure>
-<p>这里面的node就是上面创建的那个，因为上面创建的时候的name规定的是node</p>
-<p>改好错之后就继续运行node</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker start node</div></pre></td></tr></table></figure>
-<p>如果需要向mongodb post数据</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl -i -H &quot;Content-Type:application/json&quot; -XPOST -d &apos;这里是JSON数据&apos; url</div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1778,7 +1740,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-count">17</span>
                 <span class="site-state-item-name">Artikel</span>
               </a>
             </div>
